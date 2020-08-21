@@ -1,0 +1,261 @@
+@charset "UTF-8";
+/* CopyRight By CSJ */
+body.body {
+	margin: 0;
+}
+
+.login_tbl input.login {
+	color: #000000;
+	background-color: #ffffff;
+	border: 1 solid #cccccc;
+	height: 15px;
+	width: 76px;
+}
+
+.login_warpper .login_md_10 {
+	padding: 0;
+	width: 48%;
+}
+
+@media ( max-width :767px) {
+	.login_md_10 .carousel_img_wrapper {
+		width: 500px;
+	}
+	.main_board_wrapper .board1 {
+		
+	}
+	.main_board_wrapper .board2 {
+		
+	}
+	.main_board_wrapper {
+		width: 500px;
+	}
+	.index_wrapper {
+		margin: 15px 0;
+	}
+	.FindInfo_main_wrapper {
+		margin: auto;
+	}
+	.main_board_wrapper .board1, .main_board_wrapper .board2 {
+		float: left;
+		width: 40%;
+	}
+	.login_tbl .login_id, .login_tbl .login_pw {
+		width: 80%;
+	}
+	.login_warpper .login_md_2 {
+		width: 175px;
+		padding: 0 15px;
+	}
+	.main_board_wrapper .main_board_span {
+		display: inline-block;
+		font-size: 13px;
+		margin: 5px 15px 0 0;
+		font-weight: 700;
+		background: #ddd;
+		width: 195px;
+	}
+	.agree_wrapper .agree {
+		width: 60%;
+		border-top: 5px solid #ddd;
+		overflow: scroll;
+		height: 220px;
+		margin: auto;
+		border-left: 5px solid #ddd;
+		border-right: 5px solid #ddd;
+		border-bottom: 5px solid #ddd;
+	}
+	.agree_wrapper .agree .agree_word, .agree_chk .agree_chk_ul li .agree_chk_span
+		{
+		font-size: 15px !important;
+	}
+	.agree_chk {
+		width: 55%;
+		margin: 10px auto 0;
+	}
+	.agree_chk .agree_chk_ul {
+		
+	}
+	.agree_chk .agree_chk_ul li {
+		float: left;
+		padding: 0 10px;
+	}
+	#agree_y, #agree_n {
+		margin: 0 5px;
+	}
+	.btn_wrapper {
+		text-align: center;
+		width: 60%;
+		margin: 15px auto;
+		border-top: 5px solid #ddd;
+		padding: 10px 0;
+		background: #f1f1f1;
+	}
+	.btn_wrapper .submitBtn {
+		padding: 0 5px;
+	}
+	img.use_agree {
+		padding: 0 155px 15px;
+	}
+	.findinfo_table_wrapper {
+		border: none;
+	}
+	.findinfo_table_wrapper .find_table tbody {
+		border-top: 5px solid #ddd;
+		border-bottom: 5px solid #ddd;
+	}
+	.findinfo_table_wrapper .find_table tbody tr th {
+		background: #eee;
+		width: 18%;
+	}
+	.find_table tbody tr td {
+		text-align: left !important;
+	}
+	.find_table .findinfo_tfoot {
+		text-align: center;
+	}
+	.findinfoFrm .findinfo_btnWrapper {
+		padding: 10px 0;
+		border-top: 5px solid #ddd;
+		border-bottom: 5px solid #ddd;
+		background: #eee;
+		text-align: center;
+	}
+	.findinfo_table_wrapper .Findinfo_wrapper {
+		
+	}
+	.footer .footer_line {
+		padding: 0 5px;
+	}
+	.footer {
+		position: relative;
+	}
+	.footer .footer_line::before {
+		content: "|";
+		position: absolute;
+		top: 10px;
+		margin: 0 -4px;
+	}
+	.footer .footer_content_tbl {
+		width: 690px;
+		border: 0;
+		cellspacing: 0;
+		cellpadding: 0;
+	}
+	.footer .footer_tbl .footer_content_tbl a {
+		border-bottom: 1px solid #333;
+	}
+}
+
+#main_carousel {
+	background: transparent;
+	border-radius: 5px;
+}
+
+.indicator li {
+	background: #333;
+	margin: 0 15px;
+}
+
+.indicator {
+	margin: 10px auto;
+	position: static;
+}
+
+.carousel_img_wrapper .item:nth-child(1) {
+	background: url("/pictures/main/main_people.gif") no-repeat center;
+	height: 120px;
+}
+
+.login_wrapper {
+	width: 95%;
+}
+
+.login_wrapper .login_tbl {
+	width: 170;
+	height: 104;
+	border: 0;
+	cellpadding: 0;
+	cellspacing: 0;
+	background: url("/pictures/login/back.gif") no-repeat center;
+}
+
+.main_board_wrapper .board_title {
+	padding: 10px 0;
+	font-size: 15px;
+	margin: 5px 15px 0 0;
+	border-radius: 5px;
+	background: #f58b31;
+	font-weight: 800;
+	width: 195px;
+	text-align: center;
+	text-shadow: 1px 0 #333;
+}
+
+.main_board_wrapper .main_board_2 {
+	padding: 10px 0;
+}
+
+.main_board_1 .board3 {
+	height: 170px;
+	width: 20%;
+	float: left;
+}
+
+.login_success {
+	height: 120px;
+	text-align: center;
+}
+
+.login_success .login_success_wrapper {
+	margin: 5px 10px;
+	height: 115px;
+	border-top: 3px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	background: #eee;
+}
+
+.login_success_wrapper p.login_success_id {
+	padding: 10px 0;
+	font-size: 14px;
+}
+
+.login_success_wrapper p.login_success_id::after {
+	content: "님 접속";
+}
+
+.login_success_wrapper span.point_span {
+	display: block;
+	font-size: 11px;
+	width: 35%;
+	padding: 2px 0;
+	margin: auto;
+	background: #66b5f9;
+	border-radius: 20px;
+	color: #fff;
+}
+
+.login_success_wrapper span.point_span_other {
+	display: block;
+	font-size: 11px;
+	padding: 3px 0;
+}
+
+.login_success_wrapper .logoutBtn {
+	padding: 2px 5px;
+	height: 20px;
+	font-size: 12px;
+	background: #fff;
+	border-radius: 5px;
+	border: 1px solid #c1b6b6;
+}
+
+}
+.footer .footer_tbl {
+	width: 100%;
+	border: 0;
+	cellspacing: 0;
+	cellpadding: 0;
+}

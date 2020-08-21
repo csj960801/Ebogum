@@ -1,0 +1,240 @@
+@charset "UTF-8";
+
+/* PC  */
+@media ( min-width :768px) {
+	.table_wrapper .freeboard_tbl .thead {
+		background: #ddd;
+		border-top: 5px solid #333;
+	}
+	.table_wrapper .thead tr th {
+		text-align: center;
+	}
+	.table_wrapper .tbody tr td, .table_wrapper .tbody tr th {
+		text-align: center;
+		vertical-align: middle;
+	}
+	.table_wrapper .tbody tr th {
+		
+	}
+	.table_wrapper .Writefreeboard_tbl, .bottom_wrapper {
+		margin-top: 20px;
+		width: 62%;
+	}
+	.table_wrapper .freeboard_tbl {
+		width: 62%;
+	}
+	.freeboard_tbl .tbody tr td a.boardlist_title:hover {
+		border-bottom: 1px solid #ddd;
+		padding: 0 0 3px;
+		-webkit-transition: all 0.3s ease-in-out;
+		-ms-transition: all 0.3s ease-in-out;
+		-o-transition: all 0.3s ease-in-out;
+		-moz-transition: all 0.3s ease-in-out;
+	}
+	.freeboard_tbl .tbody tr td a.boardlist_title {
+		padding: 0;
+		-webkit-transition: all 0.3s ease;
+		-ms-transition: all 0.3s ease;
+		-o-transition: all 0.3s ease;
+		-moz-transition: all 0.3s ease;
+	}
+	.bottom_wrapper .btn_span {
+		float: right;
+		padding: 0 5px;
+	}
+	.table_wrapper .Writefreeboard_tbl .tbody tr th {
+		width: 15%;
+		background: #eee;
+	}
+	.table_wrapper .Writefreeboard_tbl .tbody tr td {
+		text-align: left;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr th {
+		background: #eee;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr th.delFreeBoardTh {
+		width: 15%;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr td.delFreeBoardTd {
+		text-align: left;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr td.delFreeBoardTd input[name='boardPassword']
+		{
+		width: 20%;
+		padding: 0;
+		margin-right: 5px;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr td {
+		width: 75px;
+		text-align: center;
+	}
+	.table_wrapper h5.freeboard_title {
+		margin: 10px 0 0;
+		border-bottom: 3px solid #333;
+		width: 62%;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr.select_tr {
+		border-top: 3px solid #ddd;
+		height: 200px;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr.select_tr td {
+		text-align: left;
+		vertical-align: top;
+		padding: 5px 0;
+		background: #eee;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr.select_tr td .select_wrapper {
+		height: 180px;
+		border: 1px solid #333;
+		padding: 5px 5px;
+		width: 95%;
+		margin: auto;
+		background: #fff;
+	}
+	.board_title a.member_a, .board_title a.sermon_a {
+		color: #fff;
+	}
+	dl.freeboard_dl {
+		margin: 5px 0;
+	}
+	dl.freeboard_dl dt.freeboard_dt {
+		background: #f58b31;
+		color: #fff;
+		padding: 8px 0;
+		border-radius: 5px;
+		text-align: center;
+		text-shadow: 0px 0px #fff;
+	}
+	dl.freeboard_dl .freeboard_dd {
+		background: #ddd;
+		height: 125px;
+		margin: 5px 0;
+	}
+	.tfoot tr td.tfoot_btn_td {
+		width: 150px;
+		padding: 10px 0 0 15px;
+	}
+	.tfoot tr td .btn_ul li {
+		float: left;
+		padding: 0 5px;
+	}
+}
+
+/* MOBILE  */
+@media ( max-width :767px) {
+	.freeboard_wrapper .main_col {
+		padding: 0;
+		width: 0 !important;
+		border-left: 1px solid #ddd;
+	}
+	.table_wrapper .freeboard_tbl .thead {
+		background: #ddd;
+		border-top: 5px solid #333;
+	}
+	.table_wrapper .thead tr th {
+		text-align: center;
+	}
+	.table_wrapper .tbody tr td, .table_wrapper .tbody tr th {
+		text-align: center;
+		vertical-align: middle;
+	}
+	.table_wrapper {
+		width: 515px;
+	}
+	.table_wrapper .freeboard_tbl, .bottom_wrapper {
+		margin-top: 20px;
+	}
+	.table_wrapper h5.freeboard_title {
+		margin: 15px 0 0;
+		border-bottom: 3px solid #092b79;
+		width: 565px;
+	}
+	.bottom_wrapper .board_number_wrapper {
+		margin: 15px 0;
+	}
+	.bottom_wrapper .btn_span {
+		float: right;
+		padding: 0 5px;
+	}
+	.main_board_wrapper img.freeBoard {
+		padding: 15px 0;
+	}
+	.table_wrapper .Writefreeboard	_tbl .tbody tr th {
+		background: #eee;
+		font-size: 10px;
+		padding: 10px 20px;
+	}
+	.table_wrapper .Writefreeboard_tbl .tbody tr td {
+		text-align: left;
+		padding: 3px 5px;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr th {
+		background: #eee;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr th.delFreeBoardTh {
+		width: 15%;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr td.delFreeBoardTd {
+		text-align: left;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr td.delFreeBoardTd input[name='boardPassword']
+		{
+		width: 20%;
+		padding: 0;
+		margin-right: 5px;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr td {
+		width: 75px;
+		text-align: center;
+	}
+	.table_wrapper h5.freeboard_title {
+		margin: 10px 0 0;
+		border-bottom: 3px solid #333;
+		width: 62%;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr.select_tr {
+		border-top: 3px solid #ddd;
+		height: 200px;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr.select_tr td {
+		text-align: left;
+		vertical-align: top;
+		padding: 5px 0;
+		background: #eee;
+	}
+	.table_wrapper .freeboard_tbl .tbody tr.select_tr td .select_wrapper {
+		height: 180px;
+		border: 1px solid #333;
+		padding: 5px 5px;
+		width: 95%;
+		margin: auto;
+		background: #fff;
+	}
+	.board_title a.member_a, .board_title a.sermon_a {
+		color: #fff;
+	}
+	dl.freeboard_dl {
+		margin: 5px 0;
+	}
+	dl.freeboard_dl dt.freeboard_dt {
+		background: #f58b31;
+		color: #fff;
+		padding: 8px 0;
+		border-radius: 5px;
+		text-align: center;
+		text-shadow: 0px 0px #fff;
+	}
+	dl.freeboard_dl .freeboard_dd {
+		background: #ddd;
+		height: 125px;
+		margin: 5px 0;
+	}
+	.tfoot tr td.tfoot_btn_td {
+		width: 150px;
+		padding: 10px 0 0 15px;
+	}
+	.tfoot tr td .btn_ul li {
+		float: left;
+		padding: 0 5px;
+	}
+}

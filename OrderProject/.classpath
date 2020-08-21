@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry including="**/*.java" kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry including="**/*.java" kind="src" output="target/test-classes" path="src/test/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/마이바티스/jar_files/mybatis-3.4.6.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/mysql connector/mysql-connector-java-8.0.13/mysql-connector-java-8.0.13/mysql-connector-java-8.0.13.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/cos.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/spring-aop-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/spring-asm-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/spring-beans-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/spring-context-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/spring-core-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/spring-expression-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/spring-jdbc-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/spring-security-crypto-3.2.7.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/spring-web-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/작업세팅/jar(고급기술사용및 jsp사용시 필요)/spring-webmvc-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

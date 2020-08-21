@@ -1,0 +1,231 @@
+@charset "UTF-8";
+
+/* 대형PC전용 */
+@media all and ( min-width :1025px) and (max-width: 1500px) {
+	.login_warpper .login_md_10 {
+		padding: 0;
+		width: 34%;
+	}
+}
+
+/* 중형디바이스(태블릿, 랩탑) */
+@media( min-width :768px) {
+	.login_warpper .login_md_10 {
+		padding: 0;
+		width: 32%;
+	}
+	body.body #submenu1 {
+		position: absolute;
+		left: 186;
+		top: 60;
+		width: 614px;
+		height: 22px;
+		z-index: 1;
+		border: 1px none #000000;
+		visibility: hidden;
+	}
+	body.body #submenu2 {
+		position: absolute;
+		left: 220;
+		top: 60;
+		width: 245;
+		height: 22;
+		z-index: 1;
+		border: 1px none #000000;
+		visibility: hidden;
+	}
+	body.body #submenu3 {
+		position: absolute;
+		left: 340;
+		top: 60;
+		width: 600;
+		height: 22;
+		z-index: 1;
+		border: 1px none #000000;
+		visibility: hidden;
+	}
+	body.body #submenu4 {
+		position: absolute;
+		left: 430px;
+		top: 60;
+		width: 300;
+		height: 22;
+		z-index: 1;
+		border: 1px none #000000;
+		visibility: hidden;
+	}
+	body.body #submenu5 {
+		position: absolute;
+		left: 550;
+		top: 60px;
+		width: 220;
+		height: 22;
+		z-index: 1;
+		border: 1px none #000000;
+		visibility: hidden
+	}
+	body.body #submenu6 {
+		position: absolute;
+		left: 659px;
+		top: 60px;
+		width: 100;
+		height: 22px;
+		z-index: 1;
+		border: 1px none #000000;
+		visibility: hidden
+	}
+	body.body #submenu7 {
+		position: absolute;
+		left: 730px;
+		top: 60px;
+		width: 200;
+		height: 22;
+		z-index: 1;
+		background-image: url(top_sub_back.gif);
+		layer-background-image: url(top_sub_back.gif);
+		border: 1px none #000000;
+		visibility: hidden
+	}
+	.main_board_wrapper .main_board_span {
+		display: inline-block;
+		font-size: 13px;
+		margin: 5px 15px 0 0;
+		font-weight: 700;
+		width: 195px;
+		background: #ddd;
+	}
+	.main_board_wrapper .board1, .main_board_wrapper .board2 {
+		float: left;
+	}
+	.login_tbl .login_id, .login_tbl .login_pw {
+		width: 90%;
+	}
+	.login_warpper .login_md_2 {
+		width: 185px;
+		padding: 0 0 0 10px;
+	}
+	.agree_wrapper .agree {
+		width: 61%;
+		border-top: 2px solid #ddd;
+		overflow: scroll;
+		height: 280px;
+		border-left: 5px solid #ddd;
+		border-right: 5px solid #ddd;
+		border-bottom: 2px solid #ddd
+	}
+	.agree_wrapper .agree .agree_word, .agree_chk .agree_chk_ul li .agree_chk_span
+		{
+		font-size: 16px !important;
+	}
+	.agree_chk {
+		padding: 15px 0;
+	}
+	.agree_chk .agree_chk_ul {
+		
+	}
+	.agree_chk .agree_chk_ul li {
+		float: left;
+		padding: 0 20px;
+	}
+	#agree_y, #agree_n {
+		margin: 0 5px;
+	}
+	.btn_wrapper {
+		text-align: center;
+		width: 61%;
+		margin: 15px 0 0;
+		border-top: 5px solid #ddd;
+		padding: 10px 0;
+		background: #f1f1f1;
+	}
+	.btn_wrapper .submitBtn {
+		padding: 0 5px;
+	}
+	.login_info h5.login_info_title {
+		font-size: 16px;
+		margin: 10px 0;
+	}
+	.login_info .login_info_form {
+		border-top: 2px solid #ddd;
+		border-bottom: 1px solid #ddd;
+		background: #f3f2f2;
+		width: 61%;
+	}
+	.login_info .login_info_form .login_info_form_tbl {
+		margin: 20px 30px;
+		width: 90%;
+		height: 100px;
+		border: 1px solid #ddd;
+		background: #fff;
+	}
+	.login_info .login_info_form .login_info_form_tbl .login_info_form_tbl_tbody th
+		{
+		background: #ddd;
+		width: 15%;
+		vertical-align: middle;
+		font-size: 14px;
+		padding: 5px 0;
+		border: 1px solid #fff;
+	}
+	.login_info .login_info_form .login_info_form_tbl .login_info_form_tbl_tbody td
+		{
+		vertical-align: middle;
+		padding: 5px 0;
+	}
+	.login_info .login_info_form .login_info_form_tbl .login_info_form_tbl_tbody td .duplicate_span
+		{
+		display: block;
+		font-size: 12px;
+		padding: 2px 0;
+	}
+	.table_wrapper .find_table {
+		width: 62%;
+	}
+	.table_wrapper .find_table tbody {
+		border-top: 5px solid #ddd;
+		border-bottom: 5px solid #ddd;
+	}
+	.table_wrapper .find_table tbody tr th {
+		background: #eee;
+		width: 18%;
+	}
+	.find_table tbody tr td {
+		text-align: left !important;
+	}
+	.find_table .findinfo_tfoot {
+		text-align: center;
+	}
+	.findinfoFrm .findinfo_btnWrapper {
+		padding: 10px 0;
+		border-top: 5px solid #ddd;
+		border-bottom: 5px solid #ddd;
+		background: #eee;
+		width: 41%;
+		text-align: center;
+		margin-top: 15px;
+	}
+	.table_wrapper .Findinfo_wrapper {
+		
+	}
+	.footer .footer_line {
+		padding: 0 5px;
+	}
+	.footer {
+		position: relative;
+	}
+	.footer .footer_line::before {
+		content: "|";
+		position: absolute;
+		top: 10px;
+		margin: 0 -4px;
+	}
+	.footer .footer_content_tbl {
+		width: 800px;
+		border: 0;
+		cellspacing: 0;
+		cellpadding: 0;
+	}
+	.footer .footer_tbl .footer_content_tbl a {
+		border-bottom: 1px solid #333;
+	}
+}

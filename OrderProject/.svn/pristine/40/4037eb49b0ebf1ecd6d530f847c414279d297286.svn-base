@@ -1,0 +1,266 @@
+package com.project.BoardController;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.project.PageNation.Paging;
+import com.project.service.BoardServiceImpl;
+import com.project.vo.BoardVO;
+
+@Controller
+@RequestMapping("/board")
+public class BoardController {
+
+	@Autowired
+	private BoardServiceImpl boardservice;
+
+	@Autowired
+	private Paging boardpaging;
+
+	private Logger boardlog = LoggerFactory.getLogger(this.getClass());
+
+	public void setBoardPaging(Paging boardpaging) {
+		this.boardpaging = boardpaging;
+	}
+
+	/**
+	 * 페이지 번호 출력
+	 * 
+	 * @param model
+	 * @return
+	 
+	public Model pagingHandler(Model model, HttpServletRequest req) {
+		String pageNum = req.getParameter("pageNum");
+		int currentPage = 0; // 현재페이지
+		int pageSize = 10;// 페이지당 보여줄 데이터 수
+		int pagenavi = 5;// 페이지번호 보여줄수
+
+		if (pageNum == null || pageNum == "") {
+			pageNum = "1";
+			currentPage = Integer.parseInt(pageNum);
+		}
+
+		int boardPageNum = boardservice.getListCount();
+		boardlog.info("==============================");
+		boardlog.info("게시판 전체 글 수: " + boardPageNum);
+		boardlog.info("==============================");
+
+		int number = boardPageNum - (currentPage - 1) * pageSize;
+		boardpaging.setPaging(pageSize, pagenavi, boardPageNum, currentPage);
+
+		Map<String, Object> boardPagemodel = new HashMap<String, Object>();
+		boardPagemodel.put("count", boardPageNum);
+		boardPagemodel.put("number", number);
+		boardPagemodel.put("pageNum", pageNum);
+		boardPagemodel.put("bp", boardpaging);
+
+		return model;
+	}*/
+
+	/**
+	 * 자유게시판 리스트 페이지
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/FreeBoard.board")
+	public List<BoardVO> FreeBoard(Model boardmodel, HttpServletRequest req) {
+
+		List<BoardVO> freeboardlist = boardservice.boardlist(1);
+		int boardCnt = boardservice.getListCount();
+
+		if(boardCnt == 0) {
+			boardCnt = 1;
+		}
+		boardmodel.addAttribute("boardlist", freeboardlist);
+		boardmodel.addAttribute("boardcnt", boardCnt);
+
+		// boardmodel.addAttribute("boardPageCnt", pagingHandler(boardmodel, req));
+		System.out.println("게시글 수: " + boardCnt);
+		for (int i = 0; i < freeboardlist.size(); i++) {
+			for (int j = 0; j < freeboardlist.size(); j++) {
+				boardlog.info("==============================");
+				System.out.println(freeboardlist.get(j).getBoardWriter());
+				System.out.println(freeboardlist.get(j).getBoardEmail());
+				System.out.println(freeboardlist.get(j).getBoardTitle());
+				System.out.println(freeboardlist.get(j).getBoardContent());
+				System.out.println(freeboardlist.get(i).getBoardHit());
+				boardlog.info("==============================");
+			}
+		}
+		return freeboardlist;
+	}
+
+	/**
+	 * QnA게시판 리스트 페이지
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/Qboard/QuestionBoard.board")
+	public List<BoardVO> QuestionBoard(Model boardmodel) {
+
+		List<BoardVO> Questionboardlist = boardservice.Questionboardlist(1);
+
+		boardmodel.addAttribute("qboardlist", Questionboardlist);
+		for (int i = 0; i < Questionboardlist.size(); i++) {
+			for (int j = 0; j < Questionboardlist.size(); j++) {
+				boardlog.info("==============================");
+				System.out.println(Questionboardlist.get(j).getBoardWriter());
+				System.out.println(Questionboardlist.get(j).getBoardEmail());
+				System.out.println(Questionboardlist.get(j).getBoardTitle());
+				System.out.println(Questionboardlist.get(j).getBoardContent());
+				System.out.println(Questionboardlist.get(j).getBoardHit());
+				boardlog.info("==============================");
+			}
+		}
+
+		return Questionboardlist;
+	}
+
+	/**
+	 * 자유게시판 저장
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/WriteBoardinsert.board", method = RequestMethod.POST)
+	public Map<String, Object> WriteBoardinsert(@ModelAttribute("boardvo") BoardVO bvo) {
+		Map<String, Object> BoardinsertMap = new HashMap<String, Object>();
+		int boardinsert = boardservice.boardInsert(bvo);
+		BoardinsertMap.put("boardinsert", boardinsert);
+		boardlog.info("================================");
+		boardlog.info("게시판 데이터 저장 성공");
+		boardlog.info("================================");
+		return BoardinsertMap;
+	}
+
+	/**
+	 * QnA게시판 저장
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/Qboard/WriteQBoardinsert.board", method = RequestMethod.POST)
+	public Map<String, Object> QWriteBoardinsert(@ModelAttribute("boardvo") BoardVO bvo) {
+		Map<String, Object> qBoardinsertMap = new HashMap<String, Object>();
+		int qboardinsert = boardservice.QuestionboardInsert(bvo);
+		qBoardinsertMap.put("Qboardinsert", qboardinsert);
+		boardlog.info("================================");
+		boardlog.info("QnA게시판 데이터 저장 성공");
+		boardlog.info("================================");
+		return qBoardinsertMap;
+	}
+
+	/**
+	 * 자유게시판 데이터 수정
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	@RequestMapping(value = "/WriteBoardupdate.board", method = RequestMethod.POST)
+	public Map<String, Object> WriteBoardupdate(@ModelAttribute("boardvo") BoardVO bvo) {
+		Map<String, Object> BoardupdateMap = new HashMap<String, Object>();
+		int boardupdate = boardservice.boardUpdate(bvo);
+		BoardupdateMap.put("boardupdate", boardupdate);
+		boardlog.info("================================");
+		boardlog.info("게시판 데이터 수정 성공");
+		boardlog.info("================================");
+		return BoardupdateMap;
+	}
+
+	/**
+	 * QnA게시판 데이터 수정
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	@RequestMapping(value = "/Qboard/WriteQBoardupdate.board", method = RequestMethod.POST)
+	public Map<String, Object> WriteQBoardupdate(@ModelAttribute("boardvo") BoardVO bvo) {
+		Map<String, Object> qBoardupdateMap = new HashMap<String, Object>();
+		int boardupdate = boardservice.QboardUpdate(bvo);
+		qBoardupdateMap.put("qboardupdate", boardupdate);
+		boardlog.info("================================");
+		boardlog.info("QnA게시판 데이터 수정 성공");
+		boardlog.info("================================");
+		return qBoardupdateMap;
+	}
+
+	/**
+	 * 자유 게시글 삭제
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	@RequestMapping(value = "/WriteBoarddelete.board")
+	public Map<String, Object> WriteBoarddelete(@ModelAttribute("boardvo") BoardVO bvo) {
+		Map<String, Object> BoarddelMap = new HashMap<String, Object>();
+		int boarddel = boardservice.boardDelete(bvo);
+		BoarddelMap.put("boarddel", boarddel);
+		boardlog.info("================================");
+		boardlog.info("게시판 데이터 삭제 성공");
+		boardlog.info("================================");
+		return BoarddelMap;
+	}
+
+	/**
+	 * QnA 게시글 삭제
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	@RequestMapping(value = "/Qboard/WriteQBoarddelete.board")
+	public Map<String, Object> WriteQBoarddelete(@ModelAttribute("qboardvo") BoardVO bvo) {
+		Map<String, Object> qBoarddelMap = new HashMap<String, Object>();
+		int qboarddel = boardservice.QboardDelete(bvo);
+		qBoarddelMap.put("qboarddel", qboarddel);
+		boardlog.info("================================");
+		boardlog.info("QnA 게시판 데이터 삭제 성공");
+		boardlog.info("================================");
+		return qBoarddelMap;
+	}
+
+	/**
+	 * 자유게시판 게시글 답장하기
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	@RequestMapping(value = "/WriteBoardreply.board", method = RequestMethod.POST)
+	public Map<String, Object> WriteBoardReply(@ModelAttribute("boardvo") BoardVO bvo) {
+		Map<String, Object> BoardReplyMap = new HashMap<String, Object>();
+		// int boarddel = boardservice.boardDelete(bvo);
+		BoardReplyMap.put("boardReply", "FreeBoard 보류~");
+		boardlog.info("================================");
+		boardlog.info("게시글 답글 달기 성공");
+		boardlog.info("================================");
+		return BoardReplyMap;
+	}
+
+	/**
+	 * QnA게시판 게시글 답장하기
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	@RequestMapping(value = "/Qboard/WriteQBoardreply.board", method = RequestMethod.POST)
+	public Map<String, Object> WriteQBoardReply(@ModelAttribute("qboardvo") BoardVO bvo) {
+		Map<String, Object> qBoardReplyMap = new HashMap<String, Object>();
+		// int boarddel = boardservice.boardDelete(bvo);
+		qBoardReplyMap.put("qboardReply", "QuestionBoard 보류~");
+		boardlog.info("================================");
+		boardlog.info("QnA게시판 게시글 답글 달기 성공");
+		boardlog.info("================================");
+		return qBoardReplyMap;
+	}
+
+}

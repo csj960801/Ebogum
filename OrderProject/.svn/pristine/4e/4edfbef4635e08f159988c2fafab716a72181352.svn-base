@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.project.vo.UserVO" alias="user" />
+		<typeAlias type="com.project.vo.BoardVO" alias="board" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="jdbc" />
+			<dataSource type="POOLED">
+				<property value="com.mysql.cj.jdbc.Driver" name="driver" />
+				<property value="jdbc:mysql://localhost:3306/project?serverTimezone=UTC" name="url" />
+				<property value="root" name="username" />
+				<property value="sevenn0801" name="password" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mapper/userMapper.xml" />
+		<mapper resource="mapper/boardMapper.xml" />
+	</mappers>
+</configuration>

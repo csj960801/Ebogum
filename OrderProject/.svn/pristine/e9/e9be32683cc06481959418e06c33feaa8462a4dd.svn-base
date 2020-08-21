@@ -1,0 +1,36 @@
+package com.project.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.project.dao.ApprovalDao;
+import com.project.vo.UserVO;
+
+@Service("com.project.service.ApprovalService")
+public class ApprovalServiceImpl implements ApprovalService {
+
+	// @Autowired
+	// private SqlSessionTemplate sqlSession;
+
+	@Autowired
+	private ApprovalDao approvalDao;
+
+	@Override
+	public int MemberReg(UserVO user) {
+		// TODO Auto-generated method stub
+		return approvalDao.MemberReg(user);
+	}
+
+	@Override
+	public boolean MemberLogin(UserVO loginvo) {
+		// TODO Auto-generated method stub
+		return approvalDao.MemberLogin(loginvo);
+	}
+
+	@Override
+	public UserVO findInfo(UserVO uservo) {
+		// TODO Auto-generated method stub
+		return approvalDao.findInfo(uservo);
+	}
+	
+}

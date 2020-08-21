@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.userMapper">
+	<resultMap id="user" type="user">
+		<result column="duplicateid" property="duplicateid" />
+		<result column="pass1" property="pass1" />
+		<result column="pass2" property="pass2" />
+		<result column="name" property="name" />
+		<result column="birth" property="birth" />
+		<result column="manType" property="manType" />
+		<result column="postAddress" property="postAddress" />
+		<result column="address" property="address" />
+		<result column="churchName" property="churchName" />
+		<result column="email" property="email" />
+		<result column="homeTel" property="homeTel" />
+		<result column="churchTel" property="churchTel" />
+		<result column="phoneTel" property="phoneTel" />
+		<result column="faxNumber" property="faxNumber" />
+	</resultMap>
+
+	<!-- 회원가입 -->
+	<insert id="userReg" parameterType="user">
+		<![CDATA[
+		insert into
+		member(duplicateid,
+		pass1,
+		pass2,
+		name,
+		birth,
+		manType,
+		postAddress,
+		address,
+		churchName,
+		email,
+		homeTel,
+		churchTel,
+		phoneTel,
+		faxNumber)
+
+		values(
+		#{duplicateid},
+		#{pass1},
+		#{pass2},
+		#{name},
+		#{birth},
+		#{manType},
+		#{postAddress},
+		#{address},
+		#{churchName},
+		#{email},
+		#{homeTel},
+		#{churchTel},
+		#{phoneTel},
+		#{faxNumber})
+		]]>
+	</insert>
+
+	<!-- 로그인 -->
+	<select id="loginCheck" resultType="user" parameterType="user">
+		<![CDATA[
+		select
+		duplicateid, pass1
+		from
+		member where
+		duplicateid=#{duplicateid} and
+		pass1=#{pass1}
+		]]>
+	</select>
+
+	<!-- 아이디/비번 찾기 -->
+	<select id="findInfo" resultType="user" parameterType="user">
+		<![CDATA[
+		select
+		duplicateid, pass1
+		from member where 
+		name=#{name} and email=#{email}
+		]]>
+	</select>
+
+	<!-- 아이디 중복확인 -->
+	<select id="duplicateCheck" resultType="user" parameterType="String">
+	<![CDATA[
+	  select duplicateid from member where duplicateid = #{id}
+	]]>
+	</select>
+
+</mapper>

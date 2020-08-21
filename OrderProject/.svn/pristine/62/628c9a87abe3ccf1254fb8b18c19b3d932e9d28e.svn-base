@@ -1,0 +1,23 @@
+package com.project.service;
+
+import java.util.List;
+
+import com.project.vo.BoardVO;
+
+public interface BoardService {
+
+	int boardInsert(BoardVO bvo);
+	int QuestionboardInsert(BoardVO bvo);
+
+	List<BoardVO> boardlist(int idx);
+	int boardHit(int boardHit);
+	
+	List<BoardVO> Questionboardlist(int idx);	
+	
+	int boardUpdate(BoardVO bvo);
+	int QboardUpdate(BoardVO bvo);
+
+	int boardDelete(BoardVO bvo);
+
+	int QboardDelete(BoardVO bvo);
+}

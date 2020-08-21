@@ -1,0 +1,38 @@
+package com.project.service;
+
+import com.project.vo.UserVO;
+
+public interface ApprovalService {
+
+	/**
+	 * 회원가입
+	 * 
+	 * @param user
+	 * @return
+	 */
+	int MemberReg(UserVO user);
+
+	/**
+	 * 로그인
+	 * 
+	 * @param loginvo
+	 * @return
+	 */
+	boolean MemberLogin(UserVO loginvo);
+
+	/**
+	 * 아이디/비번 찾기
+	 * 
+	 * @param uservo
+	 * @return
+	 */
+	UserVO findInfo(UserVO uservo);
+
+	/**
+	 * 아이디 중복검사
+	 * 
+	 * @param id
+	 * @return
+	 */
+	boolean DuplicateCheck(String id);
+}

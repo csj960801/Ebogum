@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.boardMapper">
+	<resultMap id="boardMap" type="board">
+		<result column="writer" property="boardWriter" />
+		<result column="email" property="boardEmail" />
+		<result column="title" property="boardTitle" />
+		<result column="content" property="boardContent" />
+		<result column="password" property="boardPassword" />
+	</resultMap>
+
+	<!-- 자유게시글 저장 -->
+	<insert id="boardinsert" parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		INSERT INTO
+		FreeBoard(writer,email,title,content,password,hit)
+		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword},#{boardHit})
+		]]>
+	</insert>
+
+	<!-- QnA게시글 저장 -->
+	<insert id="qboardinsert" parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		INSERT INTO
+		QuestionBoard(writer,email,title,content,password,hit)
+		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword},#{boardHit})
+		]]>
+	</insert>
+
+	<!-- 자유게시글 리스트 출력 -->
+	<select resultMap="boardMap" id="boardlist">
+		<![CDATA[
+		SELECT * FROM freeboard WHERE
+		FreeboardCnt is not null
+		]]>
+	</select>
+
+	<!-- QnA게시글 리스트 출력 -->
+	<select resultMap="boardMap" id="qboardlist">
+		<![CDATA[
+		SELECT * FROM questionboard WHERE
+		QuestionBoardCnt is not null
+		]]>
+	</select>
+
+	<!-- 게시글을 조회할때마다 조회수 증가 -->
+	<update id="boardHit" parameterType="int">
+		<![CDATA[
+		UPDATE freeboard SET
+		hit =
+		hit + 1
+		WHERE
+		FreeboardCnt=1
+		]]>
+	</update>
+
+	<!-- 자유 게시판 게시글 수정 -->
+	<update id="boardUpdate" parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		UPDATE freeboard SET
+		writer=#{boardWriter},
+		email=#{boardEmail},title=#{boardTitle},content=#{boardContent}
+		WHERE
+		password=#{boardPassword}
+		]]>
+	</update>
+
+	<!-- QnA 게시판 게시글 수정 -->
+	<update id="qboardUpdate" parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		UPDATE questionboard SET
+		writer=#{boardWriter},
+		email=#{boardEmail},title=#{boardTitle},content=#{boardContent}
+		WHERE
+		password=#{boardPassword}
+		]]>
+	</update>
+
+	<!-- 게시판 게시글 삭제 -->
+	<delete id="boardDel" parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		DELETE FROM freeboard WHERE
+		password=#{boardPassword}
+	    ]]>
+	</delete>
+
+</mapper>

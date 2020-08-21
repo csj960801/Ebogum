@@ -1,0 +1,129 @@
+package com.project.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.project.Session.SqlSessionInstance;
+import com.project.vo.BoardVO;
+
+public class BoardDAO {
+
+	private SqlSession session = SqlSessionInstance.getInstanceSession().openSession();
+
+	/**
+	 * 게시판 데이터 저장
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	public int boardInsert(BoardVO bvo) {
+		int insertFlag = session.insert("boardinsert", bvo);
+		if (insertFlag > 0) {
+			session.commit();
+		}
+		return insertFlag;
+	}
+
+	/**
+	 * QnA게시판 데이터 저장
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	public int QboardInsert(BoardVO bvo) {
+		int qinsertFlag = session.insert("qboardinsert", bvo);
+		if (qinsertFlag > 0) {
+			session.commit();
+		}
+		return qinsertFlag;
+	}
+
+	/**
+	 * 자유게시판 리스트 출력
+	 * 
+	 * @return
+	 */
+	public List<BoardVO> boardList() {
+		List<BoardVO> boardlist = session.selectList("boardlist");
+		return boardlist;
+	}
+
+	/**
+	 * QnA게시판 리스트 출력
+	 * 
+	 * @return
+	 */
+	public List<BoardVO> qboardList() {
+		List<BoardVO> qboardlist = session.selectList("qboardlist");
+		return qboardlist;
+	}
+
+	/**
+	 * 게시글 조회수 출력
+	 * 
+	 * @param boardHit
+	 * @return
+	 */
+	public int boardHit(int boardHit) {
+		int idx = session.update("boardHit", boardHit);
+		return idx;
+	}
+
+	/**
+	 * 자유게시판 게시글 수정
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	public int boardUpdate(BoardVO bvo) {
+		int updateFlag = session.update("boardUpdate", bvo);
+		if (updateFlag > 0) {
+			session.commit();
+		}
+		return updateFlag;
+	}
+
+	/**
+	 * QnA게시판 게시글 수정
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	public int QboardUpdate(BoardVO bvo) {
+		int qupdateFlag = session.update("qboardUpdate", bvo);
+		if (qupdateFlag > 0) {
+			session.commit();
+		}
+		return qupdateFlag;
+	}
+
+	/**
+	 * 자유게시판 게시글 삭제
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	public int boardDel(BoardVO bvo) {
+		int delFlag = session.delete("boardDel", bvo);
+		if (delFlag > 0) {
+			session.commit();
+		}
+		return delFlag;
+	}
+
+	/**
+	 * QnA게시판 게시글 삭제
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	public int QboardDel(BoardVO bvo) {
+		int qdelFlag = session.delete("qboardDel", bvo);
+		if (qdelFlag > 0) {
+			session.commit();
+		}
+		return qdelFlag;
+	}
+
+}

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.boardMapper">
+
+	<!-- 게시판 기본 데이터 resultMap -->
+	<resultMap id="boardMap" type="board">
+		<result column="writer" property="boardWriter" />
+		<result column="email" property="boardEmail" />
+		<result column="title" property="boardTitle" />
+		<result column="content" property="boardContent" />
+		<result column="password" property="boardPassword" />
+		<result column="boardParam" property="boardParam" />
+	</resultMap>
+
+	<!-- 게시판 검색 전용 resultMap -->
+	<resultMap id="searchMap" type="search">
+		<result column="writer" property="board_title_kind" />
+		<result column="content" property="board_title_kind" />
+		<result column="title" property="board_title_kind" />
+		<result column="writer" property="boardSearchParam" />
+		<result column="content" property="boardSearchParam" />
+		<result column="title" property="boardSearchParam" />
+	</resultMap>
+
+	<!-- 자유게시판 전체글수(페이지 수) -->
+	<select id="getListCount" resultType="int">
+		<![CDATA[
+		select count(*) from freeboard
+		]]>
+	</select>
+
+	<!-- QnA게시판 전체글수(페이지 수) <select id="getListCount" resultType="int"> select 
+		count(*) from questionboard </select> -->
+
+	<!-- 자유게시글 저장 -->
+	<insert id="boardinsert" parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		INSERT INTO
+		FreeBoard(writer,email,title,content,password,hit,boardParam)
+		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword},#{boardHit},#{boardParam})
+		]]>
+	</insert>
+
+	<!-- QnA게시글 저장 -->
+	<insert id="qboardinsert" parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		INSERT INTO
+		QuestionBoard(writer,email,title,content,password,hit,boardParam)
+		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword},#{boardHit},#{boardParam})
+		]]>
+	</insert>
+
+	<!-- 자유게시글 리스트 출력 -->
+	<select resultMap="boardMap" id="boardlist" parameterType="com.project.vo.SearchVO">
+		SELECT * FROM freeboard WHERE FreeboardCnt is not null
+		<if test="board_title_kind == 'title'">
+			AND title like CONCAT('%',#{boardSearchParam},'%')
+		</if>
+		<if test="board_title_kind == 'content'">
+			AND content like CONCAT('%',#{boardSearchParam},'%')
+		</if>
+		<if test="board_title_kind == 'writer'">
+			AND writer like CONCAT('%',#{boardSearchParam},'%')
+		</if>
+	</select>
+
+	<!-- QnA게시글 리스트 출력 -->
+	<select resultMap="boardMap" id="qboardlist" parameterType="com.project.vo.SearchVO">
+		SELECT * FROM questionboard WHERE
+		QuestionBoardCnt is not null
+		<if test="board_title_kind == 'title'">
+			AND title like CONCAT('%',#{boardSearchParam},'%')
+		</if>
+		<if test="board_title_kind == 'content'">
+			AND content like CONCAT('%',#{boardSearchParam},'%')
+		</if>
+		<if test="board_title_kind == 'writer'">
+			AND writer like CONCAT('%',#{boardSearchParam},'%')
+		</if>
+	</select>
+
+	<!-- 자유게시판 답변 데이터 출력(freeboard 테이블 boardParam와 replyboard 테이블 boardParam 
+		값 조인해야함) -->
+	<select id="freeboardanswerlist" resultMap="boardMap">
+       <![CDATA[
+         SELECT * FROM replyboard reply, freeboard free
+         WHERE reply.boardParam = free.boardParam
+       ]]>
+	</select>
+
+	<!-- 답변 게시판 답변 데이터 출력(questionboard 테이블 boardParam와 QuestionReplyboard 테이블 
+		boardParam 값 조인해야함) -->
+	<select id="questionboardanswerlist" resultMap="boardMap">
+       <![CDATA[
+         SELECT * FROM questionreplyboard reply, questionboard ques
+         WHERE reply.boardParam = ques.boardParam
+       ]]>
+	</select>
+
+	<!-- 게시글을 조회할때마다 조회수 증가
+	<update id="boardHit" parameterType="int">
+		<![CDATA[
+		UPDATE freeboard SET
+		hit =
+		hit + 1
+		WHERE
+		FreeboardCnt=1
+		]]>
+	</update> -->
+
+	<!-- 자유 게시판 게시글 수정 -->
+	<update id="boardUpdate" parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		UPDATE freeboard SET
+		writer=#{boardWriter},
+		email=#{boardEmail},title=#{boardTitle},content=#{boardContent}
+		WHERE
+		password=#{boardPassword}
+		]]>
+	</update>
+
+	<!-- QnA 게시판 게시글 수정 -->
+	<update id="qboardUpdate" parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		UPDATE questionboard SET
+		writer=#{boardWriter},
+		email=#{boardEmail},title=#{boardTitle},content=#{boardContent}
+		WHERE
+		password=#{boardPassword}
+		]]>
+	</update>
+
+	<!-- 답변 게시판 게시글 수정 -->
+	<update id="answerboardUpdate"
+		parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		UPDATE replyboard SET
+		writer=#{boardWriter},
+		email=#{boardEmail},title=#{boardTitle},content=#{boardContent}
+		WHERE
+		password=#{boardPassword}
+		]]>
+	</update>
+
+	<!-- QnA 답변 게시판 게시글 수정 -->
+	<update id="qanswerboardUpdate"
+		parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		UPDATE questionreplyboard SET
+		writer=#{boardWriter},
+		email=#{boardEmail},title=#{boardTitle},content=#{boardContent}
+		WHERE
+		password=#{boardPassword}
+		]]>
+	</update>
+
+	<!-- 자유게시판 게시글 삭제 -->
+	<delete id="boardDel" parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		DELETE FROM freeboard WHERE
+		password=#{boardPassword}
+	    ]]>
+	</delete>
+
+	<!-- QnA게시판 게시글 삭제 -->
+	<delete id="qboardDel" parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		DELETE FROM questionboard WHERE
+		password=#{boardPassword}
+	    ]]>
+	</delete>
+
+	<!-- 답변 게시판 게시글 삭제 -->
+	<delete id="answerboardDel"
+		parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		DELETE FROM replyboard WHERE
+		password=#{boardPassword}
+	    ]]>
+	</delete>
+
+	<!-- QnA답변 게시판 게시글 삭제 -->
+	<delete id="qanswerboardDel"
+		parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		DELETE FROM questionreplyboard WHERE
+		password=#{boardPassword}
+	    ]]>
+	</delete>
+
+	<!-- 자유게시판 게시글 답변 데이터 저장 -->
+	<insert id="boardanswerInsert"
+		parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		INSERT INTO
+		replyboard(writer,email,title,content,password,boardParam)
+		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword},#{boardParam})
+	    ]]>
+	</insert>
+
+	<!-- QnA게시판 게시글 답변 데이터 저장 -->
+	<insert id="qboardanswerInsert"
+		parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		INSERT INTO
+		questionreplyboard(writer,email,title,content,password,boardParam)
+		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword},#{boardParam})
+	    ]]>
+	</insert>
+
+	<!-- 자유게시판 검색 기능
+	<select id="boardsearch" resultMap="searchMap" parameterType="com.project.vo.SearchVO">
+
+		SELECT * FROM freeboard
+		<if test="board_title_kind == 'title'">
+			WHERE title like CONCAT('%',#{boardSearchParam},'%')
+		</if>
+		<if test="board_title_kind == 'content'">
+			WHERE content like CONCAT('%',#{boardSearchParam},'%')
+		</if>
+		<if test="board_title_kind == 'writer'">
+			WHERE writer like CONCAT('%',#{boardSearchParam},'%')
+		</if>
+
+	</select> -->
+
+</mapper>
