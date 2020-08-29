@@ -25,7 +25,7 @@
 			<%
 				while (rs.next()) {
 			%>
-			<a href="#" onclick="javascript:freeboard_Read('<%=rs.getString("FreeboardCnt")%>', '<%=rs.getString("writer")%>' , '<%=rs.getString("title")%>' , 2020-08-03 ,'<%=rs.getString("content")%>','<%=rs.getString("hit")%>','<%=rs.getString("boardParam")%>')"
+			<a href="#" onclick="javascript:freeboard_Read('<%=rs.getString("FreeboardCnt")%>', '<%=rs.getString("writer")%>' , '<%=rs.getString("title")%>' , 2020-08-03 ,'<%=rs.getString("content")%>','<%=rs.getString("hit")%>','<%=rs.getString("boardParam")%>','<%=rs.getString("boarddate")%>')"
 				id="freeboard_a"><%=rs.getString("title")%></a><br>
 			<%
 				}

@@ -73,8 +73,17 @@
 		<c:choose>
 			<c:when test="${sessionScope.login != null }">
 				<div class="login_success">
-					<div class="login_success_wrapper">
-						<p class="login_success_id">${sessionScope.login}</p>
+					<div class="login_success_wrapper">					
+						<p class="login_success_id">
+							<c:if test="${sessionScope.login == 'logos'}">
+								 관리자
+							</c:if>
+							<c:choose>
+								 <c:when test="${sessionScope.login != 'logos'}">
+								 	${sessionScope.login}
+								 </c:when>
+							</c:choose>
+						</p>
 						<span class="point_span">POINT</span> <span
 							class="point_span_other">까지</span>
 						<button id="logoutBtn" class="logoutBtn">로그아웃</button>
@@ -83,8 +92,6 @@
 			</c:when>
 		</c:choose>
 	</div>
-
-	<!-- main 게시판 컨텐츠  -->
 	<div class="col-md-10 col-xs-9 login_md_10">
 		<div id="main_carousel" class="carousel slide" data-ride="carousel">
 
@@ -94,4 +101,5 @@
 			</div>
 		</div>
 	</div>
+	
 </div>

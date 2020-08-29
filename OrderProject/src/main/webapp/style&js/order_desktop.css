@@ -9,10 +9,13 @@
 }
 
 /* 중형디바이스(태블릿, 랩탑) */
-@media( min-width :768px) {
+@media ( min-width :768px) {
+	.Findinfo_wrapper {
+		width: 62%;
+	}
 	.login_warpper .login_md_10 {
 		padding: 0;
-		width: 32%;
+		width: 34%;
 	}
 	body.body #submenu1 {
 		position: absolute;
@@ -200,7 +203,7 @@
 		border-top: 5px solid #ddd;
 		border-bottom: 5px solid #ddd;
 		background: #eee;
-		width: 41%;
+		width: 62%;
 		text-align: center;
 		margin-top: 15px;
 	}

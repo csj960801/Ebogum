@@ -3,11 +3,13 @@ package com.project.dao;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.project.Session.SqlSessionInstance;
 import com.project.vo.BoardVO;
 import com.project.vo.SearchVO;
 
+@Repository
 public class BoardDAO {
 
 	private SqlSession session = SqlSessionInstance.getInstanceSession().openSession();
@@ -249,17 +251,4 @@ public class BoardDAO {
 		return qanswerboardList;
 	}
 
-	/**
-	 * 검색결과 리스트 출력
-	 * 
-	 * @param bvo
-	 * @return
-	 
-	public List<BoardVO> boardSearch(SearchVO svo) {
-		List<BoardVO> boardSearchList = session.selectList("boardsearch", svo);
-		System.out.println("-----------------------------------------------");
-		System.out.println(boardSearchList.size() + " 만큼 검색데이터가 존재합니다.");
-		System.out.println("-----------------------------------------------");
-		return boardSearchList;
-	}*/
 }

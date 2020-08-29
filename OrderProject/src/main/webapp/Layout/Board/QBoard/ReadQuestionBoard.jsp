@@ -17,7 +17,7 @@
 			<li class="emphasize"></li>
 			<li><span class="arrow_span"></span><a
 				href="/board/FreeBoard.board">자유게시판</a></li>
-			<li><span class="arrow_span"></span><a href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li>
+			<!-- 		<li><span class="arrow_span"></span><a href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li> -->
 		</ul>
 	</div>
 	<div class="main_col col-md-9 col-xs-9">
@@ -30,7 +30,7 @@
 			<div class="table_wrapper table-responsive">
 				<h5 class="freeboard_title">⊙ 글내용보기</h5>
 				<form id="WriteBoardFrm" name="WriteBoardFrm" class="WriteBoardFrm">
-	
+
 					<table class="table freeboard_tbl">
 						<tbody class="tbody">
 							<tr>
@@ -41,7 +41,7 @@
 								<td>${param.boardWriter}</td>
 
 								<th>등록일자</th>
-								<td>${param.boardDate}</td>
+								<td>${param.boarddate}</td>
 							</tr>
 							<tr>
 								<th>제목</th>
@@ -52,10 +52,11 @@
 									<div class="select_wrapper">${param.boardContent}</div>
 								</td>
 							</tr>
-					        <tr>
-					         <!-- QnA게시글에 대한 답변 파라미터 -->
-					         <td><input type="hidden" id="boardAnswerParam" name="boardParam" value="${param.boardParam}"></td>
-					        </tr>
+							<tr>
+								<!-- QnA게시글에 대한 답변 파라미터 -->
+								<td><input type="hidden" id="boardAnswerParam"
+									name="boardParam" value="${param.boardParam}"></td>
+							</tr>
 						</tbody>
 						<tfoot class="tfoot">
 							<tr>
@@ -72,7 +73,7 @@
 						</tfoot>
 					</table>
 				</form>
-				
+
 				<input type="hidden" id="boardWriter" value="${param.boardWriter}">
 				<input type="hidden" id="boardTitle" value="${param.boardlistTitle}">
 				<input type="hidden" id="boardContent" value="${param.boardContent}">

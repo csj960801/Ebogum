@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,6 +10,12 @@
 		window.location.href = "/";
 	</script>
 </c:if>
+
+<%
+  SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+  Date today = new Date();  
+  String getToday = date.format(today);
+%>
 
 <!-- Top -->
 <jsp:include page="/Layout/Top.jsp" />
@@ -131,6 +139,9 @@
 										<th>팩스번호</th>
 										<td><input name="faxNumber" id="fax_number" type="tel"
 											class="field" value="" size="15" maxlength="15"></td>
+									</tr>
+									<tr>
+										<td><input name="date" type="hidden" class="field" value="<%=getToday %>"></td>
 									</tr>
 								</tbody>
 							</table>

@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/* pc  */
+@media ( min-width :768px) {
+	.admin_wrapper .admin_table {
+		width: 68%;
+	}
+	.admin_wrapper .admin_table .Admintbody tr td {
+		text-align: center;
+		padding: 15px 0;
+	}
+	.admin_wrapper .admin_table .tbody tr.search_tr td {
+		width: 140px;
+		padding: 10px 0;
+	}
+	.admin_wrapper .admin_table .adminBtn {
+		padding: 3px 3px;
+		color: #000;
+	}
+	.admin_wrapper .admin_table .adminManage_table_title {
+		margin: 0 0 10px;
+		font-size: 15px;
+		font-weight: 650;
+	}
+	.manageData_wrapper .inner_admin_table {
+		
+	}
+	.admin_table tr td input.adminform {
+		width: 145px;
+		font-size: 10px;
+		margin: 5px 10px;
+	}
+	.inner_admin_table .thead tr th {
+		padding: 5px 0;
+		text-align: center;
+	}
+}
+
+/* mobile  */
+@media ( max-width :767px) {
+	.admin_wrapper .admin_table {
+		width: 70%;
+	}
+	.admin_wrapper .admin_table .Admintbody tr td {
+		text-align: center;
+	}
+	.admin_wrapper .admin_table .tbody tr.search_tr td {
+		width: 140px;
+		padding: 10px 0;
+	}
+	.admin_wrapper .admin_table .adminBtn {
+		padding: 3px 3px;
+		color: #000;
+		font-size: 10px;
+	}
+	.admin_wrapper .admin_table .adminManage_table_title {
+		margin: 0 0 10px;
+		font-size: 10px;
+		font-weight: 650;
+	}
+	.manageData_wrapper .inner_admin_table {
+		
+	}
+	.admin_table tr td input.adminform {
+		width: 75px;
+		font-size: 10px;
+		margin: 5px 10px;
+	}
+	.inner_admin_table .thead tr th {
+		padding: 10px 12px;
+		text-align: center;
+		font-size: 10px;
+	}
+}

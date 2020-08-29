@@ -162,10 +162,11 @@ $(function() {
  * @param boardDate
  * @param boardContent
  * @param boardHit
+ * @param boarddate
  * @returns
  */
 function freeboard_Read(boardCnt, boardWriter, boardlistTitle, boardDate,
-		boardContent, boardHit, boardParam) {
+		boardContent, boardHit, boardParam, boardDate) {
 	window.location.href = "/Layout/Board/ReadFreeBoard.jsp?" 
 		    +"boardCnt=" + encodeURI(boardCnt)
 			+ "&boardWriter=" + encodeURI(boardWriter)
@@ -173,7 +174,8 @@ function freeboard_Read(boardCnt, boardWriter, boardlistTitle, boardDate,
 			+ "&boardDate=" + encodeURI(boardDate) 
 			+ "&boardContent=" + encodeURI(boardContent)
 			+ "&boardHit=" + encodeURI(boardHit)
-			+ "&boardParam=" + encodeURI(boardParam);
+			+ "&boardParam=" + encodeURI(boardParam)
+			+ "&boarddate=" + encodeURI(boardDate);
 };
 
 /**
@@ -185,10 +187,11 @@ function freeboard_Read(boardCnt, boardWriter, boardlistTitle, boardDate,
  * @param boardDate
  * @param boardContent
  * @param boardHit
+ * @param boarddate
  * @returns
  */
 function Questionboard_Read(boardCnt, boardWriter, boardlistTitle, boardDate,
-		boardContent, boardHit, boardParam) {
+		boardContent, boardHit, boardParam, boardDate) {
 	
 	if(boardContent.length <= 10){
 		boardContent.trim();
@@ -202,13 +205,14 @@ function Questionboard_Read(boardCnt, boardWriter, boardlistTitle, boardDate,
 			+ "&boardContent=" + encodeURI(boardContent)
 			+ "&boardHit=" + encodeURI(boardHit)
 			+ "&boardParam=" + encodeURI(boardParam);
+			+ "&boarddate=" + encodeURI(boardDate);
 };
 
 /**
 * 답변 게시글을 읽어오는 함수
 */
 function Answer_Read(boardCnt, boardWriter, boardlistTitle, boardDate,
-		boardContent, boardHit, boardParam){
+		boardContent, boardHit, boardParam, boardDate){
 	
 	var boardKind = $("#boardKind").val();
 	
@@ -227,6 +231,7 @@ function Answer_Read(boardCnt, boardWriter, boardlistTitle, boardDate,
 			+ "&boardContent=" + encodeURI(boardContent)
 			+ "&boardHit=" + encodeURI(boardHit)
 			+ "&boardParam=" + encodeURI(boardParam);
+			+ "&boarddate=" + encodeURI(boardDate);
 	}
 	
 	// QnA게시판 일 경우
@@ -240,6 +245,7 @@ function Answer_Read(boardCnt, boardWriter, boardlistTitle, boardDate,
 			+ "&boardContent=" + encodeURI(boardContent)
 			+ "&boardHit=" + encodeURI(boardHit)
 			+ "&boardParam=" + encodeURI(boardParam);	
+			+ "&boarddate=" + encodeURI(boarddate);	
 	}
 
 };
@@ -249,8 +255,13 @@ function Answer_Read(boardCnt, boardWriter, boardlistTitle, boardDate,
  * 
  * @returns
  */
-function boardBtnEffect() {
-	// 글쓰기 폼
+function boardBtnEffect(functionCnt) {
+	// 게시글이 존재 하지 않을 때 글쓰기 폼
+	$("#EmptyboardWriteBtn").click(function(){
+		window.location.href="/Layout/Board/WriteFreeBoard.jsp?boardParam="+encodeURI(functionCnt); 
+	});
+	
+	// 게시글이 존재할 때 글쓰기 폼
 	$("#boardWriteBtn").click(function(){
 		
 		//게시판 종류 판별 변수

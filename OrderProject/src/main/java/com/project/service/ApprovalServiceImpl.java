@@ -1,9 +1,12 @@
 package com.project.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.dao.ApprovalDao;
+import com.project.vo.SearchVO;
 import com.project.vo.UserVO;
 
 @Service("com.project.service.ApprovalService")
@@ -37,5 +40,17 @@ public class ApprovalServiceImpl implements ApprovalService {
 	public boolean DuplicateCheck(String id) {
 		// TODO Auto-generated method stub
 		return approvalDao.duplicateCheck(id);
+	}
+	
+	@Override
+	public List<UserVO> memberList(SearchVO svo) {
+		// TODO Auto-generated method stub
+		return approvalDao.memberList(svo);
+	}
+	
+	@Override
+	public boolean DelMember(UserVO uservo) {
+		// TODO Auto-generated method stub
+		return approvalDao.DelMember(uservo);
 	}
 }

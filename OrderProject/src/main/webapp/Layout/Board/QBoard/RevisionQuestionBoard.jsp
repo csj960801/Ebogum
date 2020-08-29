@@ -16,7 +16,7 @@
 		<ul class="side_menu_ul board_menu_ul">
 			<li class="emphasize"></li>
 			<li><span class="arrow_span"></span><a href="/board/FreeBoard.board">자유게시판</a></li>
-			<li><span class="arrow_span"></span><a href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li>
+<!-- 			<li><span class="arrow_span"></span><a href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li>-->	
 		</ul>
 	</div>
 	<div class="main_col col-md-9 col-xs-9">

@@ -1,6 +1,8 @@
 package com.project.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.service.ApprovalServiceImpl;
+import com.project.vo.SearchVO;
 import com.project.vo.UserVO;
 
 @Controller
@@ -37,6 +41,18 @@ public class ApprovalController {
 	@RequestMapping("/index.app")
 	public String index() {
 		return "index";
+	}
+
+	/**
+	 * (관리자전용)회원 목록출력
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/Admin/Admin.app")
+	public List<UserVO> memberList(Model model, @ModelAttribute("svo") SearchVO svo) {
+		List<UserVO> memberlist = aServiceApprovalServiceImpl.memberList(svo);
+		model.addAttribute("memberlist", memberlist);
+		return memberlist;
 	}
 
 	/**
@@ -115,26 +131,51 @@ public class ApprovalController {
 	@RequestMapping(value = "/findInfo/findInfo.app", method = RequestMethod.POST)
 	public Map<String, Object> findInfo(@ModelAttribute("uvo") UserVO uservo) {
 		Map<String, Object> findInfoMap = new HashMap<String, Object>();
-        
+
 		UserVO usvo = aServiceApprovalServiceImpl.findInfo(uservo);
-		if(usvo != null) {
+		if (usvo != null) {
 			findInfoMap.put("findId", usvo.getDuplicateid());
-	        findInfoMap.put("findPw", usvo.getPass1());	      	
+			findInfoMap.put("findPw", usvo.getPass1());
 		}
-		   
+
 		return findInfoMap;
 	}
-	
+
 	/**
 	 * 아이디 중복검사
+	 * 
 	 * @param id
 	 * @return
 	 */
 	@RequestMapping("/DuplicateCheck/DuplicateCheck.app")
-	public Map<String, Object> CheckDuplicateId(@RequestParam("id") String id){
+	public Map<String, Object> CheckDuplicateId(@RequestParam("id") String id) {
 		Map<String, Object> duplicateMap = new HashMap<String, Object>();
-	    boolean duplicateFlag = aServiceApprovalServiceImpl.DuplicateCheck(id);
-		duplicateMap.put("duplicateCheck", duplicateFlag); 	
+		boolean duplicateFlag = aServiceApprovalServiceImpl.DuplicateCheck(id);
+		duplicateMap.put("duplicateCheck", duplicateFlag);
 		return duplicateMap;
 	}
+
+	/**
+	 * (관리자)회원삭제
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	@RequestMapping("/Admin/delete/AdminDelete.app")
+	public Map<String, Object> adminDelete(@ModelAttribute("svo") SearchVO svo) {
+		Map<String, Object> adminDelMap = new HashMap<String, Object>();
+		List<UserVO> userList = aServiceApprovalServiceImpl.memberList(svo);
+		adminDelMap.put("memberlist", userList);
+		return adminDelMap;
+	}
+
+	@RequestMapping("/Admin/delete/AdminDeleteActivate.app")
+	public Map<String,Object> DelMember(@ModelAttribute("uvo") UserVO uservo) {
+		Map<String, Object> adminDelMap = new HashMap<String, Object>();
+
+		boolean delFlag = aServiceApprovalServiceImpl.DelMember(uservo);
+		adminDelMap.put("memberDel", delFlag);
+		return adminDelMap;
+	}
+
 }

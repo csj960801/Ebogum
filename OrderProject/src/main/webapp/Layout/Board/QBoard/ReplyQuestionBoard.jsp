@@ -17,9 +17,8 @@
 			<li class="emphasize"></li>
 			<li><span class="arrow_span"></span><a
 				href="/board/FreeBoard.board">자유게시판</a></li>
-			<li><span class="arrow_span"></span><a
-				href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li>
-		</ul>
+	<!-- 		<li><span class="arrow_span"></span><a
+				href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li>-->	</ul>
 	</div>
 	<div class="main_col col-md-9 col-xs-9">
 		<div class="main_board_wrapper">

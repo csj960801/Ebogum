@@ -9,13 +9,14 @@ public class BoardVO {
 	private String boardPassword;
 	private int boardHit;
 	private int boardParam;// 게시글 답변 전용 파라미터
-
+    private String boarddate;
+    
 	public BoardVO() {
 
 	}
 
 	public BoardVO(int bno, String boardWriter, String boardEmail, String boardTitle, String boardContent,
-			String boardPassword, int boardHit, int boardParam) {
+			String boardPassword, int boardHit, int boardParam, String boarddate) {
 		this.bno = bno;
 		this.boardWriter = boardWriter;
 		this.boardEmail = boardEmail;
@@ -24,6 +25,7 @@ public class BoardVO {
 		this.boardPassword = boardPassword;
 		this.boardHit = boardHit;
 		this.boardParam = boardParam;
+		this.boarddate = boarddate;
 	}
 
 	public String getBoardWriter() {
@@ -89,4 +91,13 @@ public class BoardVO {
 	public void setBoardParam(int boardParam) {
 		this.boardParam = boardParam;
 	}
+
+	public String getBoarddate() {
+		return boarddate;
+	}
+
+	public void setBoarddate(String boarddate) {
+		this.boarddate = boarddate;
+	}
+
 }

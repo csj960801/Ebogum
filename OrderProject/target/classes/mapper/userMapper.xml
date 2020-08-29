@@ -18,6 +18,14 @@
 		<result column="churchTel" property="churchTel" />
 		<result column="phoneTel" property="phoneTel" />
 		<result column="faxNumber" property="faxNumber" />
+	    <result column="Date" property="date"/>
+	</resultMap>
+
+	<!-- 관리자 검색 전용 resultMap -->
+	<resultMap id="searchMap" type="search">
+		<result column="duplicateid" property="adminSearchId" />
+		<result column="name" property="adminSearchName" />
+		<result column="address" property="adminSearchAddress" />
 	</resultMap>
 
 	<!-- 회원가입 -->
@@ -37,7 +45,8 @@
 		homeTel,
 		churchTel,
 		phoneTel,
-		faxNumber)
+		faxNumber,
+		Date)
 
 		values(
 		#{duplicateid},
@@ -53,7 +62,8 @@
 		#{homeTel},
 		#{churchTel},
 		#{phoneTel},
-		#{faxNumber})
+		#{faxNumber},
+		#{date})
 		]]>
 	</insert>
 
@@ -80,10 +90,35 @@
 	</select>
 
 	<!-- 아이디 중복확인 -->
-	<select id="duplicateCheck" resultType="user" parameterType="String">
+	<select id="duplicateCheck" resultType="user"
+		parameterType="String">
 	<![CDATA[
 	  select duplicateid from member where duplicateid = #{id}
 	]]>
 	</select>
 
+	<!-- (관리자)회원 목록 출력 -->
+	<select resultMap="user" id="adminMemberlist"
+		parameterType="search">
+		SELECT * FROM member WHERE memberCnt is not null
+		<if test="adminSearchId != null and adminSearchId != ''">
+			and duplicateid like CONCAT('%',#{adminSearchId},'%')
+		</if>
+		<if test="adminSearchName != null and adminSearchName != ''">
+			and name like CONCAT('%',#{adminSearchName},'%')
+		</if>
+		<if test="adminSearchAddress != null and adminSearchAddress != ''">
+			and address like CONCAT('%',#{adminSearchAddress},'%')
+		</if>
+	</select>
+
+	<!-- (관리자)회원 삭제 -->
+	<delete id="adminDel" parameterType="user">
+		DELETE FROM member WHERE
+		duplicateid = #{duplicateid}
+		AND
+		pass1 = #{pass1}
+		AND
+		name = #{name}
+	</delete>
 </mapper>

@@ -10,6 +10,7 @@
 		<result column="content" property="boardContent" />
 		<result column="password" property="boardPassword" />
 		<result column="boardParam" property="boardParam" />
+		<result column="boarddate" property="boarddate" />
 	</resultMap>
 
 	<!-- 게시판 검색 전용 resultMap -->
@@ -36,8 +37,8 @@
 	<insert id="boardinsert" parameterType="com.project.vo.BoardVO">
 		<![CDATA[
 		INSERT INTO
-		FreeBoard(writer,email,title,content,password,hit,boardParam)
-		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword},#{boardHit},#{boardParam})
+		FreeBoard(writer,email,title,content,password,hit,boardParam,boarddate)
+		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword},#{boardHit},#{boardParam},#{boarddate})
 		]]>
 	</insert>
 
@@ -45,8 +46,8 @@
 	<insert id="qboardinsert" parameterType="com.project.vo.BoardVO">
 		<![CDATA[
 		INSERT INTO
-		QuestionBoard(writer,email,title,content,password,hit,boardParam)
-		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword},#{boardHit},#{boardParam})
+		QuestionBoard(writer,email,title,content,password,hit,boardParam,boarddate)
+		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword},#{boardHit},#{boardParam},#{boarddate})
 		]]>
 	</insert>
 
@@ -113,7 +114,10 @@
 		<![CDATA[
 		UPDATE freeboard SET
 		writer=#{boardWriter},
-		email=#{boardEmail},title=#{boardTitle},content=#{boardContent}
+		boarddate = #{boarddate},
+		email=#{boardEmail},
+		title=#{boardTitle},
+		content=#{boardContent}
 		WHERE
 		password=#{boardPassword}
 		]]>
@@ -127,6 +131,7 @@
 		email=#{boardEmail},title=#{boardTitle},content=#{boardContent}
 		WHERE
 		password=#{boardPassword}
+		
 		]]>
 	</update>
 
@@ -193,8 +198,8 @@
 		parameterType="com.project.vo.BoardVO">
 		<![CDATA[
 		INSERT INTO
-		replyboard(writer,email,title,content,password,boardParam)
-		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword},#{boardParam})
+		replyboard(writer,email,title,content,password, boardParam, boarddate)
+		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword}, #{boardParam}, #{boarddate})
 	    ]]>
 	</insert>
 
@@ -203,25 +208,9 @@
 		parameterType="com.project.vo.BoardVO">
 		<![CDATA[
 		INSERT INTO
-		questionreplyboard(writer,email,title,content,password,boardParam)
-		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword},#{boardParam})
+		questionreplyboard(writer,email,title,content,password,boardParam,boarddate)
+		VALUES(#{boardWriter},#{boardEmail},#{boardTitle},#{boardContent},#{boardPassword},#{boardParam},#{boarddate})
 	    ]]>
 	</insert>
-
-	<!-- 자유게시판 검색 기능
-	<select id="boardsearch" resultMap="searchMap" parameterType="com.project.vo.SearchVO">
-
-		SELECT * FROM freeboard
-		<if test="board_title_kind == 'title'">
-			WHERE title like CONCAT('%',#{boardSearchParam},'%')
-		</if>
-		<if test="board_title_kind == 'content'">
-			WHERE content like CONCAT('%',#{boardSearchParam},'%')
-		</if>
-		<if test="board_title_kind == 'writer'">
-			WHERE writer like CONCAT('%',#{boardSearchParam},'%')
-		</if>
-
-	</select> -->
 
 </mapper>

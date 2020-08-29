@@ -5,10 +5,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<%
-	Date date = new Date();
-%>
-
 <!-- Top -->
 <jsp:include page="/Layout/Top.jsp" />
 
@@ -24,8 +20,8 @@
 			<li class="emphasize"></li>
 			<li><span class="arrow_span"></span><a
 				href="/board/FreeBoard.board">자유게시판</a></li>
-			<li><span class="arrow_span"></span><a href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li>
-		</ul>
+<!-- 			<li><span class="arrow_span"></span><a href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li>
+ -->		</ul>
 	</div>
 	<div class="FreeBoard_col main_col col-md-9 col-xs-9">
 		<div class="main_board_wrapper">
@@ -35,7 +31,9 @@
 			<div class="clearfix"></div>
 
 			<div class="table_wrapper table-responsive">
+			
 				<input type="hidden" id="boardKind" value="questionboard" />
+		
 				<table class="table freeboard_tbl">
 					<colgroup>
 						<col width="10%" />
@@ -58,11 +56,11 @@
 							<c:forEach varStatus="status" items="${qboardlist}" var="Questionboardlist">
 								<tr>
 									<td>${status.count}</td>
-									<td><a href="javascript:Questionboard_Read('${status.count}','${Questionboardlist.boardWriter}','${Questionboardlist.boardTitle}','7-26','${Questionboardlist.boardContent}', '1' ,'${status.count}')" class="boardlist_title"> ${Questionboardlist.boardTitle} </a>
+									<td><a href="javascript:Questionboard_Read('${status.count}','${Questionboardlist.boardWriter}','${Questionboardlist.boardTitle}','7-26','${Questionboardlist.boardContent}', '1' ,'${status.count}','${Questionboardlist.boarddate}')" class="boardlist_title"> ${Questionboardlist.boardTitle} </a>
 									</td>
 
 									<td>${Questionboardlist.boardWriter}</td>
-									<td><%=date.toString()%></td>
+									<td>${Questionboardlist.boarddate}</td>
 									<td>${Questionboardlist.boardHit}</td>
 								</tr>
 							</c:forEach>
@@ -72,10 +70,10 @@
 								<c:forEach varStatus="status" items="${qboardanswerlist}" var="qnaanswerlist">
 									<tr class="answer_row">
 										<td>${status.count}</td>
-										<td><a href="javascript:Answer_Read('${status.count}','${qnaanswerlist.boardWriter}', '${qnaanswerlist.boardTitle}','7-26','${qnaanswerlist.boardContent}', '1' ,'${status.count}');" class="boardlist_title">${qnaanswerlist.boardTitle}</a>
+										<td><a href="javascript:Answer_Read('${status.count}','${qnaanswerlist.boardWriter}', '${qnaanswerlist.boardTitle}','7-26','${qnaanswerlist.boardContent}', '1' ,'${status.count}','${qnaanswerlist.boarddate}');" class="boardlist_title">${qnaanswerlist.boardTitle}</a>
 										</td>
 										<td>${qnaanswerlist.boardWriter}</td>
-										<td><%=date.toString()%></td>
+										<td>${qnaanswerlist.boarddate}</td>
 										<td>&nbsp;</td>
 									</tr>
 								</c:forEach>
@@ -111,13 +109,15 @@
 						 	 
 						 	  	<!-- QnA게시판에 데이터가 없을 경우 -->
 							  	<c:if test="${fn:length(qboardlist) == 0}">
-							   	   <button id="boardWriteBtn" onclick="javascript:window.location.href='/Layout/Board/QBoard/WriteQuestionBoard.jsp?boardParam=1'" class="btn btn-sm">쓰기</button>
+							   	   <button id="EmptyboardWriteBtn" onclick="boardBtnEffect('${fn:length(qboardlist)}')" class="btn btn-sm">쓰기</button>
 							  	</c:if>
 								
 							  	<!-- QnA게시판에 데이터가 존재할 경우 -->
 								<c:set var="qlistflag" value="false" />
 							  	<c:forEach varStatus="status" items="${qboardlist}" var="qnaboardlistCnt">  
+							
 							      <input type="hidden" id="statusCount" value="${status.count}"/>
+							
 							      <c:if test="${not qlistflag}">
 								     <c:if test="${status.count >= 1}">								
 										<button id="boardWriteBtn" class="btn btn-sm">쓰기</button>							  		   

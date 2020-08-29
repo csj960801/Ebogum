@@ -1,11 +1,14 @@
 package com.project.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.project.Session.SqlSessionInstance;
+import com.project.vo.SearchVO;
 import com.project.vo.UserVO;
 
 @Repository
@@ -90,12 +93,48 @@ public class ApprovalDao {
 	public boolean duplicateCheck(String id) {
 		boolean duplicateCheck = false;
 		session = SqlSessionInstance.getInstanceSession().openSession();
-		
+
 		UserVO uvo = session.selectOne("duplicateCheck", id);
-		if(uvo != null) {
+		if (uvo != null) {
 			duplicateCheck = true;
 		}
 		return duplicateCheck;
 	}
 
+	/**
+	 * (관리자전용)회원 목록출력
+	 * 
+	 * @return
+	 */
+	public List<UserVO> memberList(SearchVO uvo) {
+		session = SqlSessionInstance.getInstanceSession().openSession();
+
+		List<UserVO> memberlist = session.selectList("adminMemberlist", uvo);
+		if (memberlist.size() > 0) {
+			daolog.info("=====================================");
+			daolog.info(memberlist.size() + " 명의 회원이 존재합니다!");
+			daolog.info("=====================================");
+		}
+
+		return memberlist;
+	}
+
+	/**
+	 * (관리자전용)회원 삭제
+	 * 
+	 * @param id
+	 * @param pass
+	 * @return
+	 */
+	public boolean DelMember(UserVO bvo) {
+		session = SqlSessionInstance.getInstanceSession().openSession();
+		
+		int delCnt = session.delete("adminDel", bvo);
+		boolean delFlag = false;
+		if (delCnt > 0) {
+			session.commit();
+			delFlag = true;
+		}
+		return delFlag;
+	}
 }// end of class

@@ -10,7 +10,12 @@ public class SearchVO {
 
 	private String board_title_kind;
 	private String boardSearchParam;
-
+	
+	//관리자
+	private String adminSearchId;
+	private String adminSearchName;
+	private String adminSearchAddress;
+	
 	public SearchVO() {
 
 	}
@@ -33,6 +38,34 @@ public class SearchVO {
 
 	public void setBoardSearchParam(String boardSearchParam) {
 		this.boardSearchParam = boardSearchParam;
+	}
+
+	/**
+	 * 관리자 기능
+	 * @return
+	 */
+	public String getAdminSearchId() {
+		return adminSearchId;
+	}
+
+	public void setAdminSearchId(String adminSearchId) {
+		this.adminSearchId = adminSearchId;
+	}
+
+	public String getAdminSearchName() {
+		return adminSearchName;
+	}
+
+	public void setAdminSearchName(String adminSearchName) {
+		this.adminSearchName = adminSearchName;
+	}
+
+	public String getAdminSearchAddress() {
+		return adminSearchAddress;
+	}
+
+	public void setAdminSearchAddress(String adminSearchAddress) {
+		this.adminSearchAddress = adminSearchAddress;
 	}
 
 }

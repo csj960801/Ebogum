@@ -1,5 +1,13 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	SimpleDateFormat date = new SimpleDateFormat();
+	Date today = new Date();
+	String getToday = date.format(today);
+%>
+
 <!-- 로그인 여부  -->
 <jsp:include page="/Layout/LoginNeed/LoginNeed.jsp" />
 
@@ -17,8 +25,9 @@
 			<li class="emphasize"></li>
 			<li><span class="arrow_span"></span><a
 				href="/board/FreeBoard.board">자유게시판</a></li>
-			<li><span class="arrow_span"></span><a
+			<!-- 			<li><span class="arrow_span"></span><a
 				href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li>
+ -->
 		</ul>
 	</div>
 	<div class="main_col col-md-9 col-xs-9">
@@ -31,9 +40,9 @@
 			<div class="table_wrapper">
 				<h5 class="freeboard_title">⊙답변하기</h5>
 				<form id="WriteBoardFrm" name="WriteBoardFrm" class="WriteBoardFrm">
-				
+
 					<input type="hidden" id="boardCnt" value="4" />
-				
+
 					<table class="table Writefreeboard_tbl">
 						<tbody class="tbody">
 							<tr>
@@ -63,11 +72,16 @@
 									비밀번호입니다.)</td>
 							</tr>
 							<tr>
-							 	<td>
-							 		<!-- 답변 게시글에 적용시킬 값  -->
-							 		<input type="hidden" id="boardParam" name="boardParam" value="${param.boardParam}">
-							 	</td>
+								<td>
+									<!-- 답변 게시글에 적용시킬 값  --> <input type="hidden" id="boardParam"
+									name="boardParam" value="${param.boardParam}">
+								</td>
 							</tr>
+							<tr>
+								<td><input name="boarddate" type="hidden" class="field"
+									value="<%=getToday%>"></td>
+							</tr>
+
 						</tbody>
 					</table>
 
@@ -77,9 +91,9 @@
 
 							<span class="btn_span">
 								<button id="boardRegBtn" class="btn btn-sm">등록</button>
-							</span>
-							<span class="btn_span">
-								<button id="boardCancelBtn" class="btn btn-sm" onclick="javascript:document.WriteBoardFrm.reset();">취소</button>
+							</span> <span class="btn_span">
+								<button id="boardCancelBtn" class="btn btn-sm"
+									onclick="javascript:document.WriteBoardFrm.reset();">취소</button>
 							</span>
 						</div>
 					</div>

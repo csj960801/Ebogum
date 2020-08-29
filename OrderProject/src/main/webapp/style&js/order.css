@@ -13,7 +13,7 @@ body.body {
 }
 
 /*mobile*/
-@media all and( max-width :767px) {
+@media( max-width :767px) {
 	.login_warpper .login_md_10 {
 		padding: 0;
 		width: 48%;

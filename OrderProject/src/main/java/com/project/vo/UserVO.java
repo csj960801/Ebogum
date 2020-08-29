@@ -16,8 +16,14 @@ public class UserVO {
 	private String churchTel;
 	private String phoneTel;
 	private String faxNumber;
+    private String date;
 	
 	public UserVO() {
+	}
+
+	public UserVO(String duplicateid, String pass1) {
+		this.duplicateid = duplicateid;
+		this.pass1 = pass1;
 	}
 
 	public String getDuplicateid() {
@@ -130,6 +136,14 @@ public class UserVO {
 
 	public void setFaxNumber(String faxNumber) {
 		this.faxNumber = faxNumber;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 }

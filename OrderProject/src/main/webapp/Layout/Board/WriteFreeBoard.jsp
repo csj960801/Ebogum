@@ -1,5 +1,13 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+	Date today = new Date();
+	String getToday = date.format(today);
+%>
+
 <!-- 로그인 여부  -->
 <jsp:include page="/Layout/LoginNeed/LoginNeed.jsp" />
 
@@ -17,8 +25,7 @@
 			<li class="emphasize"></li>
 			<li><span class="arrow_span"></span><a
 				href="/board/FreeBoard.board">자유게시판</a></li>
-			<li><span class="arrow_span"></span><a
-				href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li>
+			<!-- 		<li><span class="arrow_span"></span><a href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li> -->
 		</ul>
 	</div>
 	<div class="main_col col-md-9 col-xs-9">
@@ -66,6 +73,9 @@
 							<tr>
 								<td><input type="hidden" name="boardParam" value="${param.boardParam}" /></td>
 							</tr>
+							<tr>
+								<td><input name="boarddate" type="hidden" value="<%=getToday%>"></td>
+							</tr>
 						</tbody>
 					</table>
 
@@ -75,9 +85,9 @@
 
 							<span class="btn_span">
 								<button id="boardRegBtn" class="btn btn-sm">등록</button>
-							</span> <span class="btn_span">
-								<button id="boardCancelBtn" class="btn btn-sm"
-									onclick="javascript:document.WriteBoardFrm.reset();">취소</button>
+							</span>
+							<span class="btn_span">
+								<button id="boardCancelBtn" class="btn btn-sm" onclick="javascript:document.WriteBoardFrm.reset();">취소</button>
 							</span>
 						</div>
 					</div>

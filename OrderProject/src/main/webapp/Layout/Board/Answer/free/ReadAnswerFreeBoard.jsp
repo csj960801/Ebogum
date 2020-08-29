@@ -17,8 +17,9 @@
 			<li class="emphasize"></li>
 			<li><span class="arrow_span"></span><a
 				href="/board/FreeBoard.board">자유게시판</a></li>
-			<li><span class="arrow_span"></span><a
+			<!-- 		<li><span class="arrow_span"></span><a
 				href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li>
+	 -->
 		</ul>
 	</div>
 	<div class="main_col col-md-9 col-xs-9">
@@ -42,7 +43,7 @@
 								<td>${param.boardWriter}</td>
 
 								<th>등록일자</th>
-								<td>${param.boardDate}</td>
+								<td>${param.boarddate}</td>
 							</tr>
 							<tr>
 								<th>제목</th>
@@ -55,8 +56,8 @@
 							</tr>
 							<tr>
 								<td>
-								    <!-- 답변 게시글에 적용시킬 값  -->
-								  	<input type="hidden" name="boardParam" id="boardAnswerParam" value="${param.boardParam}">
+									<!-- 답변 게시글에 적용시킬 값  --> <input type="hidden" name="boardParam"
+									id="boardAnswerParam" value="${param.boardParam}">
 								</td>
 							</tr>
 						</tbody>
