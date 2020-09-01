@@ -112,6 +112,11 @@
 		</if>
 	</select>
 
+    <!-- 회원별 포인트를 가져오도록 -->
+    <select id="pointValue" resultMap="user" parameterType="user">
+      SELECT point FROM member WHERE duplicateid = #{duplicateid}
+    </select>
+
 	<!-- (관리자)회원 삭제 -->
 	<delete id="adminDel" parameterType="user">
 		DELETE FROM member WHERE

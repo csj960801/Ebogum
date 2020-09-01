@@ -4,6 +4,7 @@
 
 	<!-- 게시판 기본 데이터 resultMap -->
 	<resultMap id="boardMap" type="board">
+		<result column="boardCnt" property="bno" />
 		<result column="writer" property="boardWriter" />
 		<result column="email" property="boardEmail" />
 		<result column="title" property="boardTitle" />
@@ -51,8 +52,19 @@
 		]]>
 	</insert>
 
+	<!-- 공지사항게시글 저장 -->
+	<insert id="noticeboardinsert"
+		parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		INSERT INTO
+		noticeboard(title,content,hit,boardParam,boarddate)
+		VALUES(#{boardTitle},#{boardContent},#{boardHit},#{boardParam},#{boarddate})
+		]]>
+	</insert>
+
 	<!-- 자유게시글 리스트 출력 -->
-	<select resultMap="boardMap" id="boardlist" parameterType="com.project.vo.SearchVO">
+	<select resultMap="boardMap" id="boardlist"
+		parameterType="com.project.vo.SearchVO">
 		SELECT * FROM freeboard WHERE FreeboardCnt is not null
 		<if test="board_title_kind == 'title'">
 			AND title like CONCAT('%',#{boardSearchParam},'%')
@@ -66,7 +78,8 @@
 	</select>
 
 	<!-- QnA게시글 리스트 출력 -->
-	<select resultMap="boardMap" id="qboardlist" parameterType="com.project.vo.SearchVO">
+	<select resultMap="boardMap" id="qboardlist"
+		parameterType="com.project.vo.SearchVO">
 		SELECT * FROM questionboard WHERE
 		QuestionBoardCnt is not null
 		<if test="board_title_kind == 'title'">
@@ -78,6 +91,14 @@
 		<if test="board_title_kind == 'writer'">
 			AND writer like CONCAT('%',#{boardSearchParam},'%')
 		</if>
+	</select>
+
+	<!-- 공지글 리스트 출력 -->
+	<select resultMap="boardMap" id="noticeboardlist">
+		<![CDATA[
+		SELECT * FROM noticeboard WHERE
+		boardCnt is not null
+		]]>
 	</select>
 
 	<!-- 자유게시판 답변 데이터 출력(freeboard 테이블 boardParam와 replyboard 테이블 boardParam 
@@ -98,16 +119,8 @@
        ]]>
 	</select>
 
-	<!-- 게시글을 조회할때마다 조회수 증가
-	<update id="boardHit" parameterType="int">
-		<![CDATA[
-		UPDATE freeboard SET
-		hit =
-		hit + 1
-		WHERE
-		FreeboardCnt=1
-		]]>
-	</update> -->
+	<!-- 게시글을 조회할때마다 조회수 증가 <update id="boardHit" parameterType="int"> <![CDATA[ 
+		UPDATE freeboard SET hit = hit + 1 WHERE FreeboardCnt=1 ]]> </update> -->
 
 	<!-- 자유 게시판 게시글 수정 -->
 	<update id="boardUpdate" parameterType="com.project.vo.BoardVO">
@@ -159,6 +172,18 @@
 		]]>
 	</update>
 
+	<!-- 공지게시판 게시글 수정(boardParam은 원래 한 게시물에 답변을 하기위한 고유 번호임.) -->
+	<update id="noticeboardUpdate"
+		parameterType="com.project.vo.BoardVO">
+		<![CDATA[
+		UPDATE noticeboard SET
+		title=#{boardTitle},content=#{boardContent},
+		boarddate=#{boarddate}
+		WHERE
+		boardCnt = #{bno}
+		]]>
+	</update>
+
 	<!-- 자유게시판 게시글 삭제 -->
 	<delete id="boardDel" parameterType="com.project.vo.BoardVO">
 		<![CDATA[
@@ -190,6 +215,14 @@
 		<![CDATA[
 		DELETE FROM questionreplyboard WHERE
 		password=#{boardPassword}
+	    ]]>
+	</delete>
+
+	<!-- 공지게시글 삭제 -->
+	<delete id="noticeboardDel" parameterType="String">
+		<![CDATA[
+		DELETE FROM noticeboard WHERE
+		boardCnt=#{boardCnt}
 	    ]]>
 	</delete>
 

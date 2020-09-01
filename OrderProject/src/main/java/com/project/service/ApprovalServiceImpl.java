@@ -43,6 +43,12 @@ public class ApprovalServiceImpl implements ApprovalService {
 	}
 	
 	@Override
+	public UserVO getPoint(UserVO uvo) {
+		// TODO Auto-generated method stub
+		return approvalDao.getPoint(uvo);
+	}
+	
+	@Override
 	public List<UserVO> memberList(SearchVO svo) {
 		// TODO Auto-generated method stub
 		return approvalDao.memberList(svo);

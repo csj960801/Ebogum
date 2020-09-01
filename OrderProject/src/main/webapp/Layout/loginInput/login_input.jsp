@@ -84,14 +84,19 @@
 								 </c:when>
 							</c:choose>
 						</p>
-						<span class="point_span">POINT</span> <span
-							class="point_span_other">까지</span>
+						<span class="point_span">POINT</span> ${getPoint}
+	
+						<br>
+	
+						2020-08-31<span class="point_span_other">까지</span>
 						<button id="logoutBtn" class="logoutBtn">로그아웃</button>
 					</div>
 				</div>
 			</c:when>
 		</c:choose>
 	</div>
+
+	<!-- main 게시판 컨텐츠  -->
 	<div class="col-md-10 col-xs-9 login_md_10">
 		<div id="main_carousel" class="carousel slide" data-ride="carousel">
 
@@ -101,5 +106,4 @@
 			</div>
 		</div>
 	</div>
-	
 </div>

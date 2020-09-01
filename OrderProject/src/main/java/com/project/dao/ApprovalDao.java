@@ -102,6 +102,18 @@ public class ApprovalDao {
 	}
 
 	/**
+	 * 회원 포인트 가져오기
+	 * 
+	 * @return
+	 */
+	public UserVO getPoint(UserVO uvo) {
+		session = SqlSessionInstance.getInstanceSession().openSession();
+		UserVO point = session.selectOne("pointValue", uvo);
+		System.out.println("포인트값: " + point);
+		return point;
+	}
+
+	/**
 	 * (관리자전용)회원 목록출력
 	 * 
 	 * @return
@@ -128,7 +140,7 @@ public class ApprovalDao {
 	 */
 	public boolean DelMember(UserVO bvo) {
 		session = SqlSessionInstance.getInstanceSession().openSession();
-		
+
 		int delCnt = session.delete("adminDel", bvo);
 		boolean delFlag = false;
 		if (delCnt > 0) {

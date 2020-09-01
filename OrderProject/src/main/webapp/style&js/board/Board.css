@@ -20,6 +20,10 @@
 		margin-top: 20px;
 		width: 62%;
 	}
+	.table_wrapper .WriteNoticeboard_tbl, .Noticeboard_wrapper .bottom_wrapper{
+		margin-top: 20px;
+		width: auto;
+	}
 	.table_wrapper .freeboard_tbl {
 		width: 62%;
 	}
@@ -42,11 +46,14 @@
 		float: right;
 		padding: 0 5px;
 	}
-	.table_wrapper .Writefreeboard_tbl .tbody tr th {
+
+	.table_wrapper .Writefreeboard_tbl .tbody tr th,
+	.table_wrapper .WriteNoticeboard_tbl .tbody tr th {
 		width: 15%;
 		background: #eee;
 	}
-	.table_wrapper .Writefreeboard_tbl .tbody tr td {
+	.table_wrapper .Writefreeboard_tbl .tbody tr td,
+	.table_wrapper .WriteNoticeboard_tbl .tbody tr td {
 		text-align: left;
 	}
 	.table_wrapper .freeboard_tbl .tbody tr th {

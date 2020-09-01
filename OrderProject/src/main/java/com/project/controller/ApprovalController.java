@@ -1,6 +1,5 @@
 package com.project.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,11 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.service.ApprovalServiceImpl;
@@ -83,14 +80,18 @@ public class ApprovalController {
 		ModelAndView model = new ModelAndView();
 
 		boolean lvo = aServiceApprovalServiceImpl.MemberLogin(loginvo);
+		UserVO getPoint = aServiceApprovalServiceImpl.getPoint(loginvo);
+
 		controllerLog.info("========================");
 		controllerLog.info(loginvo.getDuplicateid());
 		controllerLog.info(loginvo.getPass1());
+		controllerLog.info(getPoint.getDate());
 		controllerLog.info("========================");
 
 		if (lvo) {
 			session.setAttribute("login", loginvo.getDuplicateid());
-			model.addObject("loginFlag", lvo);
+			model.addObject("loginFlag", lvo); // 로그인 성공 여부
+			model.addObject("getPoint", getPoint.getPoint()); // 로그인 성공시 해당 회원의 포인트
 			model.setViewName("/login/login");
 			controllerLog.info("========================");
 			controllerLog.info("로그인 성공");
@@ -170,7 +171,7 @@ public class ApprovalController {
 	}
 
 	@RequestMapping("/Admin/delete/AdminDeleteActivate.app")
-	public Map<String,Object> DelMember(@ModelAttribute("uvo") UserVO uservo) {
+	public Map<String, Object> DelMember(@ModelAttribute("uvo") UserVO uservo) {
 		Map<String, Object> adminDelMap = new HashMap<String, Object>();
 
 		boolean delFlag = aServiceApprovalServiceImpl.DelMember(uservo);

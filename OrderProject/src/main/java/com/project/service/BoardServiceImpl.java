@@ -56,11 +56,20 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	/**
+	 * 공지사항 게시판 데이터 저장
+	 */
+	@Override
+	public int NoticeboardInsert(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		return boarddao.NoticeboardInsert(bvo);
+	}
+
+	/**
 	 * 자유게시판 데이터 리스트 출력
 	 */
 	@Override
 	public List<BoardVO> boardlist(int idx, SearchVO svo) {
-		//boardHit(idx);
+		// boardHit(idx);
 		return boarddao.boardList(svo);
 	}
 
@@ -74,14 +83,20 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	/**
-	 * 게시글 조회수
-	 
+	 * 공지게시글 데이터 리스트 출력
+	 */
 	@Override
-	public int boardHit(int boardHit) {
+	public List<BoardVO> noticeboardList() {
 		// TODO Auto-generated method stub
-		int idx = boarddao.boardHit(boardHit);
-		return idx;
-	}*/
+		return boarddao.noticeboardList();
+	}
+
+	/**
+	 * 게시글 조회수
+	 * 
+	 * @Override public int boardHit(int boardHit) { // TODO Auto-generated method
+	 *           stub int idx = boarddao.boardHit(boardHit); return idx; }
+	 */
 
 	/**
 	 * 자유게시판 데이터 수정
@@ -117,6 +132,15 @@ public class BoardServiceImpl implements BoardService {
 	public int QAnswerboardUpdate(BoardVO bvo) {
 		// TODO Auto-generated method stub
 		return boarddao.QAnswerboardUpdate(bvo);
+	}
+
+	/**
+	 * 공지게시글 수정
+	 */
+	@Override
+	public int NoticeboardUpdate(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		return boarddao.NoticeboardUpdate(bvo);
 	}
 
 	/**
@@ -156,6 +180,15 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	/**
+	 * 공지게시글 삭제
+	 */
+	@Override
+	public int NoticeboardDel(String boardCnt) {
+		// TODO Auto-generated method stub
+		return boarddao.NoticeboardDel(boardCnt);
+	}
+
+	/**
 	 * 자유게시판 게시글 답변
 	 */
 	@Override
@@ -172,7 +205,7 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return boarddao.QboardAnswer();
 	}
-	
+
 	/*
 	 * @Override public List<BoardVO> boardSearch(SearchVO svo) { // TODO
 	 * Auto-generated method stub return boarddao.boardSearch(svo); }

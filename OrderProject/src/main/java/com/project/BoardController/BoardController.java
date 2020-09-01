@@ -1,13 +1,10 @@
 package com.project.BoardController;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.project.PageNavigation.Paging;
 import com.project.service.BoardServiceImpl;
 import com.project.vo.BoardVO;
@@ -71,7 +70,7 @@ public class BoardController {
 		boardmodel.addAttribute("boardlist", freeboardlist);
 		boardmodel.addAttribute("boardanswerlist", freeboardanswerlist);
 		boardmodel.addAttribute("pageNavigation", getPaging(req));
-	
+
 		return freeboardlist;
 	}
 
@@ -94,6 +93,41 @@ public class BoardController {
 		boardmodel.addAttribute("qpageNavigation", getPaging(req));
 
 		return Questionboardlist;
+	}
+
+	/**
+	 * 공지게시글 출력
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/Noticeboard/NoticeBoard.board")
+	public List<BoardVO> NoticeBoard(Model boardmodel, HttpServletRequest req) {
+		List<BoardVO> noticeList = boardservice.noticeboardList();
+
+		boardmodel.addAttribute("noticeList", noticeList);
+		boardmodel.addAttribute("pageNavigation", getPaging(req));
+
+		return noticeList;
+	}
+
+	/**
+	 * 공지게시글 저장
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	@RequestMapping(value = "/Noticeboard/NoticeBoardinsert.board", method = { RequestMethod.POST, RequestMethod.GET })
+	public Map<String, Object> NoticeBoardinsert(@ModelAttribute("boardvo") BoardVO bvo) {
+		Map<String, Object> BoardinsertMap = new HashMap<String, Object>();
+
+		int boardinsert = boardservice.NoticeboardInsert(bvo);
+		BoardinsertMap.put("boardinsert", boardinsert);
+		boardlog.info("================================");
+		boardlog.info("공지게시글 데이터 저장 성공");
+		boardlog.info("================================");
+		return BoardinsertMap;
+
 	}
 
 	/**
@@ -164,6 +198,24 @@ public class BoardController {
 	}
 
 	/**
+	 * 공지게시글 데이터 수정
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	@RequestMapping("/Noticeboard/NoticeBoardupdate.board")
+	public Map<String, Object> NoticeBoardupdate(@ModelAttribute("boardvo") BoardVO bvo) {
+		Map<String, Object> noticeboardupdateMap = new HashMap<String, Object>();
+		int noticeupdateFlag = boardservice.NoticeboardUpdate(bvo);
+		noticeboardupdateMap.put("boardupdate", noticeupdateFlag);
+		boardlog.info("================================");
+		boardlog.info("공지게시판 데이터 수정 성공");
+		boardlog.info("================================");
+
+		return noticeboardupdateMap;
+	}
+
+	/**
 	 * 자유 게시글 삭제
 	 * 
 	 * @param bvo
@@ -195,6 +247,23 @@ public class BoardController {
 		boardlog.info("QnA 게시판 데이터 삭제 성공");
 		boardlog.info("================================");
 		return qBoarddelMap;
+	}
+
+	/**
+	 * 공지게시글 삭제
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	@RequestMapping(value = "/Noticeboard/NoticeBoarddelete.board")
+	public Map<String, Object> NoticeBoarddelete(@RequestParam("boardCnt") String boardCnt) {
+		Map<String, Object> NoticeBoarddelMap = new HashMap<String, Object>();
+		int boarddel = boardservice.NoticeboardDel(boardCnt);
+		NoticeBoarddelMap.put("boarddel", boarddel);
+		boardlog.info("================================");
+		boardlog.info("공지게시글 데이터 삭제 성공");
+		boardlog.info("================================");
+		return NoticeBoarddelMap;
 	}
 
 	/**

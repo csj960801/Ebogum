@@ -83,6 +83,7 @@
 
 			<div class="main_board_2">
 				<img src="/pictures/main/board_sub_title_1_a.gif" class="main_board_title" />
+			    <jsp:include page="/board/Noticeboard/NoticeBoard.board"/>
 			</div>
 		</div>
 	</div>

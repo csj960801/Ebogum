@@ -53,13 +53,27 @@ public class BoardDAO {
 	}
 
 	/**
+	 * 공지사항 게시글 저장
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	public int NoticeboardInsert(BoardVO bvo) {
+		int insertFlag = session.insert("noticeboardinsert", bvo);
+		if (insertFlag > 0) {
+			session.commit();
+		}
+		return insertFlag;
+	}
+
+	/**
 	 * 자유게시판 리스트 출력
 	 * 
 	 * @return
 	 */
 	public List<BoardVO> boardList(SearchVO svo) {
 		List<BoardVO> boardlist = session.selectList("boardlist", svo);
-		return boardlist;
+		return (boardlist != null) ? boardlist : null;
 	}
 
 	/**
@@ -69,7 +83,17 @@ public class BoardDAO {
 	 */
 	public List<BoardVO> qboardList(SearchVO svo) {
 		List<BoardVO> qboardlist = session.selectList("qboardlist", svo);
-		return qboardlist;
+		return (qboardlist != null) ? qboardlist : null;
+	}
+
+	/**
+	 * 공지게시판 리스트 출력
+	 * 
+	 * @return
+	 */
+	public List<BoardVO> noticeboardList() {
+		List<BoardVO> boardlist = session.selectList("noticeboardlist");
+		return (boardlist != null) ? boardlist : null;
 	}
 
 	/**
@@ -140,6 +164,20 @@ public class BoardDAO {
 	}
 
 	/**
+	 * 공지게시글 수정
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	public int NoticeboardUpdate(BoardVO bvo) {
+		int noticeupdateFlag = session.update("noticeboardUpdate", bvo);
+		if (noticeupdateFlag > 0) {
+			session.commit();
+		}
+		return noticeupdateFlag;
+	}
+
+	/**
 	 * 자유게시판 게시글 삭제
 	 * 
 	 * @param bvo
@@ -193,6 +231,20 @@ public class BoardDAO {
 			session.commit();
 		}
 		return qAnswerdelFlag;
+	}
+
+	/**
+	 * 공지게시글 삭제
+	 * 
+	 * @param bvo
+	 * @return
+	 */
+	public int NoticeboardDel(String boardCnt) {
+		int noticedelFlag = session.delete("noticeboardDel", boardCnt);
+		if (noticedelFlag > 0) {
+			session.commit();
+		}
+		return noticedelFlag;
 	}
 
 	/**

@@ -2,10 +2,10 @@ package com.project.vo;
 
 public class UserVO {
 
-	private String duplicateid;
-	private String pass1;
+	private String duplicateid; // 회원 아이디
+	private String pass1; // 비번
 	private String pass2;
-	private String name;
+	private String name; // 회원이름
 	private String birth;
 	private String manType;
 	private String postAddress;
@@ -16,8 +16,9 @@ public class UserVO {
 	private String churchTel;
 	private String phoneTel;
 	private String faxNumber;
-    private String date;
-	
+	private String date; // 가입일
+	private String point; // 회원 포인트
+
 	public UserVO() {
 	}
 
@@ -144,6 +145,14 @@ public class UserVO {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public String getPoint() {
+		return point;
+	}
+
+	public void setPoint(String point) {
+		this.point = point;
 	}
 
 }

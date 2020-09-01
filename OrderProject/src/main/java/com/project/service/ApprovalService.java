@@ -38,15 +38,24 @@ public interface ApprovalService {
 	 * @return
 	 */
 	boolean DuplicateCheck(String id);
-	
+
+	/**
+	 * 회원 포인트 가져오기
+	 * 
+	 * @return
+	 */
+	UserVO getPoint(UserVO uvo);
+
 	/**
 	 * (관리자전용)회원 목록출력
+	 * 
 	 * @return
 	 */
 	List<UserVO> memberList(SearchVO svo);
-	
+
 	/**
 	 * (관리자전용)회원 삭제
+	 * 
 	 * @param uservo
 	 * @return
 	 */

@@ -56,7 +56,16 @@
 								<tr>
 									<td>${status.count}</td>
 									<td><a href="#" class="boardlist_title"
-										onclick="javascript:freeboard_Read('${status.count}','${freeboardlist.boardWriter}', '${freeboardlist.boardTitle}','7-26','${freeboardlist.boardContent}','1','${status.count}','${freeboardlist.boarddate}')">${freeboardlist.boardTitle}</a>
+										onclick="javascript:freeboard_Read('${status.count}',
+										'${freeboardlist.boardWriter}', 
+										'${freeboardlist.boardTitle}',
+										'${freeboardlist.boardContent}',
+										${freeboardlist.boardParam},
+										'${status.count}',
+										'${freeboardlist.boarddate}')">
+										
+										${freeboardlist.boardTitle}
+										</a>
 									</td>
 									<td>${freeboardlist.boardWriter}</td>
 									<td>${freeboardlist.boarddate}</td>
@@ -66,12 +75,11 @@
 
 							<!-- 답변된 게시글이 존재할 경우 -->
 							<c:if test="${!empty boardanswerlist}">
-								<c:forEach varStatus="status" items="${boardanswerlist}"
-									var="freeanswerlist">
+								<c:forEach varStatus="status" items="${boardanswerlist}" var="freeanswerlist">
 									<tr class="answer_row">
 										<td>${status.count}</td>
 										<td><a
-											href="javascript:Answer_Read('${status.count}','${freeanswerlist.boardWriter}', '${freeanswerlist.boardTitle}','7-26','${freeanswerlist.boardContent}','1','${status.count}')"
+											href="javascript:Answer_Read('${status.count}','${freeanswerlist.boardWriter}', '${freeanswerlist.boardTitle}','${freeanswerlist.boarddate}','${freeanswerlist.boardContent}',${freeanswerlist.boardParam},'${status.count}')"
 											class="boardlist_title">${freeanswerlist.boardTitle}</a></td>
 										<td>${freeanswerlist.boardWriter}</td>
 										<td>${freeanswerlist.boarddate}</td>
@@ -114,12 +122,12 @@
 									<button id="EmptyboardWriteBtn" onclick="boardBtnEffect('${fn:length(boardlist)}')" class="btn btn-sm">쓰기</button>
 								</c:if>
 
+								<!-- 자유게시판에 데이터가 존재할 경우 -->
 								<c:set var="listflag" value="false" />
 								<c:forEach varStatus="status" items="${boardlist}" var="freeboardlistCnt">
 						
 									<input type="hidden" id="statusCount" value="${status.count}" />
 
-									<!-- 자유게시판에 데이터가 존재할 경우 -->
 									<c:if test="${!listflag}">
 										<c:if test="${status.count >= 1}">
 											<button id="boardWriteBtn" class="btn btn-sm">쓰기</button>

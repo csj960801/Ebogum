@@ -13,7 +13,7 @@ body.body {
 }
 
 /*mobile*/
-@media( max-width :767px) {
+@media all and( max-width :767px) {
 	.login_warpper .login_md_10 {
 		padding: 0;
 		width: 48%;
@@ -209,7 +209,7 @@ body.body {
 
 .login_success .login_success_wrapper {
 	margin: 5px 10px;
-	height: 115px;
+	height: 120px;
 	border-top: 3px solid #ddd;
 	border-left: 1px solid #ddd;
 	border-right: 1px solid #ddd;
@@ -227,7 +227,7 @@ body.body {
 }
 
 .login_success_wrapper span.point_span {
-	display: block;
+	display: inline-block;
 	font-size: 11px;
 	width: 35%;
 	padding: 2px 0;
@@ -238,7 +238,7 @@ body.body {
 }
 
 .login_success_wrapper span.point_span_other {
-	display: block;
+	display: inline-block;
 	font-size: 11px;
 	padding: 3px 0;
 }
