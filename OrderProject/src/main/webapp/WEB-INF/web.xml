@@ -71,4 +71,21 @@
 		<url-pattern>*.board</url-pattern>
 	</servlet-mapping>
 
+	<!-- Sermon 전용 요청처리 -->
+	<servlet>
+		<servlet-name>Sermon</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/Sermon-context.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Sermon</servlet-name>
+		<url-pattern>*.sermon</url-pattern>
+	</servlet-mapping>
+
 </web-app>

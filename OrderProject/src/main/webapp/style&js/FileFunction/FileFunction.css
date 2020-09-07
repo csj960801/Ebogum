@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+@media ( min-width :768px) {
+	.table_wrapper .sermontbl {
+		width: 60%;
+	}
+	.table_wrapper .sermontbl.tbody tr td {
+		text-align: center;
+	}
+	.table_wrapper .sermontbl .tbody tr th {
+		background: #eee;
+		padding: 10px 0;
+	}
+	.sermon_tbl .tfoot tr .tfoot_btn_td .sermon_btn_ul li {
+		float: right;
+		padding: 0 5px;
+	}
+	.sermon_tbl .tbody tr th {
+		width: 20%;
+	}
+	.sermon_tbl .tbody tr td p.download_warn {
+		margin: 0;
+		color: #ddd;
+		font-weight: 700;
+	}
+}
+
+@media ( max-width :767px) {
+}

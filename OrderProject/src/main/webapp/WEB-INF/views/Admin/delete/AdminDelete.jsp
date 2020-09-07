@@ -86,8 +86,7 @@
 											</thead>
 											<tbody class="tbody">
 												<c:if test="${memberlist != null}">
-													<c:forEach items="${memberlist}" var="managingMember"
-														varStatus="status">
+													<c:forEach items="${memberlist}" var="managingMember" varStatus="status">
 														<tr>
 															<td>${status.count}</td>
 															<td>
@@ -102,7 +101,10 @@
 															  ${managingMember.name} 
 															  <input type="hidden" name="name" id="name" value="${managingMember.name}" />
 															</td>
-															<td></td>
+															<td>
+															  ${managingMember.date} 
+															  <input type="hidden" name="date" id="date" value="${managingMember.date}" />
+															</td>
 															<td></td>
 															<td></td>
 															<td><a href="javascript:DelMember('${managingMember.duplicateid}','${managingMember.pass1}','${managingMember.name}');" class="btn btn-default">삭제하기</a></td>

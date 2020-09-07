@@ -16,6 +16,10 @@ public class SearchVO {
 	private String adminSearchName;
 	private String adminSearchAddress;
 	
+	//설교 
+	private String search_title_kind;
+	private String sermonSearchParam;
+	
 	public SearchVO() {
 
 	}
@@ -66,6 +70,22 @@ public class SearchVO {
 
 	public void setAdminSearchAddress(String adminSearchAddress) {
 		this.adminSearchAddress = adminSearchAddress;
+	}
+
+	public String getSermonSearchParam() {
+		return sermonSearchParam;
+	}
+
+	public void setSermonSearchParam(String sermonSearchParam) {
+		this.sermonSearchParam = sermonSearchParam;
+	}
+
+	public String getSearch_title_kind() {
+		return search_title_kind;
+	}
+
+	public void setSearch_title_kind(String search_title_kind) {
+		this.search_title_kind = search_title_kind;
 	}
 
 }

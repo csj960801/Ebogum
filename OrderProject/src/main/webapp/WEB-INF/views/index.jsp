@@ -14,38 +14,38 @@
 	<div class="side_col col-md-3 col-xs-3">
 		<ul class="side_menu_ul">
 			<li class="emphasize"><a>부회원[과거자료]</a></li>
-			<li><a href="#">주일 설교</a></li>
-			<li><a href="#">강해 설교</a></li>
-			<li><a href="#">인물 설교</a></li>
-			<li><a href="#">철야기도회 설교</a></li>
-			<li><a href="#">심방설교</a></li>
-			<li><a href="#">헌신예배 설교</a></li>
-			<li><a href="#">각종특별 설교</a></li>
-			<li><a href="#">칼럼형예화</a></li>
+			<li><a href="#" id="file1">주일 설교</a></li>
+			<li><a href="#" id="file2">강해 설교</a></li>
+			<li><a href="#" id="file3">인물 설교</a></li>
+			<li><a href="#" id="file4">철야기도회 설교</a></li>
+			<li><a href="#" id="file5">심방설교</a></li>
+			<li><a href="#" id="file6">헌신예배 설교</a></li>
+			<li><a href="#" id="file7">각종특별 설교</a></li>
+			<li><a href="#" id="file8">칼럼형예화</a></li>
 
-			<li><a href="#" class="thick">새벽설교</a></li>
+			<li><a class="thick">새벽설교</a></li>
 			<li>
 				<ul class="option_ul">
-					<li><a href="#">강해별</a></li>
-					<li><a href="#">사건별</a></li>
-					<li><a href="#">주제별</a>
+					<li><a href="#" id="file9">강해별</a></li>
+					<li><a href="#" id="file10">사건별</a></li>
+					<li><a href="#" id="file11">주제별</a>
 				</ul>
 			</li>
 
-			<li><a href="#" class="thick">절기 설교</a></li>
+			<li><a class="thick">절기 설교</a></li>
 			<li>
 				<ul class="option_ul">
-					<li><a href="#">성탄절</a></li>
-					<li><a href="#">사순절</a></li>
-					<li><a href="#">부활절</a></li>
-					<li><a href="#">성림강림절</a></li>
-					<li><a href="#">추석추수맥추절</a></li>
-					<li><a href="#">종교개혁주일</a></li>
-					<li><a href="#">송구영신예배</a></li>
-					<li><a href="#">국가기념일</a></li>
-					<li><a href="#">가정의달</a></li>
-					<li><a href="#">수련회 설교</a></li>
-					<li><a href="#">창립및 전도</a></li>
+					<li><a href="#" id="file12">성탄절</a></li>
+					<li><a href="#" id="file13">사순절</a></li>
+					<li><a href="#" id="file14">부활절</a></li>
+					<li><a href="#" id="file15">성림강림절</a></li>
+					<li><a href="#" id="file16">추석추수맥추절</a></li>
+					<li><a href="#" id="file17">종교개혁주일</a></li>
+					<li><a href="#" id="file18">송구영신예배</a></li>
+					<li><a href="#" id="file19">국가기념일</a></li>
+					<li><a href="#" id="file20">가정의달</a></li>
+					<li><a href="#" id="file21">수련회 설교</a></li>
+					<li><a href="#" id="file22">창립및 전도</a></li>
 				</ul>
 			</li>
 		</ul>

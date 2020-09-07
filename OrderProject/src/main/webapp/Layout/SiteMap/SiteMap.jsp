@@ -39,7 +39,7 @@
 						</tr>
 						<tr>
 							<th>게시판</th>
-							<td><a class="sitemap_a" href="/board/FreeBoard.board">| 자유게시판</a> | <a class="sitemap_a" href="/board/Qboard/QuestionBoard.board"> Q&amp;A게시판 |</a></td>
+							<td><a class="sitemap_a" href="/board/FreeBoard.board">| 자유게시판</a> | <!-- <a class="sitemap_a" href="/board/Qboard/QuestionBoard.board"> Q&amp;A게시판 |</a> --></td>
 						</tr>
 						<tr>
 							<th>ID/PW 찾기</th>
@@ -63,7 +63,6 @@
 		</div>
 	</div>
 </div>
-
 
 <!-- Footer -->
 <jsp:include page="/Layout/Footer.jsp" />

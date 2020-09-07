@@ -76,7 +76,7 @@
 						   <c:if test="${sessionScope.login != null}">
 
 								<!-- 공지사항게시판에 데이터가 없을 경우 -->
-								<c:if test="${fn:length(noticeList) == 0}">
+								<c:if test="${fn:length(noticeList) == 0 && sessionScope.login == 'logos'}">
 									<button id="EmptyboardWriteBtn" onclick="boardBtnEffect('${fn:length(boardlist)}')" class="btn btn-sm">쓰기</button>
 								</c:if>
 
@@ -87,7 +87,7 @@
 									<input type="hidden" id="statusCount" value="${status.count}" />
 
 									<c:if test="${!listflag}">
-										<c:if test="${status.count >= 1}">
+										<c:if test="${status.count >= 1 && sessionScope.login == 'logos'}">
 											<button id="boardWriteBtn" class="btn btn-sm">쓰기</button>
 											<c:set var="listflag" value="true" />
 										</c:if>

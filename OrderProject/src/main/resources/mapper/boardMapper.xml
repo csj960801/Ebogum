@@ -63,8 +63,7 @@
 	</insert>
 
 	<!-- 자유게시글 리스트 출력 -->
-	<select resultMap="boardMap" id="boardlist"
-		parameterType="com.project.vo.SearchVO">
+	<select resultMap="boardMap" id="boardlist" parameterType="com.project.vo.SearchVO">
 		SELECT * FROM freeboard WHERE FreeboardCnt is not null
 		<if test="board_title_kind == 'title'">
 			AND title like CONCAT('%',#{boardSearchParam},'%')

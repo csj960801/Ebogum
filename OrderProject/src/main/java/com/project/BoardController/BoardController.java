@@ -385,17 +385,4 @@ public class BoardController {
 		return qAnswerBoarddelMap;
 	}
 
-	/**
-	 * 게시판 검색 결과
-	 * 
-	 * @param svo
-	 * @return
-	 * 
-	 * @RequestMapping(value = "/boardSearch.board", method = RequestMethod.POST)
-	 *                       public List<BoardVO>
-	 *                       boardSearchList(@ModelAttribute("svo") SearchVO svo) {
-	 *                       List<BoardVO> searchlist = new ArrayList<BoardVO>();
-	 * 
-	 *                       return searchlist; }
-	 */
 }
