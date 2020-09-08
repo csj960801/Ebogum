@@ -12,9 +12,9 @@ interface SermonService {
 
 	List<SermonVO> sundaySermonList(SearchVO svo);
 
-	int sundaySermonInsert(Map<String, Object> map, HttpServletRequest req) throws Exception;
+	int sundaySermonInsert(SermonVO svo);
 
-	int sundaySermonUpdate(Map<String, Object> map, HttpServletRequest req) throws Exception;
+	int sundaySermonUpdate(SermonVO svo);
 
 	int sundaySermonDelete(SermonVO svo);
 }

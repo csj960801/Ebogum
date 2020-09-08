@@ -1,16 +1,13 @@
 package com.project._SermonController;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.OutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +33,6 @@ public class SermonController {
 
 	private Logger sermonLog = LoggerFactory.getLogger(this.getClass());
 
-	private static final String FILE_SERVER_PATH = "C:/test";
-
 	/**
 	 * 설교파일 다운로드
 	 * 
@@ -47,11 +42,13 @@ public class SermonController {
 	 */
 	@RequestMapping("/SermonFiledownload.sermon")
 	public ModelAndView download(@RequestParam HashMap<Object, Object> params, ModelAndView mv) {
+		String FILE_SERVER_PATH = "C:/test";
 		String fileName = (String) params.get("fileName");
 		String fullPath = FILE_SERVER_PATH + "/" + fileName;
-	
+
 		File file = new File(fullPath);
-		
+
+		// BeanNameViewResolver
 		mv.setViewName("downloadView");
 		mv.addObject("downloadFile", file);
 		return mv;
@@ -62,11 +59,14 @@ public class SermonController {
 	 * 
 	 * @param model
 	 * @return
+	 * @throws IOException
 	 */
 	@RequestMapping("/SundaySermon.sermon")
-	public List<SermonVO> FileBoard(Model model, @ModelAttribute("svo") SearchVO svo) {
+	public List<SermonVO> FileBoard(Model model, @ModelAttribute("svo") SearchVO svo, HttpServletRequest request)
+			throws IOException {
 		List<SermonVO> fileboardList = sermonservice.sundaySermonList(svo);
 		model.addAttribute("SundaySermonlist", fileboardList);
+
 		if (fileboardList.size() > 0) {
 			sermonLog.info("==========================");
 			sermonLog.info("설교 " + fileboardList.size() + "데이터 존재합니다");
@@ -84,41 +84,25 @@ public class SermonController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/SundaySermonInsert.sermon")
-	public Map<String, Object> SundaySermonInsert(SermonVO svo, HttpServletRequest request) throws Exception {
+	public Map<String, Object> SundaySermonInsert(@RequestParam("sermonFile") MultipartFile multi,
+			HttpServletRequest request) throws Exception {
 		Map<String, Object> fileMap = new HashMap<String, Object>();
 
-		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
-		Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
-		MultipartFile multipartFile = null;
+		// 파일이 저장되어있는 곳 경로 입력
+		String filePath = "";
 
-		String filePath = "C:\\";// 가지고 올 파일경로
-		String originalFileName = null;
+		String subject = request.getParameter("sermonSubject");
+		String title = request.getParameter("sermonTitle");
+		String main = request.getParameter("sermonMain");
+		String page = request.getParameter("sermonPage");
+		String point = request.getParameter("sermonPoint");
+		String date = request.getParameter("sermonDate");
 
-		while (iterator.hasNext()) {
-			multipartFile = multipartHttpServletRequest.getFile(iterator.next());
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date);
 
-			if (!multipartFile.isEmpty()) {
-				originalFileName = multipartFile.getOriginalFilename();
-				File file = new File(filePath + originalFileName);
-
-				System.out.println(file.getPath());
-
-				/*
-				 * file.getParentFile().mkdir(); if (!file.exists()) { file.createNewFile(); }
-				 */
-				fileMap.put("sermonFileName", originalFileName); // 업로드할 파일명
-			}
-		}
-
-		fileMap.put("sermonSubject", svo.getSermonSubject());
-		fileMap.put("sermonTitle", svo.getSermonTitle());
-		fileMap.put("sermonMain", svo.getSermonMain());
-		fileMap.put("sermonPage", svo.getSermonPage());
-		fileMap.put("sermonPoint", svo.getSermonPoint());
-		fileMap.put("sermonDate", svo.getSermonDate());
-
-		int sundayinsert = sermonservice.sundaySermonInsert(fileMap, request);
+		int sundayinsert = sermonservice.sundaySermonInsert(svo);
 		fileMap.put("sundayinsert", sundayinsert);
+
 		if (sundayinsert > 0) {
 			sermonLog.info("==========================");
 			sermonLog.info("설교 데이터 저장 되었습니다.");
@@ -137,34 +121,22 @@ public class SermonController {
 	 * @throws Exception
 	 */
 	@RequestMapping("/SundaySermonUpdate.sermon")
-	public Map<String, Object> SundaySermonUpdate(SermonVO svo, HttpServletRequest request) throws Exception {
+	public Map<String, Object> SundaySermonUpdate(@RequestParam("sermonFile") MultipartFile multi,
+			HttpServletRequest request) throws Exception {
+
 		Map<String, Object> fileMap = new HashMap<String, Object>();
 
-		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
-		Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
-		MultipartFile multipartFile = null;
+		String subject = request.getParameter("sermonSubject");
+		String title = request.getParameter("sermonTitle");
+		String main = request.getParameter("sermonMain");
+		String page = request.getParameter("sermonPage");
+		String point = request.getParameter("sermonPoint");
+		String date = request.getParameter("sermonDate");
+		String cnt = request.getParameter("sermonCnt");
 
-		// String filePath = "C:\\";// 가지고 올 파일경로
-		String originalFileName = null;
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, cnt);
 
-		while (iterator.hasNext()) {
-			multipartFile = multipartHttpServletRequest.getFile(iterator.next());
-
-			if (!multipartFile.isEmpty()) {
-				originalFileName = multipartFile.getOriginalFilename();
-				fileMap.put("sermonFileName", originalFileName); // 업로드할 파일명
-			}
-		}
-
-		fileMap.put("sermonSubject", svo.getSermonSubject());
-		fileMap.put("sermonTitle", svo.getSermonTitle());
-		fileMap.put("sermonMain", svo.getSermonMain());
-		fileMap.put("sermonPage", svo.getSermonPage());
-		fileMap.put("sermonPoint", svo.getSermonPoint());
-		fileMap.put("sermonDate", svo.getSermonDate());
-		fileMap.put("sermonCnt", svo.getSermonCnt());
-
-		int sundayupdate = sermonservice.sundaySermonUpdate(fileMap, request);
+		int sundayupdate = sermonservice.sundaySermonUpdate(svo);
 		fileMap.put("sundayupdate", sundayupdate);
 		if (sundayupdate > 0) {
 			sermonLog.info("==========================");

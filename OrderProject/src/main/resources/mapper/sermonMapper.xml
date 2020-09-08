@@ -17,18 +17,15 @@
 		<result property="search_title_kind" column="sermonMain" />
 	</resultMap>
 
-	<!-- 주일설교 리스트 출력 -->
-	<select id="sermonlist" resultType="com.project.vo.SermonVO"
-		parameterType="com.project.vo.SearchVO">
+	<!-- 주일설교 리스트 출력 및 검색기능 -->
+	<select id="sermonlist" resultType="com.project.vo.SermonVO" parameterType="com.project.vo.SearchVO">
 		SELECT * FROM sermonboard
 		WHERE sermonboardCnt IS NOT NULL
 		<if test="search_title_kind == 'subject'">
-			AND sermonSubject like CONCAT('%', #{sermonSearchParam}
-			,'%')
+			AND sermonSubject like CONCAT('%', #{sermonSearchParam},'%')
 		</if>
 		<if test="search_title_kind == 'title'">
-			AND sermonTitle like CONCAT('%', #{sermonSearchParam} ,
-			'%')
+			AND sermonTitle like CONCAT('%', #{sermonSearchParam} , '%')
 		</if>
 		<if test="search_title_kind == 'main'">
 			AND sermonMain like CONCAT('%', #{sermonSearchParam} ,'%')
@@ -36,23 +33,21 @@
 	</select>
 
 	<!-- 주일설교 데이터 저장 -->
-	<insert id="sermoninsert" parameterType="hashmap">
+	<insert id="sermoninsert" parameterType="com.project.vo.SermonVO">
 		INSERT INTO
 		sermonboard(sermonSubject,sermonTitle,sermonMain,sermonPage,sermonPoint,sermonFile,sermonDate)
-		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFileName},#{sermonDate})
+		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFile},#{sermonDate})
 	</insert>
 
 	<!-- 주일설교 데이터 수정 -->
-	<update id="sermonupdate"
-		parameterType="com.project.vo.SermonVO">
+	<update id="sermonupdate" parameterType="com.project.vo.SermonVO">
 		UPDATE sermonboard SET
 		sermonSubject = #{sermonSubject},
 		sermonTitle = #{sermonTitle},
-		sermonMain =
-		#{sermonMain},
+		sermonMain = #{sermonMain},
 		sermonPage=#{sermonPage},
 		sermonPoint=#{sermonPoint},
-		sermonFile=#{sermonFileName},
+		sermonFile=#{sermonFile},
 		sermonDate=#{sermonDate}
 		WHERE
 		sermonboardCnt = #{sermonCnt}

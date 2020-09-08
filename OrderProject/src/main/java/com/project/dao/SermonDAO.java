@@ -36,8 +36,8 @@ public class SermonDAO {
 	 * @param svo
 	 * @return
 	 */
-	public int sundaySermonInsert(Map<String, Object> map) {
-		int insertflag = session.insert("sermoninsert", map);
+	public int sundaySermonInsert(SermonVO svo) {
+		int insertflag = session.insert("sermoninsert", svo);
 		if (insertflag > 0) {
 			session.commit();
 		}
@@ -50,8 +50,8 @@ public class SermonDAO {
 	 * @param svo
 	 * @return
 	 */
-	public int sundaySermonUpdate(Map<String, Object> map) {
-		int updateflag = session.update("sermonupdate", map);
+	public int sundaySermonUpdate(SermonVO svo) {
+		int updateflag = session.update("sermonupdate", svo);
 		if (updateflag > 0) {
 			session.commit();
 		}

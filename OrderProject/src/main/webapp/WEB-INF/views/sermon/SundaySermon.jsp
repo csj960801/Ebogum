@@ -74,8 +74,7 @@
 					</thead>
 					<tbody class="tbody">
 						<c:if test="${!empty SundaySermonlist}">
-							<c:forEach varStatus="status" items="${SundaySermonlist}"
-								var="sermonlist">
+							<c:forEach varStatus="status" items="${SundaySermonlist}" var="sermonlist">
 								<tr>
 									<td>${status.count}</td>
 									<td>${sermonlist.sermonSubject}</td>

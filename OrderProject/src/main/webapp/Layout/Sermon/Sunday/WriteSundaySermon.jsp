@@ -74,8 +74,7 @@
 						</tr>
 						<tr>
 							<th>주제</th>
-							<td><input type="text" name="sermonSubject"
-								id="sermonSubject" class="sermonform"></td>
+							<td><input type="text" name="sermonSubject" id="sermonSubject" class="sermonform"></td>
 						</tr>
 						<tr>
 							<th>제목</th>

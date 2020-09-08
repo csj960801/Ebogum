@@ -41,38 +41,27 @@ public class SermonServiceImpl implements SermonService {
 	 * @throws Exception
 	 */
 	@Override
-	public int sundaySermonInsert(Map<String, Object> map, HttpServletRequest req) throws Exception {
-		int sundayinsertFlag = sermondao.sundaySermonInsert(map);
-
-		List<Map<String, Object>> list = FileUtils.parseInsertFileInfo(map, req);
-		int size = list.size();
-		for (int i = 0; i < size; i++) {
-			sermondao.sundaySermonInsert(list.get(i));
-			log.info("==================================");
-			log.info("설교 저장 데이터: " + list.get(i));
-			log.info("==================================");
-		}
+	public int sundaySermonInsert(SermonVO svo) {
+		int sundayinsertFlag = sermondao.sundaySermonInsert(svo);
 		return sundayinsertFlag;
 	}
 
+	/**
+	 * 주일 설교 데이터 수정
+	 */
 	@Override
-	public int sundaySermonUpdate(Map<String, Object> map, HttpServletRequest req) throws Exception {
-		int sundayupdateFlag = sermondao.sundaySermonUpdate(map);
-
-		List<Map<String, Object>> list = FileUtils.parseInsertFileInfo(map, req);
-		int size = list.size();
-		for (int i = 0; i < size; i++) {
-			sermondao.sundaySermonUpdate(list.get(i));
-			log.info("==================================");
-			log.info("설교 수정 데이터: " + list.get(i));
-			log.info("==================================");
-		}
+	public int sundaySermonUpdate(SermonVO svo) {
+		int sundayupdateFlag = sermondao.sundaySermonUpdate(svo);
 		return sundayupdateFlag;
 	}
 
+	/**
+	 * 주일 설교 데이터 삭제
+	 */
 	@Override
 	public int sundaySermonDelete(SermonVO svo) {
 		// TODO Auto-generated method stub
 		return sermondao.sundaySermonDelete(svo);
 	}
+
 }

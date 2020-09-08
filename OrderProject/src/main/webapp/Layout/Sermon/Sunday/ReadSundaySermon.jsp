@@ -87,7 +87,7 @@
 							</tr>
 							<tr>
 								<th>파일다운</th>
-								<td><a href="javascript:Filedownload('Recovery.txt')">다운로드</a></td>
+								<td><a href="javascript:Filedownload('${param.sermonFileDown}')">다운로드</a></td>
 							</tr>
 							<tr>
 								<td colspan="2">

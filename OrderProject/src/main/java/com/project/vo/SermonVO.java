@@ -9,12 +9,58 @@ public class SermonVO {
 	private String sermonMain;
 	private String sermonPage;
 	private String sermonPoint;
-	private MultipartFile sermonFile;
-    private String sermonDate;
-    private String sermonCnt;
-    
+	private String sermonFile;
+	private String sermonDate;
+	private String sermonCnt;
+
 	public SermonVO() {
 
+	}
+
+	/**
+	 * insert 전용 생성자
+	 * 
+	 * @param sermonSubject
+	 * @param sermonTitle
+	 * @param sermonMain
+	 * @param sermonPage
+	 * @param sermonPoint
+	 * @param sermonFile
+	 * @param sermonDate
+	 */
+	public SermonVO(String sermonSubject, String sermonTitle, String sermonMain, String sermonPage, String sermonPoint,
+			String sermonFile, String sermonDate) {
+		this.sermonSubject = sermonSubject;
+		this.sermonTitle = sermonTitle;
+		this.sermonMain = sermonMain;
+		this.sermonPage = sermonPage;
+		this.sermonPoint = sermonPoint;
+		this.sermonFile = sermonFile;
+		this.sermonDate = sermonDate;
+	}
+
+	/**
+	 * update 전용 생성자
+	 * 
+	 * @param sermonSubject
+	 * @param sermonTitle
+	 * @param sermonMain
+	 * @param sermonPage
+	 * @param sermonPoint
+	 * @param sermonFile
+	 * @param sermonDate
+	 * @param sermonCnt
+	 */
+	public SermonVO(String sermonSubject, String sermonTitle, String sermonMain, String sermonPage, String sermonPoint,
+			String sermonFile, String sermonDate, String sermonCnt) {
+		this.sermonSubject = sermonSubject;
+		this.sermonTitle = sermonTitle;
+		this.sermonMain = sermonMain;
+		this.sermonPage = sermonPage;
+		this.sermonPoint = sermonPoint;
+		this.sermonFile = sermonFile;
+		this.sermonDate = sermonDate;
+		this.sermonCnt = sermonCnt;
 	}
 
 	public String getSermonSubject() {
@@ -57,14 +103,6 @@ public class SermonVO {
 		this.sermonPoint = sermonPoint;
 	}
 
-	public MultipartFile getSermonFile() {
-		return sermonFile;
-	}
-
-	public void setSermonFile(MultipartFile sermonFile) {
-		this.sermonFile = sermonFile;
-	}
-
 	public String getSermonDate() {
 		return sermonDate;
 	}
@@ -79,5 +117,13 @@ public class SermonVO {
 
 	public void setSermonCnt(String sermonCnt) {
 		this.sermonCnt = sermonCnt;
+	}
+
+	public String getSermonFile() {
+		return sermonFile;
+	}
+
+	public void setSermonFile(String sermonFile) {
+		this.sermonFile = sermonFile;
 	}
 }
