@@ -8,7 +8,7 @@ $(function() {
 
 	$("#file1, #sermonListBtn").click(function() {
 		// #file1
-		movePage = "SundaySermon.sermon"; // 주일 설교
+		movePage = "/Sunday/SundaySermon.sermon"; // 주일 설교
 		window.location.href = "/sermon/" + movePage;
 		
 		// #sermonListBtn
@@ -109,7 +109,7 @@ function sermonBtnEffect() {
 	// 설교 데이터 저장
 	$("#WriteSermonBtn").click(function(){
 		var sermonFrm = document.sermonFrm;
-		sermonFrm.action = "/sermon/SundaySermonInsert.sermon";
+		sermonFrm.action = "/sermon/Sunday/SundaySermonInsert.sermon";
 	    sermonFrm.method = "post";
 	    sermonFrm.submit();
 	});
@@ -144,7 +144,7 @@ function sermonBtnEffect() {
 	// 설교 데이터 수정
 	$("#ReviseSermonBtn").click(function(){
 		var sermonFrm = document.sermonFrm;
-		sermonFrm.action = "/sermon/SundaySermonUpdate.sermon";
+		sermonFrm.action = "/sermon/Sunday/SundaySermonUpdate.sermon";
 	    sermonFrm.method = "post";
 	    sermonFrm.submit();
 	});
@@ -155,7 +155,7 @@ function sermonBtnEffect() {
 		var delSermon = confirm("정말삭제하시겠습니까?");
 		if(delSermon){
 			//var sermonCnt = $("#revCnt").val();
-			sermonFrm.action = "/sermon/SundaySermonDelete.sermon";
+			sermonFrm.action = "/sermon/Sunday/SundaySermonDelete.sermon";
 		    sermonFrm.method = "post";
 		    sermonFrm.submit();
 			

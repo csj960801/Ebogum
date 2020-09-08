@@ -40,7 +40,7 @@ public class SermonController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping("/SermonFiledownload.sermon")
+	@RequestMapping("/Sunday/SermonFiledownload.sermon")
 	public ModelAndView download(@RequestParam HashMap<Object, Object> params, ModelAndView mv) {
 		String FILE_SERVER_PATH = "C:/test";
 		String fileName = (String) params.get("fileName");
@@ -61,7 +61,7 @@ public class SermonController {
 	 * @return
 	 * @throws IOException
 	 */
-	@RequestMapping("/SundaySermon.sermon")
+	@RequestMapping("/Sunday/SundaySermon.sermon")
 	public List<SermonVO> FileBoard(Model model, @ModelAttribute("svo") SearchVO svo, HttpServletRequest request)
 			throws IOException {
 		List<SermonVO> fileboardList = sermonservice.sundaySermonList(svo);
@@ -83,7 +83,7 @@ public class SermonController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/SundaySermonInsert.sermon")
+	@RequestMapping("/Sunday/SundaySermonInsert.sermon")
 	public Map<String, Object> SundaySermonInsert(@RequestParam("sermonFile") MultipartFile multi,
 			HttpServletRequest request) throws Exception {
 		Map<String, Object> fileMap = new HashMap<String, Object>();
@@ -120,7 +120,7 @@ public class SermonController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/SundaySermonUpdate.sermon")
+	@RequestMapping("/Sunday/SundaySermonUpdate.sermon")
 	public Map<String, Object> SundaySermonUpdate(@RequestParam("sermonFile") MultipartFile multi,
 			HttpServletRequest request) throws Exception {
 
@@ -140,7 +140,7 @@ public class SermonController {
 		fileMap.put("sundayupdate", sundayupdate);
 		if (sundayupdate > 0) {
 			sermonLog.info("==========================");
-			sermonLog.info("설교 데이터 저장 되었습니다.");
+			sermonLog.info("설교 데이터 수정 되었습니다.");
 			sermonLog.info("==========================");
 		}
 
@@ -154,7 +154,7 @@ public class SermonController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping("/SundaySermonDelete.sermon")
+	@RequestMapping("/Sunday/SundaySermonDelete.sermon")
 	public Map<String, Object> SundaySermonDelete(SermonVO svo) {
 		Map<String, Object> delMap = new HashMap<String, Object>();
 		int sundaydel = sermonservice.sundaySermonDelete(svo);
