@@ -84,7 +84,7 @@
 								 </c:when>
 							</c:choose>
 						</p>
-						<span class="point_span">POINT</span> ${getPoint}
+						<span class="point_span">POINT</span> ${sessionScope.point}
 	
 						<br>
 	

@@ -4,6 +4,6 @@
 <c:if test="${sundayinsert > 0}">
 	<script>
 		alert("설교데이터 저장 되었습니다.");
-		window.location.href = "/sermon/SundaySermon.sermon";
+		window.location.href = "/sermon/Sunday/SundaySermon.sermon";
 	</script>
 </c:if>

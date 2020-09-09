@@ -2,11 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.sermonMapper">
 
-	<!-- <resultMap type="com.project.vo.SermonVO" id="sermonvo"> <result property="sermonSubject" 
-		column="sermonSubject" /> <result property="sermonTitle" column="sermonTitle" 
-		/> <result property="sermonMain" column="sermonMain" /> <result property="sermonPage" 
-		column="sermonPage" /> <result property="sermonPoint" column="sermonPoint" 
-		/> <result property="sermonFile" column="sermonFile" /> </resultMap> -->
+    <!-- 회원아이디  -->
+	<resultMap type="com.project.vo.UserVO" id="uservo">
+		<result column="duplicateid" property="duplicateid"/>
+	</resultMap>
 
 	<resultMap type="com.project.vo.SearchVO" id="sermonSearch">
 		<result property="sermonSearchParam" column="sermonSubject" />
@@ -22,10 +21,12 @@
 		SELECT * FROM sermonboard
 		WHERE sermonboardCnt IS NOT NULL
 		<if test="search_title_kind == 'subject'">
-			AND sermonSubject like CONCAT('%', #{sermonSearchParam},'%')
+			AND sermonSubject like CONCAT('%',
+			#{sermonSearchParam},'%')
 		</if>
 		<if test="search_title_kind == 'title'">
-			AND sermonTitle like CONCAT('%', #{sermonSearchParam} , '%')
+			AND sermonTitle like CONCAT('%', #{sermonSearchParam} ,
+			'%')
 		</if>
 		<if test="search_title_kind == 'main'">
 			AND sermonMain like CONCAT('%', #{sermonSearchParam} ,'%')
@@ -50,12 +51,63 @@
 		sermonFile=#{sermonFile},
 		sermonDate=#{sermonDate}
 		WHERE
-		sermonboardCnt = #{sermonCnt}
+		sermonboardCnt =
+		#{sermonCnt}
 	</update>
 
 	<!-- 주일설교 데이터 삭제 -->
-	<delete id="sermondelete" parameterType="com.project.vo.SermonVO">
-		DELETE FROM sermonboard WHERE sermonboardCnt = #{sermonCnt}
+	<delete id="sermondelete"
+		parameterType="com.project.vo.SermonVO">
+		DELETE FROM sermonboard WHERE sermonboardCnt =
+		#{sermonCnt}
 	</delete>
 
+	<!-- 다운로드 받은 파일의 포인트만큼 회원의 포인트 감소 -->
+	<update id="sermonUserPoint" parameterType="HashMap">
+	   <![CDATA[
+	    	UPDATE member SET point = point - #{point}
+	    	WHERE duplicateid = #{duplicateid}
+	   ]]>
+	</update>
+	
+	<!-- 강해설교 리스트 출력 및 검색기능 -->
+	<select id="ganghaesermonlist" resultType="com.project.vo.SermonVO" parameterType="com.project.vo.SearchVO">
+		SELECT * FROM ganghaesermonboard
+		WHERE sermonboardCnt IS NOT NULL
+		<if test="search_title_kind == 'subject'">
+			AND sermonSubject like CONCAT('%',#{sermonSearchParam},'%')
+		</if>
+		<if test="search_title_kind == 'title'">
+			AND sermonTitle like CONCAT('%', #{sermonSearchParam} ,'%')
+		</if>
+		<if test="search_title_kind == 'main'">
+			AND sermonMain like CONCAT('%', #{sermonSearchParam} ,'%')
+		</if>
+	</select>
+	
+	<!-- 강해설교 데이터 저장 -->
+	<insert id="ganghaesermoninsert" parameterType="com.project.vo.SermonVO">
+		INSERT INTO
+		ganghaesermonboard(sermonSubject,sermonTitle,sermonMain,sermonPage,sermonPoint,sermonFile,sermonDate)
+		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFile},#{sermonDate})
+	</insert>
+	
+	<!-- 주일설교 데이터 수정 -->
+	<update id="ganghaesermonupdate" parameterType="com.project.vo.SermonVO">
+		UPDATE ganghaesermonboard SET
+		sermonSubject = #{sermonSubject},
+		sermonTitle = #{sermonTitle},
+		sermonMain = #{sermonMain},
+		sermonPage=#{sermonPage},
+		sermonPoint=#{sermonPoint},
+		sermonFile=#{sermonFile},
+		sermonDate=#{sermonDate}
+		WHERE
+		sermonboardCnt = #{sermonCnt}
+	</update>
+	
+	<!-- 강해설교 데이터 삭제 -->
+	<delete id="ganghaesermondelete" parameterType="com.project.vo.SermonVO">
+		DELETE FROM ganghaesermonboard WHERE sermonboardCnt = #{sermonCnt}
+	</delete>
 </mapper>

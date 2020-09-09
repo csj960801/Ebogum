@@ -60,7 +60,7 @@
 			<div class="table_wrapper table-responsive">
 				<form id="sermonFrm" name="sermonFrm">
 				
-				<input type="hidden" id="SermonKind" value="sunday">
+				<input type="hidden" id="SermonKind" value="ganghae">
 				
 					<table class="table freeboard_tbl sermon_tbl">
 						<tbody class="tbody">

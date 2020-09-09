@@ -86,12 +86,19 @@ public class ApprovalController {
 		controllerLog.info(loginvo.getDuplicateid());
 		controllerLog.info(loginvo.getPass1());
 		controllerLog.info(getPoint.getDate());
+		controllerLog.info(getPoint.getPoint());
 		controllerLog.info("========================");
 
 		if (lvo) {
+			// 만약 포인트가 null이거나 입력되어 있지않을 경우 0으로 초기화
+			if (getPoint.getPoint() == null || getPoint.getPoint().equals("")) {
+				getPoint.setPoint("0");
+			}
+
 			session.setAttribute("login", loginvo.getDuplicateid());
+			session.setAttribute("point", Integer.parseInt(getPoint.getPoint()));
+	
 			model.addObject("loginFlag", lvo); // 로그인 성공 여부
-			model.addObject("getPoint", getPoint.getPoint()); // 로그인 성공시 해당 회원의 포인트
 			model.setViewName("/login/login");
 			controllerLog.info("========================");
 			controllerLog.info("로그인 성공");

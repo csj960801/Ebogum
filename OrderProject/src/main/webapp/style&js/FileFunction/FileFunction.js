@@ -15,8 +15,14 @@ $(function() {
 		document.sermonFrm.action="/sermon/" + movePage;
 		document.sermonFrm.submit();
 	});
-	$("#file2").click(function() {
-		movePage = "ganghae"; // 강해설교
+	$("#file2, #sermonListBtn").click(function() {
+		// #file2
+		movePage = "/Ganghae/GanghaeSermon.sermon"; // 강해설교
+	    window.location.href="/sermon" + movePage;
+
+		// #sermonListBtn
+		document.sermonFrm.action="/sermon/" + movePage;
+		document.sermonFrm.submit();
 	});
 	$("#file3").click(function() {
 		movePage = "person";// 인물설교
@@ -94,23 +100,38 @@ $(function() {
  * @returns
  */
 function sermonBtnEffect() {
+	
 	// 설교 종류
 	var SermonKind = $("#SermonKind").val();
 
 	// 설교 데이터 작성 폼으로 이동
 	$("#sermonWriteBtn").click(function() {
 			if (SermonKind == "sunday") {
+				
 				SermonKind = "주일설교";
+				window.location.href = "/Layout/Sermon/Sunday/WriteSundaySermon.jsp?sermonkind="
+			    + encodeURI(SermonKind);
+
+			}else if(SermonKind == "ganghae"){
+				
+				SermonKind = "강해설교";
+				window.location.href = "/Layout/Sermon/Ganghae/WriteGanghaeSermon.jsp?sermonkind="
+			    + encodeURI(SermonKind);
+			
 			}
-			window.location.href = "/Layout/Sermon/Sunday/WriteSundaySermon.jsp?sermonkind="
-			+ encodeURI(SermonKind);
 	});
     
 	// 설교 데이터 저장
 	$("#WriteSermonBtn").click(function(){
 		var sermonFrm = document.sermonFrm;
-		sermonFrm.action = "/sermon/Sunday/SundaySermonInsert.sermon";
-	    sermonFrm.method = "post";
+		
+		if(SermonKind == "sunday"){
+			sermonFrm.action = "/sermon/Sunday/SundaySermonInsert.sermon";
+		}	    
+		if(SermonKind == "ganghae"){
+			sermonFrm.action = "/sermon/Ganghae/GanghaeSermonInsert.sermon";
+		}	
+		sermonFrm.method = "post";
 	    sermonFrm.submit();
 	});
 
@@ -127,16 +148,28 @@ function sermonBtnEffect() {
 		var revFileDown = $("#revFileDown").val();
 		var revCnt = $("#revCnt").val();
 				
-		sermonFrm.action = "/Layout/Sermon/Sunday/UpdateSundaySermon.jsp?"
-			+"revSubject="+encodeURI(revSubject)
-			+"&revTitle="+encodeURI(revTitle)
-			+"&revMain="+encodeURI(revMain)
-			+"&revPage="+encodeURI(revPage)
-			+"&revPoint="+encodeURI(revPoint)
-			+"&revDate="+encodeURI(revDate)
-			+"&revFileDown="+encodeURI(revFileDown)
-			+"&revCnt="+encodeURI(revCnt);
-			
+		if(SermonKind == "sunday"){		
+			sermonFrm.action = "/Layout/Sermon/Sunday/UpdateSundaySermon.jsp?"
+				+"revSubject="+encodeURI(revSubject)
+				+"&revTitle="+encodeURI(revTitle)
+				+"&revMain="+encodeURI(revMain)
+				+"&revPage="+encodeURI(revPage)
+				+"&revPoint="+encodeURI(revPoint)
+				+"&revDate="+encodeURI(revDate)
+				+"&revFileDown="+encodeURI(revFileDown)
+				+"&revCnt="+encodeURI(revCnt);
+		}	
+		if(SermonKind == "ganghae"){		
+			sermonFrm.action = "/Layout/Sermon/Ganghae/UpdateGanghaeSermon.jsp?"
+				+"revSubject="+encodeURI(revSubject)
+				+"&revTitle="+encodeURI(revTitle)
+				+"&revMain="+encodeURI(revMain)
+				+"&revPage="+encodeURI(revPage)
+				+"&revPoint="+encodeURI(revPoint)
+				+"&revDate="+encodeURI(revDate)
+				+"&revFileDown="+encodeURI(revFileDown)
+				+"&revCnt="+encodeURI(revCnt);
+		}	
 	    sermonFrm.method = "post";
 	    sermonFrm.submit();
 	});
@@ -144,8 +177,13 @@ function sermonBtnEffect() {
 	// 설교 데이터 수정
 	$("#ReviseSermonBtn").click(function(){
 		var sermonFrm = document.sermonFrm;
-		sermonFrm.action = "/sermon/Sunday/SundaySermonUpdate.sermon";
-	    sermonFrm.method = "post";
+		if (SermonKind == "sunday") {
+			sermonFrm.action = "/sermon/Sunday/SundaySermonUpdate.sermon";
+		}
+		else if (SermonKind == "ganghae") {
+	   		sermonFrm.action = "/sermon/Ganghae/GanghaeSermonUpdate.sermon";
+		}
+		sermonFrm.method = "post";
 	    sermonFrm.submit();
 	});
 	
@@ -154,8 +192,12 @@ function sermonBtnEffect() {
 		var sermonFrm = document.sermonFrm;
 		var delSermon = confirm("정말삭제하시겠습니까?");
 		if(delSermon){
-			//var sermonCnt = $("#revCnt").val();
-			sermonFrm.action = "/sermon/Sunday/SundaySermonDelete.sermon";
+			if (SermonKind == "sunday") {
+			 	sermonFrm.action = "/sermon/Sunday/SundaySermonDelete.sermon";
+			}
+			else if (SermonKind == "ganghae") {
+	   			sermonFrm.action = "/sermon/Ganghae/GanghaeSermonDelete.sermon";
+			}
 		    sermonFrm.method = "post";
 		    sermonFrm.submit();
 			
@@ -173,8 +215,14 @@ function sermonBtnEffect() {
 	    	$("#sermonSearchParam").focus();
 	    	return false;
 	    }
-	    sermonSearchFrm.action = "/sermon/SundaySermon.sermon";
-	    sermonSearchFrm.method = "post";
+		
+		if(SermonKind == "sunday"){	
+	    	sermonSearchFrm.action = "/sermon/Sunday/SundaySermon.sermon";
+ 	    }
+        else if(SermonKind == "ganghae"){
+			sermonSearchFrm.action = "/sermon/Ganghae/GanghaeSermon.sermon";
+		}
+ 		sermonSearchFrm.method = "post";
 	    sermonSearchFrm.submit();
 	    
 	});
@@ -206,19 +254,33 @@ function Sermon_read(
 	switch(sermonType){
 	case "sunday":
 		sermonType = "주일설교";
+		window.location.href="/Layout/Sermon/Sunday/ReadSundaySermon.jsp?"+
+		"sermonType="+encodeURI(sermonType)
+		+"&sermonSubject="+encodeURI(sermonSubject)
+		+"&sermonMain="+encodeURI(sermonMain)
+		+"&sermonTitle="+encodeURI(sermonTitle)
+		+"&sermonPage="+encodeURI(sermonPage)
+		+"&sermonDate="+encodeURI(sermonDate)
+		+"&sermonPoint="+encodeURI(sermonPoint)
+		+"&sermonFileDown="+encodeURI(downloadData)
+		+"&sermonCnt="+encodeURI(dataCnt);
 		break;
+	case "ganghae":
+		sermonType = "강해설교";
+		window.location.href="/Layout/Sermon/Ganghae/ReadGanghaeSermon.jsp?"+
+		"sermonType="+encodeURI(sermonType)
+		+"&sermonSubject="+encodeURI(sermonSubject)
+		+"&sermonMain="+encodeURI(sermonMain)
+		+"&sermonTitle="+encodeURI(sermonTitle)
+		+"&sermonPage="+encodeURI(sermonPage)
+		+"&sermonDate="+encodeURI(sermonDate)
+		+"&sermonPoint="+encodeURI(sermonPoint)
+		+"&sermonFileDown="+encodeURI(downloadData)
+		+"&sermonCnt="+encodeURI(dataCnt);
+		break;		
 	}
 	
-	window.location.href="/Layout/Sermon/Sunday/ReadSundaySermon.jsp?"+
-	"sermonType="+encodeURI(sermonType)
-	+"&sermonSubject="+encodeURI(sermonSubject)
-	+"&sermonMain="+encodeURI(sermonMain)
-	+"&sermonTitle="+encodeURI(sermonTitle)
-	+"&sermonPage="+encodeURI(sermonPage)
-	+"&sermonDate="+encodeURI(sermonDate)
-	+"&sermonPoint="+encodeURI(sermonPoint)
-	+"&sermonFileDown="+encodeURI(downloadData)
-	+"&sermonCnt="+encodeURI(dataCnt);
+	
 };
 
 /**
@@ -226,9 +288,11 @@ function Sermon_read(
  * @param fileName
  * @returns
  */
-function Filedownload(filename){
+function Filedownload(filename, filepoint,duplicateid){
 	var downloadFile = document.sermonFrm;
 	downloadFile.method="post";
-	downloadFile.action="/sermon/SermonFiledownload.sermon?fileName=" + encodeURI(filename);
+	downloadFile.action="/sermon/Sunday/SermonFiledownload.sermon?fileName=" + encodeURI(filename)
+	+ "&userPoint="+encodeURI(filepoint)
+	+ "&duplicateid=" +encodeURI(duplicateid);
 	downloadFile.submit();
 };

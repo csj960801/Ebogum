@@ -64,4 +64,48 @@ public class SermonServiceImpl implements SermonService {
 		return sermondao.sundaySermonDelete(svo);
 	}
 
+	/**
+	 * 파일 다운로드 시 다운로드 받은 파일의 포인트만큼 회원의 포인트 감소
+	 */
+	@Override
+	public int sundaySermonPoint(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return sermondao.sundaySermonUserPoint(paramMap);
+	}
+
+	/**
+	 * 강해 설교 리스트
+	 */
+	@Override
+	public List<SermonVO> ganghaeSermonList(SearchVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.ganghaeSermonList(svo);
+	}
+
+	/**
+	 * 강해 설교 데이터 저장
+	 */
+	@Override
+	public int ganghaeSermonInsert(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.ganghaeSermonInsert(svo);
+	}
+	
+	/**
+	 * 강해 설교 데이터 수정
+	 */
+	@Override
+	public int ganghaeSermonUpdate(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.ganghaeSermonUpdate(svo);
+	}
+	
+	/**
+	 * 강해 설교 데이터 삭제
+	 */
+	@Override
+	public int ganghaeSermonDelete(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.ganghaeSermonDelete(svo);
+	}
 }

@@ -71,4 +71,72 @@ public class SermonDAO {
 		}
 		return delflag;
 	}
+
+	/**
+	 * 주일 설교 파일을 다운로드 받을경우 파일에 적용되어있는 포인트만큼 회원 포인트를 감소시킴
+	 * 
+	 * @param point
+	 * @return
+	 */
+	public int sundaySermonUserPoint(Map<String, Object> paramMap) {
+		// int pointFlag = session.update("sermonUserPoint", point);
+		int pointFlag = session.update("sermonUserPoint", paramMap);
+		if (pointFlag > 0) {
+			session.commit();
+		}
+		return pointFlag;
+	}
+
+	/**
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public List<SermonVO> ganghaeSermonList(SearchVO svo) {
+		List<SermonVO> sermonlist = session.selectList("ganghaesermonlist", svo);
+		return sermonlist;
+	}
+
+	/**
+	 * 강해 설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int ganghaeSermonInsert(SermonVO svo) {
+		int insertflag = session.insert("ganghaesermoninsert", svo);
+		if (insertflag > 0) {
+			session.commit();
+		}
+		return insertflag;
+	}
+
+	/**
+	 * 주일 설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int ganghaeSermonUpdate(SermonVO svo) {
+		int updateflag = session.update("ganghaesermonupdate", svo);
+		if (updateflag > 0) {
+			session.commit();
+		}
+		return updateflag;
+	}
+
+	/**
+	 * 강해 설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int ganghaeSermonDelete(SermonVO svo) {
+		int delflag = session.delete("ganghaesermondelete", svo);
+		if (delflag > 0) {
+			session.commit();
+		}
+		return delflag;
+	}
+
 }

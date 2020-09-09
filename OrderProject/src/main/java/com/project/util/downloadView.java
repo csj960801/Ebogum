@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.view.AbstractView;
 
-//DonwloadView 자바파일에서 다운로드 처리를 진행할 것이며 bean등록 처리를 하기 위해 BeanNameViewResolver를 사용
+//이 파일에서 다운로드 처리를 진행할 것이며 bean등록 처리를 하기 위해 BeanNameViewResolver를 사용
 public class downloadView extends AbstractView {
 
 	@Override
@@ -25,8 +25,9 @@ public class downloadView extends AbstractView {
 			String userAgent = request.getHeader("User-Agent");
 
 			if (userAgent.indexOf("MSIE") > -1 || userAgent.indexOf("Trident") > -1) {
+
 				fileName = URLEncoder.encode(file.getName(), "utf-8").replaceAll("\\+", "%20");
-				;
+
 			} else if (userAgent.indexOf("Chrome") > -1) {
 				StringBuffer sb = new StringBuffer();
 				for (int i = 0; i < file.getName().length(); i++) {

@@ -1,18 +1,18 @@
 package com.project.vo;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class SermonVO {
 
 	private String sermonSubject;
 	private String sermonTitle;
 	private String sermonMain;
 	private String sermonPage;
+
+	// 설교파일에 적용되어 있는 포인트
 	private String sermonPoint;
 	private String sermonFile;
 	private String sermonDate;
 	private String sermonCnt;
-
+	
 	public SermonVO() {
 
 	}
@@ -126,4 +126,5 @@ public class SermonVO {
 	public void setSermonFile(String sermonFile) {
 		this.sermonFile = sermonFile;
 	}
+
 }

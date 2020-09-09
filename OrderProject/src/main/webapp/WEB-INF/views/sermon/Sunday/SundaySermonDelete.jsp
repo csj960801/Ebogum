@@ -4,6 +4,6 @@
 <c:if test="${sundaydelete > 0}">
 	<script>
 		alert("설교데이터 삭제 되었습니다.");
-		window.location.href = "/sermon/SundaySermon.sermon";
+		window.location.href = "/sermon/Sunday/SundaySermon.sermon";
 	</script>
 </c:if>

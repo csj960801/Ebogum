@@ -54,11 +54,12 @@
 		<div class="main_board_wrapper">
 
 			<div class="sermonTitle_wrapper">
-				<h3 class="sermonTitle">주일설교</h3>
+				<h3 class="sermonTitle">강해설교</h3>
 			</div>
 
 			<div class="table_wrapper table-responsive">
-				<input type="hidden" id="SermonKind" value="sunday" />
+			
+				<input type="hidden" id="SermonKind" value="ganghae" />
 
 				<table class="table freeboard_tbl">
 					<thead class="thead">
@@ -73,8 +74,8 @@
 						</tr>
 					</thead>
 					<tbody class="tbody">
-						<c:if test="${!empty SundaySermonlist}">
-							<c:forEach varStatus="status" items="${SundaySermonlist}" var="sermonlist">
+						<c:if test="${!empty GanghaeSermonlist}">
+							<c:forEach varStatus="status" items="${GanghaeSermonlist}" var="sermonlist">
 								<tr>
 									<td>${status.count}</td>
 									<td>${sermonlist.sermonSubject}</td>
@@ -96,7 +97,7 @@
 							</c:forEach>
 						</c:if>
 						<c:choose>
-							<c:when test="${empty SundaySermonlist}">
+							<c:when test="${empty GanghaeSermonlist}">
 								<tr>
 									<td colspan="7">업로드된 자료가 없습니다.</td>
 								</tr>

@@ -63,7 +63,7 @@
 	<div class="main_col col-md-9 col-xs-9">
 		<div class="table_wrapper table-responsive">
 
-			<input type="hidden" id="SermonKind" value="sunday" />
+			<input type="hidden" id="SermonKind" value="ganghae" />
 
 			<form name="sermonFrm" id="sermonFrm" enctype="multipart/form-data">
 				<table class="sermontbl table">

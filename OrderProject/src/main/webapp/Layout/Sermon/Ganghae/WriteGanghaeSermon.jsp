@@ -63,40 +63,38 @@
 	<div class="main_col col-md-9 col-xs-9">
 		<div class="table_wrapper table-responsive">
 
-			<input type="hidden" id="SermonKind" value="sunday" />
+			<input type="hidden" id="SermonKind" value="ganghae" />
 
 			<form name="sermonFrm" id="sermonFrm" enctype="multipart/form-data">
 				<table class="sermontbl table">
 					<tbody class="tbody">
 						<tr>
+							<th>분류</th>
+							<td>${param.sermonkind}</td>
+						</tr>
+						<tr>
 							<th>주제</th>
-							<td><input type="text" name="sermonSubject"
-								value="${param.revSubject}" id="sermonSubject"
-								class="sermonform"></td>
+							<td><input type="text" name="sermonSubject" id="sermonSubject" class="sermonform"></td>
 						</tr>
 						<tr>
 							<th>제목</th>
 							<td><input type="text" name="sermonTitle" id="sermonTitle"
-								value="${param.revTitle}" class="sermonform"></td>
+								class="sermonform"></td>
 						</tr>
 						<tr>
 							<th>본문</th>
 							<td><input type="text" name="sermonMain" id="sermonMain"
-								value="${param.revMain}" class="sermonform"></td>
+								class="sermonform"></td>
 						</tr>
 						<tr>
 							<th>편수</th>
 							<td><input type="text" name="sermonPage" id="sermonPage"
-								value="${param.revPage}" class="sermonform"></td>
+								class="sermonform"></td>
 						</tr>
 						<tr>
 							<th>포인트</th>
 							<td><input type="text" name="sermonPoint" id="sermonPoint"
-								value="${param.revPoint}" class="sermonform"></td>
-						</tr>
-						<tr>
-							<th>기존파일</th>
-							<td>${param.revFileDown}</td>
+								class="sermonform"></td>
 						</tr>
 						<tr>
 							<th>파일</th>
@@ -106,11 +104,6 @@
 							<td><input type="hidden" name="sermonDate"
 								value="<%=getToday%>" class="sermonform"></td>
 						</tr>
-						<tr>
-							<td><input type="hidden" name="sermonCnt"
-								value="${param.revCnt}" class="sermonform"></td>
-						</tr>
-
 					</tbody>
 				</table>
 
@@ -119,7 +112,7 @@
 				<div class="bottom_wrapper">
 					<div class="board_number_wrapper">
 						<span class="btn_span">
-							<button id="ReviseSermonBtn" class="btn btn-sm">등록</button>
+							<button id="WriteSermonBtn" class="btn btn-sm">등록</button>
 						</span>
 						<span class="btn_span">
 							<button id="sermonListBtn" class="btn btn-sm">목록</button>
