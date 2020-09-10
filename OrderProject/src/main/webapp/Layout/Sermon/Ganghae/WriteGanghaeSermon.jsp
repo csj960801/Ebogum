@@ -70,7 +70,10 @@
 					<tbody class="tbody">
 						<tr>
 							<th>분류</th>
-							<td>${param.sermonkind}</td>
+							<td>
+							 ${param.sermonkind}
+							 <input type="hidden" name="sermonkind" value="${param.sermonkind}" />
+							</td>
 						</tr>
 						<tr>
 							<th>주제</th>
@@ -101,8 +104,16 @@
 							<td><input type="file" name="sermonFile" class="sermonform"></td>
 						</tr>
 						<tr>
-							<td><input type="hidden" name="sermonDate"
-								value="<%=getToday%>" class="sermonform"></td>
+							<th>신약/구약</th>
+							<td>
+							  <select name="sermonBibleType" id="sermonBibleType">
+							     <option value="구약">구약</option>
+							     <option value="신약">신약</option>							 
+							  </select>
+							</td>
+						</tr>
+						<tr>
+							<td><input type="hidden" name="sermonDate" value="<%=getToday%>" class="sermonform"></td>
 						</tr>
 					</tbody>
 				</table>

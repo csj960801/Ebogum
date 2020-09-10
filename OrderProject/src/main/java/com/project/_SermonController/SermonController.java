@@ -35,19 +35,30 @@ public class SermonController {
 	private Logger sermonLog = LoggerFactory.getLogger(this.getClass());
 
 	/**
-	 * 설교파일 다운로드
+	 * 전체 설교파일 다운로드
 	 * 
 	 * @param svo
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping("/Sunday/SermonFiledownload.sermon")
+	@RequestMapping("/SermonFiledownload.sermon")
 	public ModelAndView download(@RequestParam HashMap<Object, Object> params, @RequestParam("userPoint") String point,
-			@RequestParam("duplicateid") String id, Map<String, Object> paramMap, ModelAndView mv) {
+			@RequestParam("duplicateid") String id, @RequestParam("sermonType") String sermonType,
+			Map<String, Object> paramMap, ModelAndView mv) {
 
-		String FILE_SERVER_PATH = "C:/SermonFile";
+		// sermonType변수로 받은 설교 타입에 해당하는 파일 경로 생성
+		StringBuffer FILE_SERVER_PATH = new StringBuffer("C:/SermonFile");
+		switch (sermonType) {
+		case "sunday":
+			FILE_SERVER_PATH.append("/sunday");
+			break;
+		case "ganghae":
+			FILE_SERVER_PATH.append("/ganghae");
+			break;
+		}
+
 		String fileName = (String) params.get("fileName");
-		String fullPath = FILE_SERVER_PATH + "/" + fileName;
+		String fullPath = FILE_SERVER_PATH.toString() + "/" + fileName;
 
 		File file = new File(fullPath);
 
@@ -109,8 +120,9 @@ public class SermonController {
 		String page = request.getParameter("sermonPage");
 		String point = request.getParameter("sermonPoint");
 		String date = request.getParameter("sermonDate");
+		String bibleType = request.getParameter("sermonBibleType");
 
-		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date);
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, bibleType);
 
 		int sundayinsert = sermonservice.sundaySermonInsert(svo);
 		fileMap.put("sundayinsert", sundayinsert);
@@ -145,8 +157,10 @@ public class SermonController {
 		String point = request.getParameter("sermonPoint");
 		String date = request.getParameter("sermonDate");
 		String cnt = request.getParameter("sermonCnt");
+		String bibleType = request.getParameter("sermonBibleType");
 
-		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, cnt);
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, cnt,
+				bibleType);
 
 		int sundayupdate = sermonservice.sundaySermonUpdate(svo);
 		fileMap.put("sundayupdate", sundayupdate);
@@ -215,8 +229,9 @@ public class SermonController {
 		String page = request.getParameter("sermonPage");
 		String point = request.getParameter("sermonPoint");
 		String date = request.getParameter("sermonDate");
+		String bibleType = request.getParameter("sermonBibleType");
 
-		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date);
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, bibleType);
 
 		int ganghaensert = sermonservice.ganghaeSermonInsert(svo);
 		fileMap.put("ganghaeinsert", ganghaensert);
@@ -251,8 +266,10 @@ public class SermonController {
 		String point = request.getParameter("sermonPoint");
 		String date = request.getParameter("sermonDate");
 		String cnt = request.getParameter("sermonCnt");
+		String bibleType = request.getParameter("sermonBibleType");
 
-		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, cnt);
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, cnt,
+				bibleType);
 
 		int ganghaeupdate = sermonservice.ganghaeSermonUpdate(svo);
 		fileMap.put("ganghaeupdate", ganghaeupdate);
@@ -279,5 +296,5 @@ public class SermonController {
 		delMap.put("ganghaedel", ganghaedel);
 		return delMap;
 	}
-	
+
 }

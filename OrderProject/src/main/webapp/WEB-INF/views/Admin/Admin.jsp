@@ -99,13 +99,13 @@
 									    				   <td></td>
 									    				   <td></td>
 									    				   <td></td>
-									    				   <td></td>
+									    				   <td>${managingMember.point}</td>
 									    				 </tr>
 									    			  </c:forEach>
 									    			</c:if>
 									    			<c:if test="${memberlist == null}">
 									    			 	<tr>
-									    				   <td>존재하는 계정이 없습니다.</td>
+									    				   <td colspan="9">존재하는 계정이 없습니다.</td>
 									    				</tr>
 									    			</c:if>
 												</tbody>

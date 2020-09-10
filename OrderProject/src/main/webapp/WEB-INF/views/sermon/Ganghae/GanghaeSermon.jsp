@@ -59,6 +59,7 @@
 
 			<div class="table_wrapper table-responsive">
 			
+			 <form id="sermonFrm" name="sermonFrm">
 				<input type="hidden" id="SermonKind" value="ganghae" />
 
 				<table class="table freeboard_tbl">
@@ -77,7 +78,12 @@
 						<c:if test="${!empty GanghaeSermonlist}">
 							<c:forEach varStatus="status" items="${GanghaeSermonlist}" var="sermonlist">
 								<tr>
-									<td>${status.count}</td>
+									<c:if test="${sessionScope.login != null && sessionScope.point > 0}">
+									   <td><a href="javascript:Filedownload('${sermonlist.sermonFile}','${sermonlist.sermonPoint}','${sessionScope.login}');">다운로드</a></td>
+									</c:if>
+									<c:if test="${sessionScope.login == null || sessionScope.point <= 0}">
+									   <td><a href="javascript:alert('로그인이 되지않았거나 포인트가 부족합니다.');">다운로드</a></td>
+								    </c:if>	
 									<td>${sermonlist.sermonSubject}</td>
 									<td>
 									 <a href="javascript:Sermon_read('${sermonlist.sermonSubject}',
@@ -105,7 +111,8 @@
 						</c:choose>
 					</tbody>
 				</table>
-
+                </form>
+                
 				<div class="clearfix"></div>
 
 				<div class="bottom_wrapper">
@@ -122,12 +129,18 @@
 
 				<div class="board_search_wrapper">
 					<form id="sermonSearchFrm" name="sermonSearchFrm">
+						<select name="search_bible_kind" id="search_bible_kind">
+							<option value="all">해당없음</option>
+							<option value="past">구약</option>
+							<option value="new">신약</option>
+						</select>
+						
 						<select name="search_title_kind" id="search_title_kind">
 							<option value="subject">주제</option>
 							<option value="title">제목</option>
-							<option value="main">본문</option>
+							<option value="main">본문</option>				
 						</select>
-						
+					
 						<input type="text" name="sermonSearchParam" id="sermonSearchParam" />
 
 						<button id="sermonsearchBtn" class="btn btn-sm">검색</button>

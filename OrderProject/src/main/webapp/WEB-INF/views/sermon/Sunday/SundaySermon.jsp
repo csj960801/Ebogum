@@ -58,6 +58,8 @@
 			</div>
 
 			<div class="table_wrapper table-responsive">
+			 <form id="sermonFrm" name="sermonFrm">
+			 
 				<input type="hidden" id="SermonKind" value="sunday" />
 
 				<table class="table freeboard_tbl">
@@ -76,7 +78,12 @@
 						<c:if test="${!empty SundaySermonlist}">
 							<c:forEach varStatus="status" items="${SundaySermonlist}" var="sermonlist">
 								<tr>
-									<td>${status.count}</td>
+									<c:if test="${sessionScope.login != null && sessionScope.point > 0}">
+									   <td><a href="javascript:Filedownload('${sermonlist.sermonFile}','${sermonlist.sermonPoint}','${sessionScope.login}');">다운로드</a></td>
+									</c:if>
+									<c:if test="${sessionScope.login == null || sessionScope.point <= 0}">
+									   <td><a href="javascript:alert('로그인이 되지않았거나 포인트가 부족합니다.');">다운로드</a></td>
+								    </c:if>	
 									<td>${sermonlist.sermonSubject}</td>
 									<td>
 									 <a href="javascript:Sermon_read('${sermonlist.sermonSubject}',
@@ -104,7 +111,8 @@
 						</c:choose>
 					</tbody>
 				</table>
-
+                </form>
+                
 				<div class="clearfix"></div>
 
 				<div class="bottom_wrapper">

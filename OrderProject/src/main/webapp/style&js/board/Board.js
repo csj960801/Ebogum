@@ -532,6 +532,11 @@ function boardBtnEffect(functionCnt) {
 		$("#WriteBoardFrm").prop("method", "post");
         document.WriteBoardFrm.submit();
 	});
+	
+    // 공지게시글 팝업 닫기
+	$("#NoticeboardCloseBtn").click(function(){
+		self.close();
+	});
 };
 
 /**

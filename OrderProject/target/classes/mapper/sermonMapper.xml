@@ -7,6 +7,7 @@
 		<result column="duplicateid" property="duplicateid"/>
 	</resultMap>
 
+	<!-- 검색전용 파라미터  -->
 	<resultMap type="com.project.vo.SearchVO" id="sermonSearch">
 		<result property="sermonSearchParam" column="sermonSubject" />
 		<result property="sermonSearchParam" column="sermonTitle" />
@@ -14,6 +15,7 @@
 		<result property="search_title_kind" column="sermonSubject" />
 		<result property="search_title_kind" column="sermonTitle" />
 		<result property="search_title_kind" column="sermonMain" />
+		<result property="search_bible_kind" column="sermonBibleType" />
 	</resultMap>
 
 	<!-- 주일설교 리스트 출력 및 검색기능 -->
@@ -36,8 +38,8 @@
 	<!-- 주일설교 데이터 저장 -->
 	<insert id="sermoninsert" parameterType="com.project.vo.SermonVO">
 		INSERT INTO
-		sermonboard(sermonSubject,sermonTitle,sermonMain,sermonPage,sermonPoint,sermonFile,sermonDate)
-		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFile},#{sermonDate})
+		sermonboard(sermonSubject,sermonTitle,sermonMain,sermonPage,sermonPoint,sermonFile,sermonDate,sermonBibleType)
+		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFile},#{sermonDate},#{sermonBibleType})
 	</insert>
 
 	<!-- 주일설교 데이터 수정 -->
@@ -49,10 +51,10 @@
 		sermonPage=#{sermonPage},
 		sermonPoint=#{sermonPoint},
 		sermonFile=#{sermonFile},
-		sermonDate=#{sermonDate}
+		sermonDate=#{sermonDate},
+		sermonBibleType=#{sermonBibleType}
 		WHERE
-		sermonboardCnt =
-		#{sermonCnt}
+		sermonboardCnt = #{sermonCnt}
 	</update>
 
 	<!-- 주일설교 데이터 삭제 -->
@@ -83,16 +85,25 @@
 		<if test="search_title_kind == 'main'">
 			AND sermonMain like CONCAT('%', #{sermonSearchParam} ,'%')
 		</if>
+		<if test="search_bible_kind == 'all'">
+			AND sermonBibleType IS NOT NULL 
+		</if>
+		<if test="search_bible_kind == 'past'">
+			AND sermonBibleType = '구약' 
+		</if>
+		<if test="search_bible_kind == 'new'">
+			AND sermonBibleType = '신약'
+		</if>
 	</select>
 	
 	<!-- 강해설교 데이터 저장 -->
 	<insert id="ganghaesermoninsert" parameterType="com.project.vo.SermonVO">
 		INSERT INTO
-		ganghaesermonboard(sermonSubject,sermonTitle,sermonMain,sermonPage,sermonPoint,sermonFile,sermonDate)
-		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFile},#{sermonDate})
+		ganghaesermonboard(sermonSubject,sermonTitle,sermonMain,sermonPage,sermonPoint,sermonFile,sermonDate,sermonBibleType)
+		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFile},#{sermonDate},#{sermonBibleType})
 	</insert>
 	
-	<!-- 주일설교 데이터 수정 -->
+	<!-- 강해설교 데이터 수정 -->
 	<update id="ganghaesermonupdate" parameterType="com.project.vo.SermonVO">
 		UPDATE ganghaesermonboard SET
 		sermonSubject = #{sermonSubject},
@@ -101,7 +112,8 @@
 		sermonPage=#{sermonPage},
 		sermonPoint=#{sermonPoint},
 		sermonFile=#{sermonFile},
-		sermonDate=#{sermonDate}
+		sermonDate=#{sermonDate},
+		sermonBibleType=#{sermonBibleType}
 		WHERE
 		sermonboardCnt = #{sermonCnt}
 	</update>

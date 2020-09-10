@@ -18,14 +18,14 @@
 	}
 	.table_wrapper .Writefreeboard_tbl, .bottom_wrapper {
 		margin-top: 20px;
-		width: 62%;
+		width: 44%;
 	}
 	.table_wrapper .WriteNoticeboard_tbl, .Noticeboard_wrapper .bottom_wrapper{
 		margin-top: 20px;
 		width: auto;
 	}
 	.table_wrapper .freeboard_tbl {
-		width: 62%;
+		width: 44%;
 	}
 	.freeboard_tbl .tbody tr td a.boardlist_title:hover {
 		border-bottom: 1px solid #ddd;
@@ -134,7 +134,7 @@
 	}
 	.board_search_wrapper {
 		text-align: center;
-		width: 62%;
+		width: 44%;
 		margin: 15px 0;
 		border: 1px solid #ddd;
 		padding: 10px 0;

@@ -101,6 +101,15 @@
 							<td><input type="file" name="sermonFile" class="sermonform"></td>
 						</tr>
 						<tr>
+							<th>신약/구약</th>
+							<td>
+							  <select name="sermonBibleType" id="sermonBibleType">
+							     <option value="구약">구약</option>
+							     <option value="신약">신약</option>							 
+							  </select>
+							</td>
+						</tr>
+						<tr>
 							<td><input type="hidden" name="sermonDate"
 								value="<%=getToday%>" class="sermonform"></td>
 						</tr>

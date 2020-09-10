@@ -18,6 +18,7 @@ public class SearchVO {
 	
 	//설교 
 	private String search_title_kind;
+	private String search_bible_kind;
 	private String sermonSearchParam;
 	
 	public SearchVO() {
@@ -86,6 +87,14 @@ public class SearchVO {
 
 	public void setSearch_title_kind(String search_title_kind) {
 		this.search_title_kind = search_title_kind;
+	}
+
+	public String getSearch_bible_kind() {
+		return search_bible_kind;
+	}
+
+	public void setSearch_bible_kind(String search_bible_kind) {
+		this.search_bible_kind = search_bible_kind;
 	}
 
 }

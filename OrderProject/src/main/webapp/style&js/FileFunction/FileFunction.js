@@ -280,7 +280,6 @@ function Sermon_read(
 		break;		
 	}
 	
-	
 };
 
 /**
@@ -290,9 +289,15 @@ function Sermon_read(
  */
 function Filedownload(filename, filepoint,duplicateid){
 	var downloadFile = document.sermonFrm;
+	
+	//설교 종류
+	var sermonType = $("#SermonKind").val();
+
 	downloadFile.method="post";
-	downloadFile.action="/sermon/Sunday/SermonFiledownload.sermon?fileName=" + encodeURI(filename)
-	+ "&userPoint="+encodeURI(filepoint)
-	+ "&duplicateid=" +encodeURI(duplicateid);
+		downloadFile.action="/sermon/SermonFiledownload.sermon?fileName=" + encodeURI(filename)
+		+ "&userPoint="+encodeURI(filepoint)
+		+ "&duplicateid=" +encodeURI(duplicateid)
+		+ "&sermonType="+encodeURI(sermonType);
+	
 	downloadFile.submit();
 };

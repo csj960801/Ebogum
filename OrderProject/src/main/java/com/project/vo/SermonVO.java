@@ -12,13 +12,16 @@ public class SermonVO {
 	private String sermonFile;
 	private String sermonDate;
 	private String sermonCnt;
-	
+
+	// 신약/구약
+	private String sermonBibleType;
+
 	public SermonVO() {
 
 	}
 
 	/**
-	 * insert 전용 생성자
+	 * 설교 insert 전용 생성자
 	 * 
 	 * @param sermonSubject
 	 * @param sermonTitle
@@ -29,7 +32,7 @@ public class SermonVO {
 	 * @param sermonDate
 	 */
 	public SermonVO(String sermonSubject, String sermonTitle, String sermonMain, String sermonPage, String sermonPoint,
-			String sermonFile, String sermonDate) {
+			String sermonFile, String sermonDate, String sermonBibleType) {
 		this.sermonSubject = sermonSubject;
 		this.sermonTitle = sermonTitle;
 		this.sermonMain = sermonMain;
@@ -37,10 +40,11 @@ public class SermonVO {
 		this.sermonPoint = sermonPoint;
 		this.sermonFile = sermonFile;
 		this.sermonDate = sermonDate;
+		this.sermonBibleType = sermonBibleType;
 	}
 
 	/**
-	 * update 전용 생성자
+	 * 설교 update 전용 생성자
 	 * 
 	 * @param sermonSubject
 	 * @param sermonTitle
@@ -50,9 +54,10 @@ public class SermonVO {
 	 * @param sermonFile
 	 * @param sermonDate
 	 * @param sermonCnt
+	 * @param sermonBibleType
 	 */
 	public SermonVO(String sermonSubject, String sermonTitle, String sermonMain, String sermonPage, String sermonPoint,
-			String sermonFile, String sermonDate, String sermonCnt) {
+			String sermonFile, String sermonDate, String sermonCnt, String sermonBibleType) {
 		this.sermonSubject = sermonSubject;
 		this.sermonTitle = sermonTitle;
 		this.sermonMain = sermonMain;
@@ -61,6 +66,7 @@ public class SermonVO {
 		this.sermonFile = sermonFile;
 		this.sermonDate = sermonDate;
 		this.sermonCnt = sermonCnt;
+		this.sermonBibleType = sermonBibleType;
 	}
 
 	public String getSermonSubject() {
@@ -125,6 +131,14 @@ public class SermonVO {
 
 	public void setSermonFile(String sermonFile) {
 		this.sermonFile = sermonFile;
+	}
+
+	public String getSermonBibleType() {
+		return sermonBibleType;
+	}
+
+	public void setSermonBibleType(String sermonBibleType) {
+		this.sermonBibleType = sermonBibleType;
 	}
 
 }
