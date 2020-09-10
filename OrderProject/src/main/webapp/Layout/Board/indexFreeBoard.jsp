@@ -4,9 +4,9 @@
 
 <!-- 메인에 출력되는 자유게시판  -->
 <%
-	String url = "jdbc:mysql://localhost:3306/project?serverTimezone=UTC";
-	String user = "root";
-	String password = "sevenn0801";
+	String url = "";
+	String user = "";
+	String password = "";
 
 	Connection conn = null;
 	PreparedStatement psmt = null;
