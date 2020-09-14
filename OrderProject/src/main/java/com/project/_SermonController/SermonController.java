@@ -283,7 +283,7 @@ public class SermonController {
 	}
 
 	/**
-	 * 주일설교 데이터 삭제
+	 * 강해설교 데이터 삭제
 	 * 
 	 * @param svo
 	 * @param request
@@ -294,6 +294,115 @@ public class SermonController {
 		Map<String, Object> delMap = new HashMap<String, Object>();
 		int ganghaedel = sermonservice.ganghaeSermonDelete(svo);
 		delMap.put("ganghaedel", ganghaedel);
+		return delMap;
+	}
+
+	/**
+	 * 인물 설교 리스트
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/Person/PersonSermon.sermon")
+	public List<SermonVO> personSermonList(Model model, @ModelAttribute("svo") SearchVO svo,
+			HttpServletRequest request) {
+		List<SermonVO> fileboardList = sermonservice.personSermonList(svo);
+		model.addAttribute("PersonSermonlist", fileboardList);
+		if (fileboardList.size() > 0) {
+			sermonLog.info("==========================");
+			sermonLog.info("인물설교 " + fileboardList.size() + "데이터 존재합니다");
+			sermonLog.info("==========================");
+		}
+
+		return fileboardList;
+	}
+
+	/**
+	 * 인물 설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/Person/PersonSermonInsert.sermon")
+	public Map<String, Object> PersonSermonInsert(@RequestParam("sermonFile") MultipartFile multi,
+			HttpServletRequest request) throws Exception {
+		Map<String, Object> fileMap = new HashMap<String, Object>();
+
+		// 파일이 저장되어있는 곳 경로 입력
+		String filePath = "";
+
+		String subject = request.getParameter("sermonSubject");
+		String title = request.getParameter("sermonTitle");
+		String main = request.getParameter("sermonMain");
+		String page = request.getParameter("sermonPage");
+		String point = request.getParameter("sermonPoint");
+		String date = request.getParameter("sermonDate");
+		String bibleType = request.getParameter("sermonBibleType");
+
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, bibleType);
+
+		int personinsert = sermonservice.personSermonInsert(svo);
+		fileMap.put("personinsert", personinsert);
+
+		if (personinsert > 0) {
+			sermonLog.info("==========================");
+			sermonLog.info("인물설교 데이터 저장 되었습니다.");
+			sermonLog.info("==========================");
+		}
+
+		return fileMap;
+	}
+
+	/**
+	 * 인물 설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/Person/PersonSermonUpdate.sermon")
+	public Map<String, Object> PersonSermonUpdate(@RequestParam("sermonFile") MultipartFile multi,
+			HttpServletRequest request) throws Exception {
+
+		Map<String, Object> fileMap = new HashMap<String, Object>();
+
+		String subject = request.getParameter("sermonSubject");
+		String title = request.getParameter("sermonTitle");
+		String main = request.getParameter("sermonMain");
+		String page = request.getParameter("sermonPage");
+		String point = request.getParameter("sermonPoint");
+		String date = request.getParameter("sermonDate");
+		String cnt = request.getParameter("sermonCnt");
+		String bibleType = request.getParameter("sermonBibleType");
+
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, cnt,
+				bibleType);
+
+		int personupdate = sermonservice.personSermonUpdate(svo);
+		fileMap.put("personupdate", personupdate);
+		if (personupdate > 0) {
+			sermonLog.info("==========================");
+			sermonLog.info("인물 설교 데이터 수정 되었습니다.");
+			sermonLog.info("==========================");
+		}
+
+		return fileMap;
+	}
+
+	/**
+	 * 인물설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/Person/PersonSermonDelete.sermon")
+	public Map<String, Object> PersonSermonDelete(SermonVO svo) {
+		Map<String, Object> delMap = new HashMap<String, Object>();
+		int persondel = sermonservice.personSermonDelete(svo);
+		delMap.put("persondel", persondel);
 		return delMap;
 	}
 

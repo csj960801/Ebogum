@@ -248,7 +248,16 @@ function Questionboard_Read(boardCnt, boardWriter, boardlistTitle,
 };
 
 /**
-*/
+ * 공지 게시글을 읽어오는 함수 
+ *
+ * @param boardCnt
+ * @param boardWriter
+ * @param boardlistTitle
+ * @param boardContent
+ * @param boardHit
+ * @param boarddate
+ * @returns
+ */
 function Noticeboard_Read(boardCnt, boardlistTitle,
 		boardContent, boardHit, boardParam, boardDate) {
 	

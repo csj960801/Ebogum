@@ -16,7 +16,7 @@
 							</tr>
 							<tr align="center" valign="top" bgcolor="#E7E7E7">
 								<td class=""><a href="/Layout/MemberReg/MemberReg.jsp" class="footer_reg">회원가입</a> <span
-									class="footer_line"></span> <a href="/" class="footer_notice">공지사항</a>
+									class="footer_line"></span> <a href="/board/Noticeboard/NoticeBoard.board" class="footer_notice">공지사항</a>
 									<span class="footer_line"></span> <a href="/"
 									class="footer_news">파워로고스 소식</a> <span class="footer_line"></span>
 									<a href="/Layout/SiteMap/SiteMap.jsp" class="footer_sitemap">사이트맵</a> <span

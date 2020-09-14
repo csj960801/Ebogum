@@ -88,6 +88,7 @@ public class SermonDAO {
 	}
 
 	/**
+	 * 강해 설교 리스트
 	 * 
 	 * @param svo
 	 * @return
@@ -112,7 +113,7 @@ public class SermonDAO {
 	}
 
 	/**
-	 * 주일 설교 데이터 수정
+	 * 강해 설교 데이터 수정
 	 * 
 	 * @param svo
 	 * @return
@@ -133,6 +134,59 @@ public class SermonDAO {
 	 */
 	public int ganghaeSermonDelete(SermonVO svo) {
 		int delflag = session.delete("ganghaesermondelete", svo);
+		if (delflag > 0) {
+			session.commit();
+		}
+		return delflag;
+	}
+
+	/**
+	 * 인물 설교 리스트
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public List<SermonVO> personSermonList(SearchVO svo) {
+		List<SermonVO> sermonlist = session.selectList("personsermonlist", svo);
+		return sermonlist;
+	}
+
+	/**
+	 * 인물 설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int personSermonInsert(SermonVO svo) {
+		int insertflag = session.insert("personsermoninsert", svo);
+		if (insertflag > 0) {
+			session.commit();
+		}
+		return insertflag;
+	}
+
+	/**
+	 * 인물 설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int personSermonUpdate(SermonVO svo) {
+		int updateflag = session.update("personsermonupdate", svo);
+		if (updateflag > 0) {
+			session.commit();
+		}
+		return updateflag;
+	}
+
+	/**
+	 * 인물 설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int personSermonDelete(SermonVO svo) {
+		int delflag = session.delete("personsermondelete", svo);
 		if (delflag > 0) {
 			session.commit();
 		}

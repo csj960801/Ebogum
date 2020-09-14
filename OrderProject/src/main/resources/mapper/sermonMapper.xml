@@ -122,4 +122,50 @@
 	<delete id="ganghaesermondelete" parameterType="com.project.vo.SermonVO">
 		DELETE FROM ganghaesermonboard WHERE sermonboardCnt = #{sermonCnt}
 	</delete>
+	
+	<!-- 인물설교 리스트 출력 및 검색기능 -->
+	<select id="personsermonlist" resultType="com.project.vo.SermonVO" parameterType="com.project.vo.SearchVO">
+		SELECT * FROM personsermonboard
+		WHERE sermonboardCnt IS NOT NULL
+		<if test="search_title_kind == 'subject'">
+			AND sermonSubject like CONCAT('%',
+			#{sermonSearchParam},'%')
+		</if>
+		<if test="search_title_kind == 'title'">
+			AND sermonTitle like CONCAT('%', #{sermonSearchParam} ,
+			'%')
+		</if>
+		<if test="search_title_kind == 'main'">
+			AND sermonMain like CONCAT('%', #{sermonSearchParam} ,'%')
+		</if>
+	</select>
+
+	<!-- 인물설교 데이터 저장 -->
+	<insert id="personsermoninsert" parameterType="com.project.vo.SermonVO">
+		INSERT INTO
+		personsermonboard(sermonSubject,sermonTitle,sermonMain,sermonPage,sermonPoint,sermonFile,sermonDate,sermonBibleType)
+		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFile},#{sermonDate},#{sermonBibleType})
+	</insert>
+
+	<!-- 인물설교 데이터 수정 -->
+	<update id="personsermonupdate" parameterType="com.project.vo.SermonVO">
+		UPDATE personsermonboard SET
+		sermonSubject = #{sermonSubject},
+		sermonTitle = #{sermonTitle},
+		sermonMain = #{sermonMain},
+		sermonPage=#{sermonPage},
+		sermonPoint=#{sermonPoint},
+		sermonFile=#{sermonFile},
+		sermonDate=#{sermonDate},
+		sermonBibleType=#{sermonBibleType}
+		WHERE
+		sermonboardCnt = #{sermonCnt}
+	</update>
+
+	<!-- 인물설교 데이터 삭제 -->
+	<delete id="personsermondelete" parameterType="com.project.vo.SermonVO">
+		DELETE FROM personsermonboard WHERE sermonboardCnt =
+		#{sermonCnt}
+	</delete>
+	
 </mapper>

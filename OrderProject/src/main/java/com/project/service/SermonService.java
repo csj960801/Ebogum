@@ -24,8 +24,18 @@ interface SermonService {
 	List<SermonVO> ganghaeSermonList(SearchVO svo);
 
 	int ganghaeSermonInsert(SermonVO svo);
-	
+
 	int ganghaeSermonUpdate(SermonVO svo);
-	
+
 	int ganghaeSermonDelete(SermonVO svo);
-}
+
+	// 인물 설교
+	List<SermonVO> personSermonList(SearchVO svo);
+
+	int personSermonInsert(SermonVO svo);
+
+	int personSermonUpdate(SermonVO svo);
+
+	int personSermonDelete(SermonVO svo);
+
+}// end of interface

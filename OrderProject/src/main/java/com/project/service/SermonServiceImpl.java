@@ -90,7 +90,7 @@ public class SermonServiceImpl implements SermonService {
 		// TODO Auto-generated method stub
 		return sermondao.ganghaeSermonInsert(svo);
 	}
-	
+
 	/**
 	 * 강해 설교 데이터 수정
 	 */
@@ -99,7 +99,7 @@ public class SermonServiceImpl implements SermonService {
 		// TODO Auto-generated method stub
 		return sermondao.ganghaeSermonUpdate(svo);
 	}
-	
+
 	/**
 	 * 강해 설교 데이터 삭제
 	 */
@@ -107,5 +107,41 @@ public class SermonServiceImpl implements SermonService {
 	public int ganghaeSermonDelete(SermonVO svo) {
 		// TODO Auto-generated method stub
 		return sermondao.ganghaeSermonDelete(svo);
+	}
+
+	/**
+	 * 인물설교 리스트 출력
+	 */
+	@Override
+	public List<SermonVO> personSermonList(SearchVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.personSermonList(svo);
+	}
+
+	/**
+	 * 인물설교 데이터 저장
+	 */
+	@Override
+	public int personSermonInsert(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.personSermonInsert(svo);
+	}
+
+	/**
+	 * 인물설교 데이터 수정
+	 */
+	@Override
+	public int personSermonUpdate(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.personSermonUpdate(svo);
+	}
+
+	/**
+	 * 인물설교 데이터 삭제
+	 */
+	@Override
+	public int personSermonDelete(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.personSermonDelete(svo);
 	}
 }
