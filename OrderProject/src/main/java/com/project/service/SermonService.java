@@ -38,4 +38,30 @@ interface SermonService {
 
 	int personSermonDelete(SermonVO svo);
 
+	// 철야기도회 설교
+	List<SermonVO> chulyaSermonList(SearchVO svo);
+
+	int chulyaSermonInsert(SermonVO svo);
+
+	int chulyaSermonUpdate(SermonVO svo);
+
+	int chulyaSermonDelete(SermonVO svo);
+
+	// 심방설교
+	List<SermonVO> simbangSermonList(SearchVO svo);
+
+	int simbangSermonInsert(SermonVO svo);
+
+	int simbangSermonUpdate(SermonVO svo);
+
+	int simbangSermonDelete(SermonVO svo);
+
+	// 헌신설교
+	List<SermonVO> hunshinSermonList(SearchVO svo);
+
+	int hunshinSermonInsert(SermonVO svo);
+
+	int hunshinSermonUpdate(SermonVO svo);
+
+	int hunshinSermonDelete(SermonVO svo);
 }// end of interface

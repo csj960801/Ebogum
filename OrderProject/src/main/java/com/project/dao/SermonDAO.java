@@ -193,4 +193,162 @@ public class SermonDAO {
 		return delflag;
 	}
 
+	/**
+	 * 철야 설교 리스트
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public List<SermonVO> chulyaSermonList(SearchVO svo) {
+		List<SermonVO> sermonlist = session.selectList("chulyasermonlist", svo);
+		return sermonlist;
+	}
+
+	/**
+	 * 철야 설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int chulyaSermonInsert(SermonVO svo) {
+		int insertflag = session.insert("chulyasermoninsert", svo);
+		if (insertflag > 0) {
+			session.commit();
+		}
+		return insertflag;
+	}
+
+	/**
+	 * 철야 설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int chulyaSermonUpdate(SermonVO svo) {
+		int updateflag = session.update("chulyasermonupdate", svo);
+		if (updateflag > 0) {
+			session.commit();
+		}
+		return updateflag;
+	}
+
+	/**
+	 * 철야 설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int chulyaSermonDelete(SermonVO svo) {
+		int delflag = session.delete("chulyasermondelete", svo);
+		if (delflag > 0) {
+			session.commit();
+		}
+		return delflag;
+	}
+
+	/**
+	 * 심방설교 리스트
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public List<SermonVO> simbangSermonList(SearchVO svo) {
+		List<SermonVO> sermonlist = session.selectList("simbangsermonlist", svo);
+		return sermonlist;
+	}
+
+	/**
+	 * 심방설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int simbangSermonInsert(SermonVO svo) {
+		int insertflag = session.insert("simbangsermoninsert", svo);
+		if (insertflag > 0) {
+			session.commit();
+		}
+		return insertflag;
+	}
+
+	/**
+	 * 심방설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int simbangSermonUpdate(SermonVO svo) {
+		int updateflag = session.update("simbangsermonupdate", svo);
+		if (updateflag > 0) {
+			session.commit();
+		}
+		return updateflag;
+	}
+
+	/**
+	 * 심방설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int simbangSermonDelete(SermonVO svo) {
+		int delflag = session.delete("simbangsermondelete", svo);
+		if (delflag > 0) {
+			session.commit();
+		}
+		return delflag;
+	}
+
+	/**
+	 * 헌신설교 리스트
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public List<SermonVO> hunshinSermonList(SearchVO svo) {
+		List<SermonVO> sermonlist = session.selectList("hunshinsermonlist", svo);
+		return sermonlist;
+	}
+
+	/**
+	 * 헌신설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int hunshinSermonInsert(SermonVO svo) {
+		int insertflag = session.insert("hunshinsermoninsert", svo);
+		if (insertflag > 0) {
+			session.commit();
+		}
+		return insertflag;
+	}
+
+	/**
+	 * 헌신설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int hunshinSermonUpdate(SermonVO svo) {
+		int updateflag = session.update("hunshinsermonupdate", svo);
+		if (updateflag > 0) {
+			session.commit();
+		}
+		return updateflag;
+	}
+
+	/**
+	 * 헌신설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int hunshinSermonDelete(SermonVO svo) {
+		int delflag = session.delete("hunshinsermondelete", svo);
+		if (delflag > 0) {
+			session.commit();
+		}
+		return delflag;
+	}
 }

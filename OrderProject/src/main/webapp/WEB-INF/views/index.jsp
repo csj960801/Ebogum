@@ -51,6 +51,9 @@
 		</ul>
 	</div>
 	<div class="main_col col-md-9 col-xs-9">
+		
+		<form name="sermonFrm" id="sermonFrm">
+		
 		<div class="main_board_wrapper index_wrapper">
 			<div class="main_board_1">
 				<img src="/pictures/main/imgpow.gif" class="main_board_title" />
@@ -81,11 +84,12 @@
 
 			<div class="clearfix"></div>
 
-			<div class="main_board_2">
-				<img src="/pictures/main/board_sub_title_1_a.gif" class="main_board_title" />
-			    <jsp:include page="/board/Noticeboard/NoticeBoard.board"/>
-			</div>
-		</div>
+			 <div class="main_board_2">
+				 <img src="/pictures/main/board_sub_title_1_a.gif" class="main_board_title" />
+			     <jsp:include page="/board/Noticeboard/NoticeBoard.board"/>
+			 </div>
+		  </div>
+		</form>
 	</div>
 </div>
 

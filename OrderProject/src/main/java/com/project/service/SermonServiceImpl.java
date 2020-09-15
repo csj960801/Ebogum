@@ -1,20 +1,13 @@
 package com.project.service;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import com.project.dao.SermonDAO;
-import com.project.util.FileUtils;
 import com.project.vo.SearchVO;
 import com.project.vo.SermonVO;
 
@@ -144,4 +137,113 @@ public class SermonServiceImpl implements SermonService {
 		// TODO Auto-generated method stub
 		return sermondao.personSermonDelete(svo);
 	}
+
+	/**
+	 * 철야설교 리스트
+	 */
+	@Override
+	public List<SermonVO> chulyaSermonList(SearchVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.chulyaSermonList(svo);
+	}
+
+	/**
+	 * 철야설교 데이터 저장
+	 */
+	@Override
+	public int chulyaSermonInsert(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.chulyaSermonInsert(svo);
+	}
+
+	/**
+	 * 철야설교 데이터 수정
+	 */
+	@Override
+	public int chulyaSermonUpdate(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.chulyaSermonUpdate(svo);
+	}
+
+	/**
+	 * 철야설교 데이터 삭제
+	 */
+	@Override
+	public int chulyaSermonDelete(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.chulyaSermonDelete(svo);
+	}
+
+	/**
+	 * 심방설교 리스트
+	 */
+	@Override
+	public List<SermonVO> simbangSermonList(SearchVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.simbangSermonList(svo);
+	}
+
+	/**
+	 * 심방설교 데이터 저장
+	 */
+	@Override
+	public int simbangSermonInsert(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.simbangSermonInsert(svo);
+	}
+
+	/**
+	 * 심방설교 데이터 수정
+	 */
+	@Override
+	public int simbangSermonUpdate(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.simbangSermonUpdate(svo);
+	}
+
+	/**
+	 * 심방설교 데이터 삭제
+	 */
+	@Override
+	public int simbangSermonDelete(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.simbangSermonDelete(svo);
+	}
+
+	/**
+	 * 헌신설교 리스트
+	 */
+	@Override
+	public List<SermonVO> hunshinSermonList(SearchVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.hunshinSermonList(svo);
+	}
+
+	/**
+	 * 헌신설교 데이터 저장
+	 */
+	@Override
+	public int hunshinSermonInsert(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.hunshinSermonInsert(svo);
+	}
+
+	/**
+	 * 헌신설교 데이터 수정
+	 */
+	@Override
+	public int hunshinSermonUpdate(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.hunshinSermonUpdate(svo);
+	}
+
+	/**
+	 * 헌신설교 데이터 삭제
+	 */
+	@Override
+	public int hunshinSermonDelete(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.hunshinSermonDelete(svo);
+	}
+
 }

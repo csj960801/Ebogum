@@ -7,40 +7,34 @@ $(function() {
 	var movePage = "";
 
 	$("#file1, #sermonListBtn").click(function() {
-		// #file1
-		movePage = "/Sunday/SundaySermon.sermon"; // 주일 설교
-		window.location.href = "/sermon/" + movePage;
-		
-		// #sermonListBtn
+		movePage = "Sunday/SundaySermon.sermon"; // 주일 설교
 		document.sermonFrm.action="/sermon/" + movePage;
 		document.sermonFrm.submit();
 	});
 	$("#file2, #sermonListBtn").click(function() {
-		// #file2
-		movePage = "/Ganghae/GanghaeSermon.sermon"; // 강해설교
-	    window.location.href="/sermon" + movePage;
-
-		// #sermonListBtn
-		document.sermonFrm.action="/sermon/" + movePage;
+		movePage = "Ganghae/GanghaeSermon.sermon"; // 강해설교
+	    document.sermonFrm.action="/sermon/" + movePage;
 		document.sermonFrm.submit();
 	});
 	$("#file3, #sermonListBtn").click(function() {
-		// #file3
-		movePage = "/Person/PersonSermon.sermon";// 인물설교
-	    window.location.href="/sermon" + movePage;
-
-		// #sermonListBtn
+		movePage = "Person/PersonSermon.sermon";// 인물설교
 		document.sermonFrm.action="/sermon/" + movePage;
 		document.sermonFrm.submit();
 	});
-	$("#file4").click(function() {
-		movePage = "chulya";// 철야기도회 설교
+	$("#file4, #sermonListBtn").click(function() {
+		movePage = "Chulya/ChulyaSermon.sermon";// 철야기도회 설교
+		document.sermonFrm.action="/sermon/" + movePage;
+		document.sermonFrm.submit();
 	});
-	$("#file5").click(function() {
-		movePage = "symbang"; // 심방 설교
+	$("#file5, #sermonListBtn").click(function() {
+		movePage = "Simbang/SimbangSermon.sermon"; // 심방 설교
+		document.sermonFrm.action="/sermon/" + movePage;
+		document.sermonFrm.submit();
 	});
-	$("#file6").click(function() {
-		movePage = "devote"; // 헌신예배 설교
+	$("#file6, #sermonListBtn").click(function() {
+		movePage = "Hunshin/HunshinSermon.sermon"; // 헌신예배 설교
+		document.sermonFrm.action="/sermon/" + movePage;
+		document.sermonFrm.submit();
 	});
 	$("#file7").click(function() {
 		movePage = "special";// 각종특별설교
@@ -130,7 +124,28 @@ function sermonBtnEffect() {
 				window.location.href = "/Layout/Sermon/Person/WritePersonSermon.jsp?sermonkind="
 			    + encodeURI(SermonKind);
 			
+			}else if(SermonKind == "chulya"){
+				
+				SermonKind = "철야기도회 설교";
+				window.location.href = "/Layout/Sermon/Chulya/WriteChulyaSermon.jsp?sermonkind="
+			    + encodeURI(SermonKind);
+			
 			}
+			else if(SermonKind == "simbang"){
+				
+				SermonKind = "심방설교";
+				window.location.href = "/Layout/Sermon/Simbang/WriteSimbangSermon.jsp?sermonkind="
+			    + encodeURI(SermonKind);
+			
+			}
+			else if(SermonKind == "hunshin"){
+				
+				SermonKind = "헌신설교";
+				window.location.href = "/Layout/Sermon/Hunshin/WriteHunshinSermon.jsp?sermonkind="
+			    + encodeURI(SermonKind);
+			
+			}
+			
 	});
     
 	// 설교 데이터 저장
@@ -145,6 +160,15 @@ function sermonBtnEffect() {
 		}
 		if(SermonKind == "person"){
 			sermonFrm.action = "/sermon/Person/PersonSermonInsert.sermon";
+		}	
+		if(SermonKind == "chulya"){
+			sermonFrm.action = "/sermon/Chulya/ChulyaSermonInsert.sermon";
+		}	
+		if(SermonKind == "simbang"){
+			sermonFrm.action = "/sermon/Simbang/SimbangSermonInsert.sermon";
+		}	
+		if(SermonKind == "hunshin"){
+			sermonFrm.action = "/sermon/Hunshin/HunshinSermonInsert.sermon";
 		}	
 
 		sermonFrm.method = "post";
@@ -196,8 +220,40 @@ function sermonBtnEffect() {
 				+"&revDate="+encodeURI(revDate)
 				+"&revFileDown="+encodeURI(revFileDown)
 				+"&revCnt="+encodeURI(revCnt);
-		}	
-	  	
+		}
+		if(SermonKind == "chulya"){		
+			sermonFrm.action = "/Layout/Sermon/Chulya/UpdateChulyaSermon.jsp?"
+				+"revSubject="+encodeURI(revSubject)
+				+"&revTitle="+encodeURI(revTitle)
+				+"&revMain="+encodeURI(revMain)
+				+"&revPage="+encodeURI(revPage)
+				+"&revPoint="+encodeURI(revPoint)
+				+"&revDate="+encodeURI(revDate)
+				+"&revFileDown="+encodeURI(revFileDown)
+				+"&revCnt="+encodeURI(revCnt);
+		}		
+	  	if(SermonKind == "simbang"){		
+			sermonFrm.action = "/Layout/Sermon/Simbang/UpdateSimbangSermon.jsp?"
+				+"revSubject="+encodeURI(revSubject)
+				+"&revTitle="+encodeURI(revTitle)
+				+"&revMain="+encodeURI(revMain)
+				+"&revPage="+encodeURI(revPage)
+				+"&revPoint="+encodeURI(revPoint)
+				+"&revDate="+encodeURI(revDate)
+				+"&revFileDown="+encodeURI(revFileDown)
+				+"&revCnt="+encodeURI(revCnt);
+		}
+	  	if(SermonKind == "hunshin"){		
+			sermonFrm.action = "/Layout/Sermon/Hunshin/UpdateHunshinSermon.jsp?"
+				+"revSubject="+encodeURI(revSubject)
+				+"&revTitle="+encodeURI(revTitle)
+				+"&revMain="+encodeURI(revMain)
+				+"&revPage="+encodeURI(revPage)
+				+"&revPoint="+encodeURI(revPoint)
+				+"&revDate="+encodeURI(revDate)
+				+"&revFileDown="+encodeURI(revFileDown)
+				+"&revCnt="+encodeURI(revCnt);
+		}
 	    sermonFrm.method = "post";
 	    sermonFrm.submit();
 	});
@@ -214,7 +270,16 @@ function sermonBtnEffect() {
 		else if (SermonKind == "person") {
 	   		sermonFrm.action = "/sermon/Person/PersonSermonUpdate.sermon";
 		}
-		
+		else if (SermonKind == "chulya") {
+	   		sermonFrm.action = "/sermon/Chulya/ChulyaSermonUpdate.sermon";
+		}
+		else if (SermonKind == "simbang") {
+	   		sermonFrm.action = "/sermon/Simbang/SimbangSermonUpdate.sermon";
+		}	
+		else if (SermonKind == "hunshin") {
+	   		sermonFrm.action = "/sermon/Hunshin/HunshinSermonUpdate.sermon";
+		}
+	
 		sermonFrm.method = "post";
 	    sermonFrm.submit();
 	});
@@ -233,7 +298,16 @@ function sermonBtnEffect() {
 			else if (SermonKind == "person") {
 	   			sermonFrm.action = "/sermon/Person/PersonSermonDelete.sermon";
 			}
-
+			else if (SermonKind == "chulya") {
+	   			sermonFrm.action = "/sermon/Chulya/ChulyaSermonDelete.sermon";
+			}
+			else if (SermonKind == "simbang") {
+	   			sermonFrm.action = "/sermon/Simbang/SimbangSermonDelete.sermon";
+			}
+			else if (SermonKind == "hunshin") {
+	   			sermonFrm.action = "/sermon/Hunshin/HunshinSermonDelete.sermon";
+			}
+	
 		    sermonFrm.method = "post";
 		    sermonFrm.submit();
 			
@@ -260,6 +334,15 @@ function sermonBtnEffect() {
 		}
         else if(SermonKind == "person"){
 			sermonSearchFrm.action = "/sermon/Person/PersonSermon.sermon";					
+		}
+		else if(SermonKind == "chulya"){
+			sermonSearchFrm.action = "/sermon/Chulya/ChulyaSermon.sermon";					
+		}
+		else if(SermonKind == "simbang"){
+			sermonSearchFrm.action = "/sermon/Simbang/SimbangSermon.sermon";					
+		}
+		else if(SermonKind == "hunshin"){
+			sermonSearchFrm.action = "/sermon/Hunshin/HunshinSermon.sermon";					
 		}
 		
  		sermonSearchFrm.method = "post";
@@ -331,7 +414,45 @@ function Sermon_read(
 		+"&sermonFileDown="+encodeURI(downloadData)
 		+"&sermonCnt="+encodeURI(dataCnt);
 		break;		
-		
+	case "chulya":
+		sermonType = "철야기도회 설교";
+		window.location.href="/Layout/Sermon/Chulya/ReadChulyaSermon.jsp?"+
+		"sermonType="+encodeURI(sermonType)
+		+"&sermonSubject="+encodeURI(sermonSubject)
+		+"&sermonMain="+encodeURI(sermonMain)
+		+"&sermonTitle="+encodeURI(sermonTitle)
+		+"&sermonPage="+encodeURI(sermonPage)
+		+"&sermonDate="+encodeURI(sermonDate)
+		+"&sermonPoint="+encodeURI(sermonPoint)
+		+"&sermonFileDown="+encodeURI(downloadData)
+		+"&sermonCnt="+encodeURI(dataCnt);
+		break;	
+	case "simbang":
+		sermonType = "심방설교";
+		window.location.href="/Layout/Sermon/Simbang/ReadSimbangSermon.jsp?"+
+		"sermonType="+encodeURI(sermonType)
+		+"&sermonSubject="+encodeURI(sermonSubject)
+		+"&sermonMain="+encodeURI(sermonMain)
+		+"&sermonTitle="+encodeURI(sermonTitle)
+		+"&sermonPage="+encodeURI(sermonPage)
+		+"&sermonDate="+encodeURI(sermonDate)
+		+"&sermonPoint="+encodeURI(sermonPoint)
+		+"&sermonFileDown="+encodeURI(downloadData)
+		+"&sermonCnt="+encodeURI(dataCnt);
+		break;
+	case "hunshin":
+		sermonType = "헌신설교";
+		window.location.href="/Layout/Sermon/Hunshin/ReadHunshinSermon.jsp?"+
+		"sermonType="+encodeURI(sermonType)
+		+"&sermonSubject="+encodeURI(sermonSubject)
+		+"&sermonMain="+encodeURI(sermonMain)
+		+"&sermonTitle="+encodeURI(sermonTitle)
+		+"&sermonPage="+encodeURI(sermonPage)
+		+"&sermonDate="+encodeURI(sermonDate)
+		+"&sermonPoint="+encodeURI(sermonPoint)
+		+"&sermonFileDown="+encodeURI(downloadData)
+		+"&sermonCnt="+encodeURI(dataCnt);
+		break;	
 	}//end of switch
 	
 };
