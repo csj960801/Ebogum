@@ -13,7 +13,7 @@
 		<environment id="development">
 			<transactionManager type="jdbc" />
 			<dataSource type="POOLED">
-				
+				<!-- your DB url, id, password here.  -->
 			</dataSource>
 		</environment>
 	</environments>

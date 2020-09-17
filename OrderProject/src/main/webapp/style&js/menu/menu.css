@@ -91,7 +91,6 @@ a, a:hover, a:focus, a:visited {
 	.custom_container .main_col {
 		padding: 5px 10px;
 		margin: 15px 0 0;
-		border-left: 1px solid #ddd;
 	}
 	.custom_container .side_menu_ul {
 		margin-top: 15px;
@@ -269,7 +268,6 @@ a, a:hover, a:focus, a:visited {
 	.custom_container .main_col {
 		padding: 0;
 		width: 0;
-		border-left: 1px solid #ddd;
 	}
 	.custom_container .FreeBoard_col {
 		width: 0;

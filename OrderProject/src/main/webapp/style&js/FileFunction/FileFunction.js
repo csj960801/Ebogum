@@ -36,11 +36,15 @@ $(function() {
 		document.sermonFrm.action="/sermon/" + movePage;
 		document.sermonFrm.submit();
 	});
-	$("#file7").click(function() {
-		movePage = "special";// 각종특별설교
+	$("#file7, #sermonListBtn").click(function() {
+		movePage = "Special/SpecialSermon.sermon";// 각종특별설교
+		document.sermonFrm.action="/sermon/" + movePage;
+		document.sermonFrm.submit();
 	});
-	$("#file8").click(function() {
-		movePage = "colmn"; // 칼럼형예화
+	$("#file8, #sermonListBtn").click(function() {
+		movePage = "Column/ColumnSermon.sermon"; // 칼럼형예화
+		document.sermonFrm.action="/sermon/" + movePage;
+		document.sermonFrm.submit();
 	});
 
 	// 새벽설교
@@ -145,6 +149,20 @@ function sermonBtnEffect() {
 			    + encodeURI(SermonKind);
 			
 			}
+			else if(SermonKind == "special"){
+				
+				SermonKind = "특별설교";
+				window.location.href = "/Layout/Sermon/Special/WriteSpecialSermon.jsp?sermonkind="
+			    + encodeURI(SermonKind);
+			
+			}
+			else if(SermonKind == "column"){
+				
+				SermonKind = "컬럼형예화";
+				window.location.href = "/Layout/Sermon/Column/WriteColumnSermon.jsp?sermonkind="
+			    + encodeURI(SermonKind);
+			
+			}
 			
 	});
     
@@ -170,7 +188,12 @@ function sermonBtnEffect() {
 		if(SermonKind == "hunshin"){
 			sermonFrm.action = "/sermon/Hunshin/HunshinSermonInsert.sermon";
 		}	
-
+		if(SermonKind == "special"){
+			sermonFrm.action = "/sermon/Special/SpecialSermonInsert.sermon";
+		}	
+		if(SermonKind == "column"){
+			sermonFrm.action = "/sermon/Column/ColumnSermonInsert.sermon";
+		}	
 		sermonFrm.method = "post";
 	    sermonFrm.submit();
 	});
@@ -254,6 +277,28 @@ function sermonBtnEffect() {
 				+"&revFileDown="+encodeURI(revFileDown)
 				+"&revCnt="+encodeURI(revCnt);
 		}
+		if(SermonKind == "special"){		
+			sermonFrm.action = "/Layout/Sermon/Special/UpdateSpecialSermon.jsp?"
+				+"revSubject="+encodeURI(revSubject)
+				+"&revTitle="+encodeURI(revTitle)
+				+"&revMain="+encodeURI(revMain)
+				+"&revPage="+encodeURI(revPage)
+				+"&revPoint="+encodeURI(revPoint)
+				+"&revDate="+encodeURI(revDate)
+				+"&revFileDown="+encodeURI(revFileDown)
+				+"&revCnt="+encodeURI(revCnt);
+		}
+		if(SermonKind == "column"){		
+			sermonFrm.action = "/Layout/Sermon/Column/UpdateColumnSermon.jsp?"
+				+"revSubject="+encodeURI(revSubject)
+				+"&revTitle="+encodeURI(revTitle)
+				+"&revMain="+encodeURI(revMain)
+				+"&revPage="+encodeURI(revPage)
+				+"&revPoint="+encodeURI(revPoint)
+				+"&revDate="+encodeURI(revDate)
+				+"&revFileDown="+encodeURI(revFileDown)
+				+"&revCnt="+encodeURI(revCnt);
+		}
 	    sermonFrm.method = "post";
 	    sermonFrm.submit();
 	});
@@ -279,7 +324,12 @@ function sermonBtnEffect() {
 		else if (SermonKind == "hunshin") {
 	   		sermonFrm.action = "/sermon/Hunshin/HunshinSermonUpdate.sermon";
 		}
-	
+		else if (SermonKind == "special") {
+	   		sermonFrm.action = "/sermon/Special/SpecialSermonUpdate.sermon";
+		}
+		else if (SermonKind == "column") {
+	   		sermonFrm.action = "/sermon/Column/ColumnSermonUpdate.sermon";
+		}
 		sermonFrm.method = "post";
 	    sermonFrm.submit();
 	});
@@ -307,7 +357,12 @@ function sermonBtnEffect() {
 			else if (SermonKind == "hunshin") {
 	   			sermonFrm.action = "/sermon/Hunshin/HunshinSermonDelete.sermon";
 			}
-	
+			else if (SermonKind == "special") {
+	   			sermonFrm.action = "/sermon/Special/SpecialSermonDelete.sermon";
+			}
+			else if (SermonKind == "column") {
+	   			sermonFrm.action = "/sermon/Column/ColumnSermonDelete.sermon";
+			}
 		    sermonFrm.method = "post";
 		    sermonFrm.submit();
 			
@@ -343,6 +398,12 @@ function sermonBtnEffect() {
 		}
 		else if(SermonKind == "hunshin"){
 			sermonSearchFrm.action = "/sermon/Hunshin/HunshinSermon.sermon";					
+		}
+		else if(SermonKind == "special"){
+			sermonSearchFrm.action = "/sermon/Special/SpecialSermon.sermon";					
+		}
+		else if(SermonKind == "column"){
+			sermonSearchFrm.action = "/sermon/Column/ColumnSermon.sermon";					
 		}
 		
  		sermonSearchFrm.method = "post";
@@ -443,6 +504,32 @@ function Sermon_read(
 	case "hunshin":
 		sermonType = "헌신설교";
 		window.location.href="/Layout/Sermon/Hunshin/ReadHunshinSermon.jsp?"+
+		"sermonType="+encodeURI(sermonType)
+		+"&sermonSubject="+encodeURI(sermonSubject)
+		+"&sermonMain="+encodeURI(sermonMain)
+		+"&sermonTitle="+encodeURI(sermonTitle)
+		+"&sermonPage="+encodeURI(sermonPage)
+		+"&sermonDate="+encodeURI(sermonDate)
+		+"&sermonPoint="+encodeURI(sermonPoint)
+		+"&sermonFileDown="+encodeURI(downloadData)
+		+"&sermonCnt="+encodeURI(dataCnt);
+		break;	
+	case "special":
+		sermonType = "각종틀별설교";
+		window.location.href="/Layout/Sermon/Special/ReadSpecialSermon.jsp?"+
+		"sermonType="+encodeURI(sermonType)
+		+"&sermonSubject="+encodeURI(sermonSubject)
+		+"&sermonMain="+encodeURI(sermonMain)
+		+"&sermonTitle="+encodeURI(sermonTitle)
+		+"&sermonPage="+encodeURI(sermonPage)
+		+"&sermonDate="+encodeURI(sermonDate)
+		+"&sermonPoint="+encodeURI(sermonPoint)
+		+"&sermonFileDown="+encodeURI(downloadData)
+		+"&sermonCnt="+encodeURI(dataCnt);
+		break;	
+	case "column":
+		sermonType = "컬럼형예화";
+		window.location.href="/Layout/Sermon/Column/ReadColumnSermon.jsp?"+
 		"sermonType="+encodeURI(sermonType)
 		+"&sermonSubject="+encodeURI(sermonSubject)
 		+"&sermonMain="+encodeURI(sermonMain)

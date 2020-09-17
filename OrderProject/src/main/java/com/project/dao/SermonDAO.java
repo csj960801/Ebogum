@@ -351,4 +351,110 @@ public class SermonDAO {
 		}
 		return delflag;
 	}
+	
+	/**
+	 * 특별설교 리스트
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public List<SermonVO> specialSermonList(SearchVO svo) {
+		List<SermonVO> sermonlist = session.selectList("specialsermonlist", svo);
+		return sermonlist;
+	}
+
+	/**
+	 * 특별설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int specialSermonInsert(SermonVO svo) {
+		int insertflag = session.insert("specialsermoninsert", svo);
+		if (insertflag > 0) {
+			session.commit();
+		}
+		return insertflag;
+	}
+
+	/**
+	 * 특별설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int specialSermonUpdate(SermonVO svo) {
+		int updateflag = session.update("specialsermonupdate", svo);
+		if (updateflag > 0) {
+			session.commit();
+		}
+		return updateflag;
+	}
+
+	/**
+	 * 특별설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int specialSermonDelete(SermonVO svo) {
+		int delflag = session.delete("specialsermondelete", svo);
+		if (delflag > 0) {
+			session.commit();
+		}
+		return delflag;
+	}
+	
+	/**
+	 * 컬럼형예화 설교 리스트
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public List<SermonVO> columnSermonList(SearchVO svo) {
+		List<SermonVO> sermonlist = session.selectList("columnsermonlist", svo);
+		return sermonlist;
+	}
+
+	/**
+	 * 컬럼형예화 설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int columnSermonInsert(SermonVO svo) {
+		int insertflag = session.insert("columnsermoninsert", svo);
+		if (insertflag > 0) {
+			session.commit();
+		}
+		return insertflag;
+	}
+
+	/**
+	 * 컬럼형예화 설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int columnSermonUpdate(SermonVO svo) {
+		int updateflag = session.update("columnsermonupdate", svo);
+		if (updateflag > 0) {
+			session.commit();
+		}
+		return updateflag;
+	}
+
+	/**
+	 * 컬럼형예화 설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int columnSermonDelete(SermonVO svo) {
+		int delflag = session.delete("columnsermondelete", svo);
+		if (delflag > 0) {
+			session.commit();
+		}
+		return delflag;
+	}
 }

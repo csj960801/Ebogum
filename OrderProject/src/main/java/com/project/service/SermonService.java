@@ -64,4 +64,22 @@ interface SermonService {
 	int hunshinSermonUpdate(SermonVO svo);
 
 	int hunshinSermonDelete(SermonVO svo);
+
+	// 특별설교
+	List<SermonVO> specialSermonList(SearchVO svo);
+
+	int specialSermonInsert(SermonVO svo);
+
+	int specialSermonUpdate(SermonVO svo);
+
+	int specialSermonDelete(SermonVO svo);
+
+	// 컬럼형예화 설교
+	List<SermonVO> columnSermonList(SearchVO svo);
+
+	int columnSermonInsert(SermonVO svo);
+
+	int columnSermonUpdate(SermonVO svo);
+
+	int columnSermonDelete(SermonVO svo);
 }// end of interface

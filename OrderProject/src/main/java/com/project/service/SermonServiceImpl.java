@@ -246,4 +246,76 @@ public class SermonServiceImpl implements SermonService {
 		return sermondao.hunshinSermonDelete(svo);
 	}
 
+	/**
+	 * 특별설교 리스트
+	 */
+	@Override
+	public List<SermonVO> specialSermonList(SearchVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.specialSermonList(svo);
+	}
+
+	/**
+	 * 특별설교 데이터 저장
+	 */
+	@Override
+	public int specialSermonInsert(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.specialSermonInsert(svo);
+	}
+
+	/**
+	 * 특별설교 데이터 수정
+	 */
+	@Override
+	public int specialSermonUpdate(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.specialSermonUpdate(svo);
+	}
+
+	/**
+	 * 특별설교 데이터 삭제
+	 */
+	@Override
+	public int specialSermonDelete(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.specialSermonDelete(svo);
+	}
+
+	/**
+	 * 컬럼형예화 리스트
+	 */
+	@Override
+	public List<SermonVO> columnSermonList(SearchVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.columnSermonList(svo);
+	}
+
+	/**
+	 * 컬럼형예화 데이터 저장
+	 */
+	@Override
+	public int columnSermonInsert(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.columnSermonInsert(svo);
+	}
+
+	/**
+	 * 컬럼형예화 데이터 수정
+	 */
+	@Override
+	public int columnSermonUpdate(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.columnSermonUpdate(svo);
+	}
+
+	/**
+	 * 컬럼형예화 데이터 삭제
+	 */
+	@Override
+	public int columnSermonDelete(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.columnSermonDelete(svo);
+	}
+
 }

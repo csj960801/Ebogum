@@ -58,6 +58,18 @@ public class SermonController {
 		case "person":
 			FILE_SERVER_PATH.append("/person");
 			break;
+		case "chulya":
+			FILE_SERVER_PATH.append("/chulya");
+			break;
+		case "simbang":
+			FILE_SERVER_PATH.append("/simbang");
+			break;
+		case "hunshin":
+			FILE_SERVER_PATH.append("/hunshin");
+			break;
+		case "special":
+			FILE_SERVER_PATH.append("/special");
+			break;
 		}
 
 		String fileName = (String) params.get("fileName");
@@ -735,4 +747,223 @@ public class SermonController {
 		delMap.put("hunshindel", hunshindel);
 		return delMap;
 	}
+
+	/**
+	 * 특별 설교 리스트
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/Special/SpecialSermon.sermon")
+	public List<SermonVO> SpecialSermonList(Model model, @ModelAttribute("svo") SearchVO svo,
+			HttpServletRequest request) {
+		List<SermonVO> fileboardList = sermonservice.specialSermonList(svo);
+		model.addAttribute("SpecialSermonlist", fileboardList);
+		if (fileboardList.size() > 0) {
+			sermonLog.info("==========================");
+			sermonLog.info("특별설교 " + fileboardList.size() + "데이터 존재합니다");
+			sermonLog.info("==========================");
+		}
+
+		return fileboardList;
+	}
+
+	/**
+	 * 특별 설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/Special/SpecialSermonInsert.sermon")
+	public Map<String, Object> SpecialSermonInsert(@RequestParam("sermonFile") MultipartFile multi,
+			HttpServletRequest request) throws Exception {
+		Map<String, Object> fileMap = new HashMap<String, Object>();
+
+		// 파일이 저장되어있는 곳 경로 입력
+		String filePath = "";
+
+		String subject = request.getParameter("sermonSubject");
+		String title = request.getParameter("sermonTitle");
+		String main = request.getParameter("sermonMain");
+		String page = request.getParameter("sermonPage");
+		String point = request.getParameter("sermonPoint");
+		String date = request.getParameter("sermonDate");
+		String bibleType = request.getParameter("sermonBibleType");
+
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, bibleType);
+
+		int specialinsert = sermonservice.specialSermonInsert(svo);
+		fileMap.put("specialinsert", specialinsert);
+
+		if (specialinsert > 0) {
+			sermonLog.info("==========================");
+			sermonLog.info("특별설교 데이터 저장 되었습니다.");
+			sermonLog.info("==========================");
+		}
+
+		return fileMap;
+	}
+
+	/**
+	 * 특별 설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/Special/SpecialSermonUpdate.sermon")
+	public Map<String, Object> SpecialSermonUpdate(@RequestParam("sermonFile") MultipartFile multi,
+			HttpServletRequest request) throws Exception {
+
+		Map<String, Object> fileMap = new HashMap<String, Object>();
+
+		String subject = request.getParameter("sermonSubject");
+		String title = request.getParameter("sermonTitle");
+		String main = request.getParameter("sermonMain");
+		String page = request.getParameter("sermonPage");
+		String point = request.getParameter("sermonPoint");
+		String date = request.getParameter("sermonDate");
+		String cnt = request.getParameter("sermonCnt");
+		String bibleType = request.getParameter("sermonBibleType");
+
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, cnt,
+				bibleType);
+
+		int specialupdate = sermonservice.specialSermonUpdate(svo);
+		fileMap.put("specialupdate", specialupdate);
+		if (specialupdate > 0) {
+			sermonLog.info("==========================");
+			sermonLog.info("특별설교 데이터 수정 되었습니다.");
+			sermonLog.info("==========================");
+		}
+
+		return fileMap;
+	}
+
+	/**
+	 * 특별 설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/Special/SpecialSermonDelete.sermon")
+	public Map<String, Object> SpecialSermonDelete(SermonVO svo) {
+		Map<String, Object> delMap = new HashMap<String, Object>();
+		int specialdel = sermonservice.specialSermonDelete(svo);
+		delMap.put("specialdel", specialdel);
+		return delMap;
+	}
+
+	/**
+	 * 컬럼형예화 설교 리스트
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/Column/ColumnSermon.sermon")
+	public List<SermonVO> ColumnSermonList(Model model, @ModelAttribute("svo") SearchVO svo,
+			HttpServletRequest request) {
+		List<SermonVO> fileboardList = sermonservice.columnSermonList(svo);
+		model.addAttribute("ColumnSermonlist", fileboardList);
+		if (fileboardList.size() > 0) {
+			sermonLog.info("==========================");
+			sermonLog.info("컬럼형예화설교 " + fileboardList.size() + "데이터 존재합니다");
+			sermonLog.info("==========================");
+		}
+
+		return fileboardList;
+	}
+
+	/**
+	 * 컬럼형예화 설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/Column/ColumnSermonInsert.sermon")
+	public Map<String, Object> ColumnSermonInsert(@RequestParam("sermonFile") MultipartFile multi,
+			HttpServletRequest request) throws Exception {
+		Map<String, Object> fileMap = new HashMap<String, Object>();
+
+		// 파일이 저장되어있는 곳 경로 입력
+		String filePath = "";
+
+		String subject = request.getParameter("sermonSubject");
+		String title = request.getParameter("sermonTitle");
+		String main = request.getParameter("sermonMain");
+		String page = request.getParameter("sermonPage");
+		String point = request.getParameter("sermonPoint");
+		String date = request.getParameter("sermonDate");
+		String bibleType = request.getParameter("sermonBibleType");
+
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, bibleType);
+
+		int columninsert = sermonservice.columnSermonInsert(svo);
+		fileMap.put("columninsert", columninsert);
+
+		if (columninsert > 0) {
+			sermonLog.info("==========================");
+			sermonLog.info("컬럼형예화설교 데이터 저장 되었습니다.");
+			sermonLog.info("==========================");
+		}
+
+		return fileMap;
+	}
+
+	/**
+	 * 컬럼형예화 설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/Column/ColumnSermonUpdate.sermon")
+	public Map<String, Object> ColumnSermonUpdate(@RequestParam("sermonFile") MultipartFile multi,
+			HttpServletRequest request) throws Exception {
+
+		Map<String, Object> fileMap = new HashMap<String, Object>();
+
+		String subject = request.getParameter("sermonSubject");
+		String title = request.getParameter("sermonTitle");
+		String main = request.getParameter("sermonMain");
+		String page = request.getParameter("sermonPage");
+		String point = request.getParameter("sermonPoint");
+		String date = request.getParameter("sermonDate");
+		String cnt = request.getParameter("sermonCnt");
+		String bibleType = request.getParameter("sermonBibleType");
+
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, cnt,
+				bibleType);
+
+		int columnupdate = sermonservice.columnSermonUpdate(svo);
+		fileMap.put("columnupdate", columnupdate);
+		if (columnupdate > 0) {
+			sermonLog.info("==========================");
+			sermonLog.info("컬럼형예화설교 데이터 수정 되었습니다.");
+			sermonLog.info("==========================");
+		}
+
+		return fileMap;
+	}
+
+	/**
+	 * 컬럼형예화 설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/Column/ColumnSermonDelete.sermon")
+	public Map<String, Object> ColumnSermonDelete(SermonVO svo) {
+		Map<String, Object> delMap = new HashMap<String, Object>();
+		int columndel = sermonservice.columnSermonDelete(svo);
+		delMap.put("columndel", columndel);
+		return delMap;
+	}
+
 }

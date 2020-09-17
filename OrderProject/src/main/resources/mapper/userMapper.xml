@@ -46,7 +46,8 @@
 		churchTel,
 		phoneTel,
 		faxNumber,
-		Date)
+		Date,
+		point)
 
 		values(
 		#{duplicateid},
@@ -63,7 +64,8 @@
 		#{churchTel},
 		#{phoneTel},
 		#{faxNumber},
-		#{date})
+		#{date},
+		'0')
 		]]>
 	</insert>
 

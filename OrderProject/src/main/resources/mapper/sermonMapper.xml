@@ -302,4 +302,92 @@
 		DELETE FROM hunshinsermonboard WHERE sermonboardCnt =
 		#{sermonCnt}
 	</delete>
+	
+	<!-- 특별설교 리스트 출력 및 검색기능 -->
+	<select id="specialsermonlist" resultType="com.project.vo.SermonVO" parameterType="com.project.vo.SearchVO">
+		SELECT * FROM specialsermonboard
+		WHERE sermonboardCnt IS NOT NULL
+		<if test="search_title_kind == 'subject'">
+			AND sermonSubject like CONCAT('%',
+			#{sermonSearchParam},'%')
+		</if>
+		<if test="search_title_kind == 'title'">
+			AND sermonTitle like CONCAT('%', #{sermonSearchParam} ,
+			'%')
+		</if>
+		<if test="search_title_kind == 'main'">
+			AND sermonMain like CONCAT('%', #{sermonSearchParam} ,'%')
+		</if>
+	</select>
+
+	<!-- 특별설교 데이터 저장 -->
+	<insert id="specialsermoninsert" parameterType="com.project.vo.SermonVO">
+		INSERT INTO
+		specialsermonboard(sermonSubject,sermonTitle,sermonMain,sermonPage,sermonPoint,sermonFile,sermonDate,sermonBibleType)
+		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFile},#{sermonDate},#{sermonBibleType})
+	</insert>
+
+	<!-- 특별설교 데이터 수정 -->
+	<update id="specialsermonupdate" parameterType="com.project.vo.SermonVO">
+		UPDATE specialsermonboard SET
+		sermonSubject = #{sermonSubject},
+		sermonTitle = #{sermonTitle},
+		sermonMain = #{sermonMain},
+		sermonPage=#{sermonPage},
+		sermonPoint=#{sermonPoint},
+		sermonFile=#{sermonFile},
+		sermonDate=#{sermonDate},
+		sermonBibleType=#{sermonBibleType}
+		WHERE
+		sermonboardCnt = #{sermonCnt}
+	</update>
+
+	<!-- 특별설교 데이터 삭제 -->
+	<delete id="specialsermondelete" parameterType="com.project.vo.SermonVO">
+		DELETE FROM specialsermonboard WHERE sermonboardCnt = #{sermonCnt}
+	</delete>
+	
+	<!-- 컬럼형예화 설교 리스트 출력 및 검색기능 -->
+	<select id="columnsermonlist" resultType="com.project.vo.SermonVO" parameterType="com.project.vo.SearchVO">
+		SELECT * FROM columnsermonboard
+		WHERE sermonboardCnt IS NOT NULL
+		<if test="search_title_kind == 'subject'">
+			AND sermonSubject like CONCAT('%',
+			#{sermonSearchParam},'%')
+		</if>
+		<if test="search_title_kind == 'title'">
+			AND sermonTitle like CONCAT('%', #{sermonSearchParam} ,
+			'%')
+		</if>
+		<if test="search_title_kind == 'main'">
+			AND sermonMain like CONCAT('%', #{sermonSearchParam} ,'%')
+		</if>
+	</select>
+
+	<!-- 컬럼형예화 설교 데이터 저장 -->
+	<insert id="columnsermoninsert" parameterType="com.project.vo.SermonVO">
+		INSERT INTO
+		columnsermonboard(sermonSubject,sermonTitle,sermonMain,sermonPage,sermonPoint,sermonFile,sermonDate,sermonBibleType)
+		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFile},#{sermonDate},#{sermonBibleType})
+	</insert>
+
+	<!-- 컬럼형예화 설교 데이터 수정 -->
+	<update id="columnsermonupdate" parameterType="com.project.vo.SermonVO">
+		UPDATE columnsermonboard SET
+		sermonSubject = #{sermonSubject},
+		sermonTitle = #{sermonTitle},
+		sermonMain = #{sermonMain},
+		sermonPage=#{sermonPage},
+		sermonPoint=#{sermonPoint},
+		sermonFile=#{sermonFile},
+		sermonDate=#{sermonDate},
+		sermonBibleType=#{sermonBibleType}
+		WHERE
+		sermonboardCnt = #{sermonCnt}
+	</update>
+
+	<!-- 컬럼형예화 설교 데이터 삭제 -->
+	<delete id="columnsermondelete" parameterType="com.project.vo.SermonVO">
+		DELETE FROM columnsermonboard WHERE sermonboardCnt = #{sermonCnt}
+	</delete>
 </mapper>
