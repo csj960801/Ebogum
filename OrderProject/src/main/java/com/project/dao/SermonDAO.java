@@ -351,7 +351,7 @@ public class SermonDAO {
 		}
 		return delflag;
 	}
-	
+
 	/**
 	 * 특별설교 리스트
 	 * 
@@ -404,7 +404,7 @@ public class SermonDAO {
 		}
 		return delflag;
 	}
-	
+
 	/**
 	 * 컬럼형예화 설교 리스트
 	 * 
@@ -452,6 +452,165 @@ public class SermonDAO {
 	 */
 	public int columnSermonDelete(SermonVO svo) {
 		int delflag = session.delete("columnsermondelete", svo);
+		if (delflag > 0) {
+			session.commit();
+		}
+		return delflag;
+	}
+
+	/**
+	 * 새벽 강해 설교 리스트
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public List<SermonVO> ganghaebyolSermonList(SearchVO svo) {
+		List<SermonVO> sermonlist = session.selectList("ganghaebyolsermonlist", svo);
+		return sermonlist;
+	}
+
+	/**
+	 * 새벽 강해 설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int ganghaebyolSermonInsert(SermonVO svo) {
+		int insertflag = session.insert("ganghaebyolsermoninsert", svo);
+		if (insertflag > 0) {
+			session.commit();
+		}
+		return insertflag;
+	}
+
+	/**
+	 * 새벽 강해 설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int ganghaebyolSermonUpdate(SermonVO svo) {
+		int updateflag = session.update("ganghaebyolsermonupdate", svo);
+		if (updateflag > 0) {
+			session.commit();
+		}
+		return updateflag;
+	}
+
+	/**
+	 * 새벽 강해 설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int ganghaebyolSermonDelete(SermonVO svo) {
+		int delflag = session.delete("ganghaebyolsermondelete", svo);
+		if (delflag > 0) {
+			session.commit();
+		}
+		return delflag;
+	}
+
+	/**
+	 * 새벽 사건 설교 리스트
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public List<SermonVO> sagunSermonList(SearchVO svo) {
+		List<SermonVO> sermonlist = session.selectList("sagunbyolsermonlist", svo);
+		return sermonlist;
+	}
+
+	/**
+	 * 새벽 사건 설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int sagunbyolSermonInsert(SermonVO svo) {
+		int insertflag = session.insert("sagunbyolsermoninsert", svo);
+		if (insertflag > 0) {
+			session.commit();
+		}
+		return insertflag;
+	}
+
+	/**
+	 * 새벽 사건 설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int sagunbyolSermonUpdate(SermonVO svo) {
+		int updateflag = session.update("sagunbyolsermonupdate", svo);
+		if (updateflag > 0) {
+			session.commit();
+		}
+		return updateflag;
+	}
+
+	/**
+	 * 새벽 사건 설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int sagunbyolSermonDelete(SermonVO svo) {
+		int delflag = session.delete("sagunbyolsermondelete", svo);
+		if (delflag > 0) {
+			session.commit();
+		}
+		return delflag;
+	}
+	
+	/**
+	 * 새벽 주제 설교 리스트
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public List<SermonVO> jujeSermonList(SearchVO svo) {
+		List<SermonVO> sermonlist = session.selectList("jujebyolsermonlist", svo);
+		return sermonlist;
+	}
+
+	/**
+	 * 새벽 주제 설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int jujebyolSermonInsert(SermonVO svo) {
+		int insertflag = session.insert("jujebyolsermoninsert", svo);
+		if (insertflag > 0) {
+			session.commit();
+		}
+		return insertflag;
+	}
+
+	/**
+	 * 새벽 주제 설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int jujebyolSermonUpdate(SermonVO svo) {
+		int updateflag = session.update("jujebyolsermonupdate", svo);
+		if (updateflag > 0) {
+			session.commit();
+		}
+		return updateflag;
+	}
+
+	/**
+	 * 새벽 주제 설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int jujebyolSermonDelete(SermonVO svo) {
+		int delflag = session.delete("jujebyolsermondelete", svo);
 		if (delflag > 0) {
 			session.commit();
 		}

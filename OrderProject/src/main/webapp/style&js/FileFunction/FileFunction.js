@@ -48,14 +48,20 @@ $(function() {
 	});
 
 	// 새벽설교
-	$("#file9").click(function() {
-		movePage = "ganghaebyol"; // 강해별
+	$("#file9, #sermonListBtn").click(function() {
+		movePage = "Dawn/Ganghaebyol/GanghaebyolSermon.sermon"; // 강해별
+		document.sermonFrm.action="/sermon/" + movePage;
+		document.sermonFrm.submit();
 	});
-	$("#file10").click(function() {
-		movePage = "occurency"; // 사건별
+	$("#file10, #sermonListBtn").click(function() {
+		movePage = "Dawn/Sagunbyol/SagunbyolSermon.sermon"; // 사건별
+		document.sermonFrm.action="/sermon/" + movePage;
+		document.sermonFrm.submit();
 	});
-	$("#file11").click(function() {
-		movePage = "subject"; // 주제별
+	$("#file11, #sermonListBtn").click(function() {
+		movePage = "Dawn/Jujebyol/JujebyolSermon.sermon"; // 주제별
+		document.sermonFrm.action="/sermon/" + movePage;
+		document.sermonFrm.submit();
 	});
 	// /////////////////////////////////////
 
@@ -161,7 +167,26 @@ function sermonBtnEffect() {
 				SermonKind = "컬럼형예화";
 				window.location.href = "/Layout/Sermon/Column/WriteColumnSermon.jsp?sermonkind="
 			    + encodeURI(SermonKind);
+			}
 			
+			//새벽 설교
+			else if(SermonKind == "ganghaebyol"){
+				
+				SermonKind = "새벽설교강해별";
+				window.location.href = "/Layout/Sermon/Dawn/Ganghaebyol/WriteGanghaebyolSermon.jsp?sermonkind="
+			    + encodeURI(SermonKind);
+			}
+			else if(SermonKind == "sagunbyol"){
+				
+				SermonKind = "새벽설교사건별";
+				window.location.href = "/Layout/Sermon/Dawn/Sagunbyol/WriteSagunbyolSermon.jsp?sermonkind="
+			    + encodeURI(SermonKind);
+			}
+			else if(SermonKind == "jujebyol"){
+				
+				SermonKind = "새벽설교주제별";
+				window.location.href = "/Layout/Sermon/Dawn/Jujebyol/WriteJujebyolSermon.jsp?sermonkind="
+			    + encodeURI(SermonKind);
 			}
 			
 	});
@@ -193,7 +218,16 @@ function sermonBtnEffect() {
 		}	
 		if(SermonKind == "column"){
 			sermonFrm.action = "/sermon/Column/ColumnSermonInsert.sermon";
-		}	
+		}
+		if(SermonKind == "ganghaebyol"){
+			sermonFrm.action = "/sermon/Dawn/Ganghaebyol/GanghaebyolSermonInsert.sermon";
+		}
+		if(SermonKind == "sagunbyol"){
+			sermonFrm.action = "/sermon/Dawn/Sagunbyol/SagunbyolSermonInsert.sermon";
+		}
+		if(SermonKind == "jujebyol"){
+			sermonFrm.action = "/sermon/Dawn/Jujebyol/JujebyolSermonInsert.sermon";
+		}
 		sermonFrm.method = "post";
 	    sermonFrm.submit();
 	});
@@ -299,6 +333,39 @@ function sermonBtnEffect() {
 				+"&revFileDown="+encodeURI(revFileDown)
 				+"&revCnt="+encodeURI(revCnt);
 		}
+		if(SermonKind == "ganghaebyol"){		
+			sermonFrm.action = "/Layout/Sermon/Dawn/Ganghaebyol/UpdateGanghaebyolSermon.jsp?"
+				+"revSubject="+encodeURI(revSubject)
+				+"&revTitle="+encodeURI(revTitle)
+				+"&revMain="+encodeURI(revMain)
+				+"&revPage="+encodeURI(revPage)
+				+"&revPoint="+encodeURI(revPoint)
+				+"&revDate="+encodeURI(revDate)
+				+"&revFileDown="+encodeURI(revFileDown)
+				+"&revCnt="+encodeURI(revCnt);
+		}
+		if(SermonKind == "sagunbyol"){		
+			sermonFrm.action = "/Layout/Sermon/Dawn/Sagunbyol/UpdateSagunbyolSermon.jsp?"
+				+"revSubject="+encodeURI(revSubject)
+				+"&revTitle="+encodeURI(revTitle)
+				+"&revMain="+encodeURI(revMain)
+				+"&revPage="+encodeURI(revPage)
+				+"&revPoint="+encodeURI(revPoint)
+				+"&revDate="+encodeURI(revDate)
+				+"&revFileDown="+encodeURI(revFileDown)
+				+"&revCnt="+encodeURI(revCnt);
+		}
+		if(SermonKind == "jujebyol"){		
+			sermonFrm.action = "/Layout/Sermon/Dawn/Jujebyol/UpdateJujebyolSermon.jsp?"
+				+"revSubject="+encodeURI(revSubject)
+				+"&revTitle="+encodeURI(revTitle)
+				+"&revMain="+encodeURI(revMain)
+				+"&revPage="+encodeURI(revPage)
+				+"&revPoint="+encodeURI(revPoint)
+				+"&revDate="+encodeURI(revDate)
+				+"&revFileDown="+encodeURI(revFileDown)
+				+"&revCnt="+encodeURI(revCnt);
+		}
 	    sermonFrm.method = "post";
 	    sermonFrm.submit();
 	});
@@ -329,6 +396,15 @@ function sermonBtnEffect() {
 		}
 		else if (SermonKind == "column") {
 	   		sermonFrm.action = "/sermon/Column/ColumnSermonUpdate.sermon";
+		}
+		else if (SermonKind == "ganghaebyol") {
+	   		sermonFrm.action = "/sermon/Dawn/Ganghaebyol/GanghaebyolSermonUpdate.sermon";
+		}
+		else if (SermonKind == "sagunbyol") {
+	   		sermonFrm.action = "/sermon/Dawn/Sagunbyol/SagunbyolSermonUpdate.sermon";
+		}
+		else if (SermonKind == "jujebyol") {
+	   		sermonFrm.action = "/sermon/Dawn/Jujebyol/JujebyolSermonUpdate.sermon";
 		}
 		sermonFrm.method = "post";
 	    sermonFrm.submit();
@@ -363,6 +439,16 @@ function sermonBtnEffect() {
 			else if (SermonKind == "column") {
 	   			sermonFrm.action = "/sermon/Column/ColumnSermonDelete.sermon";
 			}
+			else if (SermonKind == "ganghaebyol") {
+	   			sermonFrm.action = "/sermon/Dawn/Ganghaebyol/GanghaebyolSermonDelete.sermon";
+			}
+			else if (SermonKind == "sagunbyol") {
+	   			sermonFrm.action = "/sermon/Dawn/Sagunbyol/SagunbyolSermonDelete.sermon";
+			}
+			else if (SermonKind == "jujebyol") {
+	   			sermonFrm.action = "/sermon/Dawn/Jujebyol/JujebyolSermonDelete.sermon";
+			}
+
 		    sermonFrm.method = "post";
 		    sermonFrm.submit();
 			
@@ -404,8 +490,16 @@ function sermonBtnEffect() {
 		}
 		else if(SermonKind == "column"){
 			sermonSearchFrm.action = "/sermon/Column/ColumnSermon.sermon";					
+		}	
+		else if(SermonKind == "ganghaebyol"){
+			sermonSearchFrm.action = "/sermon/Dawn/Ganghaebyol/GanghaebyolSermon.sermon";					
 		}
-		
+		else if(SermonKind == "sagunbyol"){
+			sermonSearchFrm.action = "/sermon/Dawn/Sagunbyol/SagunbyolSermon.sermon";					
+		}
+		else if(SermonKind == "jujebyol"){
+			sermonSearchFrm.action = "/sermon/Dawn/Jujebyol/JujebyolSermon.sermon";					
+		}
  		sermonSearchFrm.method = "post";
 	    sermonSearchFrm.submit();
 	    
@@ -530,6 +624,45 @@ function Sermon_read(
 	case "column":
 		sermonType = "컬럼형예화";
 		window.location.href="/Layout/Sermon/Column/ReadColumnSermon.jsp?"+
+		"sermonType="+encodeURI(sermonType)
+		+"&sermonSubject="+encodeURI(sermonSubject)
+		+"&sermonMain="+encodeURI(sermonMain)
+		+"&sermonTitle="+encodeURI(sermonTitle)
+		+"&sermonPage="+encodeURI(sermonPage)
+		+"&sermonDate="+encodeURI(sermonDate)
+		+"&sermonPoint="+encodeURI(sermonPoint)
+		+"&sermonFileDown="+encodeURI(downloadData)
+		+"&sermonCnt="+encodeURI(dataCnt);
+		break;	
+	case "ganghaebyol":
+		sermonType = "새벽설교강해별";
+		window.location.href="/Layout/Sermon/Dawn/Ganghaebyol/ReadGanghaebyolSermon.jsp?"+
+		"sermonType="+encodeURI(sermonType)
+		+"&sermonSubject="+encodeURI(sermonSubject)
+		+"&sermonMain="+encodeURI(sermonMain)
+		+"&sermonTitle="+encodeURI(sermonTitle)
+		+"&sermonPage="+encodeURI(sermonPage)
+		+"&sermonDate="+encodeURI(sermonDate)
+		+"&sermonPoint="+encodeURI(sermonPoint)
+		+"&sermonFileDown="+encodeURI(downloadData)
+		+"&sermonCnt="+encodeURI(dataCnt);
+		break;	
+    case "sagunbyol":
+		sermonType = "새벽설교사건별";
+		window.location.href="/Layout/Sermon/Dawn/Sagunbyol/ReadSagunbyolSermon.jsp?"+
+		"sermonType="+encodeURI(sermonType)
+		+"&sermonSubject="+encodeURI(sermonSubject)
+		+"&sermonMain="+encodeURI(sermonMain)
+		+"&sermonTitle="+encodeURI(sermonTitle)
+		+"&sermonPage="+encodeURI(sermonPage)
+		+"&sermonDate="+encodeURI(sermonDate)
+		+"&sermonPoint="+encodeURI(sermonPoint)
+		+"&sermonFileDown="+encodeURI(downloadData)
+		+"&sermonCnt="+encodeURI(dataCnt);
+		break;	
+	case "jujebyol":
+		sermonType = "새벽설교주제별";
+		window.location.href="/Layout/Sermon/Dawn/Jujebyol/ReadJujebyolSermon.jsp?"+
 		"sermonType="+encodeURI(sermonType)
 		+"&sermonSubject="+encodeURI(sermonSubject)
 		+"&sermonMain="+encodeURI(sermonMain)

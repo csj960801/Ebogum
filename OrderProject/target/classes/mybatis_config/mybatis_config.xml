@@ -13,7 +13,10 @@
 		<environment id="development">
 			<transactionManager type="jdbc" />
 			<dataSource type="POOLED">
-				<!-- your DB url, id, password here.  -->
+				<property value="com.mysql.cj.jdbc.Driver" name="driver" />
+				<property value="?serverTimezone=UTC&amp;useSSL=false&amp;allowPublicKeyRetrieval=true" name="url" />
+				<property value="" name="username" />
+				<property value="" name="password" />
 			</dataSource>
 		</environment>
 	</environments>

@@ -390,4 +390,143 @@
 	<delete id="columnsermondelete" parameterType="com.project.vo.SermonVO">
 		DELETE FROM columnsermonboard WHERE sermonboardCnt = #{sermonCnt}
 	</delete>
+	
+	<!-- 새벽 강해별 설교 리스트 출력 및 검색기능 -->
+	<select id="ganghaebyolsermonlist" resultType="com.project.vo.SermonVO" parameterType="com.project.vo.SearchVO">
+		SELECT * FROM ganghaebyolsermonboard
+		WHERE sermonboardCnt IS NOT NULL
+		<if test="search_title_kind == 'subject'">
+			AND sermonSubject like CONCAT('%',#{sermonSearchParam},'%')
+		</if>
+		<if test="search_title_kind == 'title'">
+			AND sermonTitle like CONCAT('%', #{sermonSearchParam} ,'%')
+		</if>
+		<if test="search_title_kind == 'main'">
+			AND sermonMain like CONCAT('%', #{sermonSearchParam} ,'%')
+		</if>
+		<if test="search_bible_kind == 'all'">
+			AND sermonBibleType IS NOT NULL 
+		</if>
+		<if test="search_bible_kind == 'past'">
+			AND sermonBibleType = '구약' 
+		</if>
+		<if test="search_bible_kind == 'new'">
+			AND sermonBibleType = '신약'
+		</if>
+	</select>
+	
+	<!-- 새벽 강해별 설교 데이터 저장 -->
+	<insert id="ganghaebyolsermoninsert" parameterType="com.project.vo.SermonVO">
+		INSERT INTO
+		ganghaebyolsermonboard(sermonSubject,sermonTitle,sermonMain,sermonPage,sermonPoint,sermonFile,sermonDate,sermonBibleType)
+		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFile},#{sermonDate},#{sermonBibleType})
+	</insert>
+
+	<!-- 새벽 강해별 설교 데이터 수정 -->
+	<update id="ganghaebyolsermonupdate" parameterType="com.project.vo.SermonVO">
+		UPDATE ganghaebyolsermonboard SET
+		sermonSubject = #{sermonSubject},
+		sermonTitle = #{sermonTitle},
+		sermonMain = #{sermonMain},
+		sermonPage=#{sermonPage},
+		sermonPoint=#{sermonPoint},
+		sermonFile=#{sermonFile},
+		sermonDate=#{sermonDate},
+		sermonBibleType=#{sermonBibleType}
+		WHERE
+		sermonboardCnt = #{sermonCnt}
+	</update>
+
+	<!-- 새벽 강해별 설교 설교 데이터 삭제 -->
+	<delete id="ganghaebyolsermondelete" parameterType="com.project.vo.SermonVO">
+		DELETE FROM ganghaebyolsermonboard WHERE sermonboardCnt = #{sermonCnt}
+	</delete>
+	
+	<!-- 새벽 사건별 설교 리스트 출력 및 검색기능 -->
+	<select id="sagunbyolsermonlist" resultType="com.project.vo.SermonVO" parameterType="com.project.vo.SearchVO">
+		SELECT * FROM sagunbyolsermonboard
+		WHERE sermonboardCnt IS NOT NULL
+		<if test="search_title_kind == 'subject'">
+			AND sermonSubject like CONCAT('%',
+			#{sermonSearchParam},'%')
+		</if>
+		<if test="search_title_kind == 'title'">
+			AND sermonTitle like CONCAT('%', #{sermonSearchParam} ,
+			'%')
+		</if>
+		<if test="search_title_kind == 'main'">
+			AND sermonMain like CONCAT('%', #{sermonSearchParam} ,'%')
+		</if>
+	</select>
+
+	<!-- 새벽 사건별 설교 데이터 저장 -->
+	<insert id="sagunbyolsermoninsert" parameterType="com.project.vo.SermonVO">
+		INSERT INTO
+		sagunbyolsermonboard(sermonSubject,sermonTitle,sermonMain,sermonPage,sermonPoint,sermonFile,sermonDate,sermonBibleType)
+		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFile},#{sermonDate},#{sermonBibleType})
+	</insert>
+
+	<!-- 새벽 사건별 설교 데이터 수정 -->
+	<update id="sagunbyolsermonupdate" parameterType="com.project.vo.SermonVO">
+		UPDATE sagunbyolsermonboard SET
+		sermonSubject = #{sermonSubject},
+		sermonTitle = #{sermonTitle},
+		sermonMain = #{sermonMain},
+		sermonPage=#{sermonPage},
+		sermonPoint=#{sermonPoint},
+		sermonFile=#{sermonFile},
+		sermonDate=#{sermonDate},
+		sermonBibleType=#{sermonBibleType}
+		WHERE
+		sermonboardCnt = #{sermonCnt}
+	</update>
+
+	<!-- 새벽 사건별 설교 데이터 삭제 -->
+	<delete id="sagunbyolsermondelete" parameterType="com.project.vo.SermonVO">
+		DELETE FROM sagunbyolsermonboard WHERE sermonboardCnt = #{sermonCnt}
+	</delete>
+	
+	<!-- 새벽 주제별 설교 리스트 출력 및 검색기능 -->
+	<select id="jujebyolsermonlist" resultType="com.project.vo.SermonVO" parameterType="com.project.vo.SearchVO">
+		SELECT * FROM jujebyolsermonboard
+		WHERE sermonboardCnt IS NOT NULL
+		<if test="search_title_kind == 'subject'">
+			AND sermonSubject like CONCAT('%',
+			#{sermonSearchParam},'%')
+		</if>
+		<if test="search_title_kind == 'title'">
+			AND sermonTitle like CONCAT('%', #{sermonSearchParam} ,
+			'%')
+		</if>
+		<if test="search_title_kind == 'main'">
+			AND sermonMain like CONCAT('%', #{sermonSearchParam} ,'%')
+		</if>
+	</select>
+
+	<!-- 새벽 주제별 설교 데이터 저장 -->
+	<insert id="jujebyolsermoninsert" parameterType="com.project.vo.SermonVO">
+		INSERT INTO
+		jujebyolsermonboard(sermonSubject,sermonTitle,sermonMain,sermonPage,sermonPoint,sermonFile,sermonDate,sermonBibleType)
+		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFile},#{sermonDate},#{sermonBibleType})
+	</insert>
+
+	<!-- 새벽 주제별 설교 데이터 수정 -->
+	<update id="jujebyolsermonupdate" parameterType="com.project.vo.SermonVO">
+		UPDATE jujebyolsermonboard SET
+		sermonSubject = #{sermonSubject},
+		sermonTitle = #{sermonTitle},
+		sermonMain = #{sermonMain},
+		sermonPage=#{sermonPage},
+		sermonPoint=#{sermonPoint},
+		sermonFile=#{sermonFile},
+		sermonDate=#{sermonDate},
+		sermonBibleType=#{sermonBibleType}
+		WHERE
+		sermonboardCnt = #{sermonCnt}
+	</update>
+
+	<!-- 새벽 주제별 설교 데이터 삭제 -->
+	<delete id="jujebyolsermondelete" parameterType="com.project.vo.SermonVO">
+		DELETE FROM jujebyolsermonboard WHERE sermonboardCnt = #{sermonCnt}
+	</delete>
 </mapper>

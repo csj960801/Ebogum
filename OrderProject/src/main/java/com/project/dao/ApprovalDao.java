@@ -109,9 +109,6 @@ public class ApprovalDao {
 	public UserVO getPoint(UserVO uvo) {
 		session = SqlSessionInstance.getInstanceSession().openSession();
 		UserVO point = session.selectOne("pointValue", uvo);
-		daolog.info("=====================================");
-		daolog.info("포인트값: " + point.getPoint());
-		daolog.info("=====================================");
 		return point;
 	}
 

@@ -82,4 +82,31 @@ interface SermonService {
 	int columnSermonUpdate(SermonVO svo);
 
 	int columnSermonDelete(SermonVO svo);
+
+	// 새벽 강해별 설교
+	List<SermonVO> ganghaebyolSermonList(SearchVO svo);
+
+	int ganghaebyolSermonInsert(SermonVO svo);
+
+	int ganghaebyolSermonUpdate(SermonVO svo);
+
+	int ganghaebyolSermonDelete(SermonVO svo);
+
+	// 새벽 사건별 설교
+	List<SermonVO> sagunbyolSermonList(SearchVO svo);
+
+	int sagunbyolSermonInsert(SermonVO svo);
+
+	int sagunbyolSermonUpdate(SermonVO svo);
+
+	int sagunbyolSermonDelete(SermonVO svo);
+
+	// 새벽 주제별 설교
+	List<SermonVO> jujebyolSermonList(SearchVO svo);
+
+	int jujebyolSermonInsert(SermonVO svo);
+
+	int jujebyolSermonUpdate(SermonVO svo);
+
+	int jujebyolSermonDelete(SermonVO svo);
 }// end of interface

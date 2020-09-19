@@ -5,7 +5,8 @@
 <div class="login_warpper row">
 	<div class="col-md-2 col-xs-3 login_md_2">
 		<c:if test="${sessionScope.login == null}">
-			<form name="form" class="loginFrm" onsubmit="javascript:return chk();">
+			<form name="form" class="loginFrm"
+				onsubmit="javascript:return chk();">
 
 				<table class="login_tbl">
 					<tbody>
@@ -56,7 +57,8 @@
 									height="17" style="cursor: hand;">
 							</a></td>
 							<td width="6" height="17">&nbsp;</td>
-							<td height="17"><a href="/Layout/FindInfo/FindInfo.jsp" class="login_lost"> <img
+							<td height="17"><a href="/Layout/FindInfo/FindInfo.jsp"
+								class="login_lost"> <img
 									src="/pictures/login/login_lost.gif" width="73" height="17"
 									style="cursor: hand;">
 							</a></td>
@@ -73,22 +75,21 @@
 		<c:choose>
 			<c:when test="${sessionScope.login != null }">
 				<div class="login_success">
-					<div class="login_success_wrapper">					
+					<div class="login_success_wrapper">
 						<p class="login_success_id">
 							<c:if test="${sessionScope.login == 'logos'}">
 								 관리자
 							</c:if>
 							<c:choose>
-								 <c:when test="${sessionScope.login != 'logos'}">
+								<c:when test="${sessionScope.login != 'logos'}">
 								 	${sessionScope.login}
 								 </c:when>
 							</c:choose>
 						</p>
 						<span class="point_span">POINT</span> ${sessionScope.point}
-	
 						<br>
-	
-						2020-08-31<span class="point_span_other">까지</span>
+						<span class="point_span_other">까지</span>
+						<br>
 						<button id="logoutBtn" class="logoutBtn">로그아웃</button>
 					</div>
 				</div>

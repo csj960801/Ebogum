@@ -4,7 +4,7 @@
 
 <!-- 메인에 출력되는 자유게시판  -->
 <%
-	String url = "";
+	String url = "?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
 	String user = "";
 	String password = "";
 

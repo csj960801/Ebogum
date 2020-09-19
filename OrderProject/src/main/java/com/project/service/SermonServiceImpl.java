@@ -318,4 +318,112 @@ public class SermonServiceImpl implements SermonService {
 		return sermondao.columnSermonDelete(svo);
 	}
 
+	/**
+	 * 새벽 강해별 설교 리스트
+	 */
+	@Override
+	public List<SermonVO> ganghaebyolSermonList(SearchVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.ganghaebyolSermonList(svo);
+	}
+
+	/**
+	 * 새벽 강해별 설교 데이터 저장
+	 */
+	@Override
+	public int ganghaebyolSermonInsert(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.ganghaebyolSermonInsert(svo);
+	}
+
+	/**
+	 * 새벽 강해별 설교 데이터 수정
+	 */
+	@Override
+	public int ganghaebyolSermonUpdate(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.ganghaebyolSermonUpdate(svo);
+	}
+
+	/**
+	 * 새벽 강해별 설교 데이터 삭제
+	 */
+	@Override
+	public int ganghaebyolSermonDelete(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.chulyaSermonDelete(svo);
+	}
+
+	/**
+	 * 새벽 사건별 설교 리스트
+	 */
+	@Override
+	public List<SermonVO> sagunbyolSermonList(SearchVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.sagunSermonList(svo);
+	}
+
+	/**
+	 * 새벽 사건별 설교 데이터 저장
+	 */
+	@Override
+	public int sagunbyolSermonInsert(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.sagunbyolSermonInsert(svo);
+	}
+
+	/**
+	 * 새벽 사건별 설교 데이터 수정
+	 */
+	@Override
+	public int sagunbyolSermonUpdate(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.sagunbyolSermonUpdate(svo);
+	}
+
+	/**
+	 * 새벽 사건별 설교 데이터 삭제
+	 */
+	@Override
+	public int sagunbyolSermonDelete(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.sagunbyolSermonDelete(svo);
+	}
+
+	/**
+	 * 새벽 주제별 설교 리스트
+	 */
+	@Override
+	public List<SermonVO> jujebyolSermonList(SearchVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.jujeSermonList(svo);
+	}
+
+	/**
+	 * 새벽 주제별 설교 데이터 저장
+	 */
+	@Override
+	public int jujebyolSermonInsert(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.jujebyolSermonInsert(svo);
+	}
+
+	/**
+	 * 새벽 주제별 설교 데이터 수정
+	 */
+	@Override
+	public int jujebyolSermonUpdate(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.jujebyolSermonUpdate(svo);
+	}
+
+	/**
+	 * 새벽 주제별 설교 데이터 삭제
+	 */
+	@Override
+	public int jujebyolSermonDelete(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.jujebyolSermonDelete(svo);
+	}
+
 }
