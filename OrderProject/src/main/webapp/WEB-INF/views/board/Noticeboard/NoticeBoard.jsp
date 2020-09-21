@@ -10,7 +10,7 @@
 <body>
 <!-- 공지게시글 목록 -->
 <div class="custom_container">
-	<div class="FreeBoard_col main_col col-md-9 col-xs-9">
+	<div class="noticeboard_wrapper col-md-9 col-xs-9">
 		<div class="main_board_wrapper">
 
 			<div class="table_wrapper table-responsive">

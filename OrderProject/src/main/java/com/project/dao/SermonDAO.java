@@ -563,7 +563,7 @@ public class SermonDAO {
 		}
 		return delflag;
 	}
-	
+
 	/**
 	 * 새벽 주제 설교 리스트
 	 * 
@@ -611,6 +611,59 @@ public class SermonDAO {
 	 */
 	public int jujebyolSermonDelete(SermonVO svo) {
 		int delflag = session.delete("jujebyolsermondelete", svo);
+		if (delflag > 0) {
+			session.commit();
+		}
+		return delflag;
+	}
+
+	/**
+	 * 절기 설교 리스트
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public List<SermonVO> julgiSermonList(SearchVO svo) {
+		List<SermonVO> sermonlist = session.selectList("julgisermonlist", svo);
+		return sermonlist;
+	}
+
+	/**
+	 * 절기 설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int julgiSermonInsert(SermonVO svo) {
+		int insertflag = session.insert("julgisermoninsert", svo);
+		if (insertflag > 0) {
+			session.commit();
+		}
+		return insertflag;
+	}
+
+	/**
+	 * 절기 설교 데이터 수정
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int julgiSermonUpdate(SermonVO svo) {
+		int updateflag = session.update("julgisermonupdate", svo);
+		if (updateflag > 0) {
+			session.commit();
+		}
+		return updateflag;
+	}
+
+	/**
+	 * 절기 설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @return
+	 */
+	public int julgiSermonDelete(SermonVO svo) {
+		int delflag = session.delete("julgisermondelete", svo);
 		if (delflag > 0) {
 			session.commit();
 		}

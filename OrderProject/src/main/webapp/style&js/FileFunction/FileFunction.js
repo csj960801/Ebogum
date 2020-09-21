@@ -66,40 +66,12 @@ $(function() {
 	// /////////////////////////////////////
 
 	// 절기 설교
-	$("#file12").click(function() {
-		movePage = "christmas"; // 성탄절
+	$("#file12, #sermonListBtn").click(function() {
+		movePage = "Julgi/JulgiSermon.sermon";
+		document.sermonFrm.action="/sermon/" + movePage;
+		document.sermonFrm.submit();
 	});
-	$("#file13").click(function() {
-		movePage = "sasunjeol"; // 사순절
-	});
-	$("#file14").click(function() {
-		movePage = "resurrect"; // 부활절
-	});
-	$("#file15").click(function() {
-		movePage = "ganglim"; // 성림강림절
-	});
-	$("#file16").click(function() {
-		movePage = "ganghae";
-	});
-	$("#file17").click(function() {
-		movePage = "ganghae";
-	});
-	$("#file18").click(function() {
-		movePage = "ganghae";
-	});
-	$("#file19").click(function() {
-		movePage = "ganghae";
-	});
-	$("#file20").click(function() {
-		movePage = "ganghae";
-	});
-	$("#file21").click(function() {
-		movePage = "ganghae";
-	});
-	$("#file22").click(function() {
-		movePage = "ganghae";
-	});
-
+	
 	// 설교 페이지에서 사용되는 모든 버튼기능들을 관리하는 함수
 	sermonBtnEffect();
 });
@@ -188,6 +160,12 @@ function sermonBtnEffect() {
 				window.location.href = "/Layout/Sermon/Dawn/Jujebyol/WriteJujebyolSermon.jsp?sermonkind="
 			    + encodeURI(SermonKind);
 			}
+			else if(SermonKind == "julgi"){
+				
+				SermonKind = "절기설교";
+				window.location.href = "/Layout/Sermon/Julgi/WriteJulgiSermon.jsp?sermonkind="
+			    + encodeURI(SermonKind);
+			}
 			
 	});
     
@@ -227,6 +205,9 @@ function sermonBtnEffect() {
 		}
 		if(SermonKind == "jujebyol"){
 			sermonFrm.action = "/sermon/Dawn/Jujebyol/JujebyolSermonInsert.sermon";
+		}
+		if(SermonKind == "julgi"){
+			sermonFrm.action = "/sermon/Julgi/JulgiSermonInsert.sermon";
 		}
 		sermonFrm.method = "post";
 	    sermonFrm.submit();
@@ -366,6 +347,17 @@ function sermonBtnEffect() {
 				+"&revFileDown="+encodeURI(revFileDown)
 				+"&revCnt="+encodeURI(revCnt);
 		}
+		if(SermonKind == "julgi"){		
+			sermonFrm.action = "/Layout/Sermon/Julgi/UpdateJulgiSermon.jsp?"
+				+"revSubject="+encodeURI(revSubject)
+				+"&revTitle="+encodeURI(revTitle)
+				+"&revMain="+encodeURI(revMain)
+				+"&revPage="+encodeURI(revPage)
+				+"&revPoint="+encodeURI(revPoint)
+				+"&revDate="+encodeURI(revDate)
+				+"&revFileDown="+encodeURI(revFileDown)
+				+"&revCnt="+encodeURI(revCnt);
+		}
 	    sermonFrm.method = "post";
 	    sermonFrm.submit();
 	});
@@ -405,6 +397,9 @@ function sermonBtnEffect() {
 		}
 		else if (SermonKind == "jujebyol") {
 	   		sermonFrm.action = "/sermon/Dawn/Jujebyol/JujebyolSermonUpdate.sermon";
+		}
+		else if (SermonKind == "julgi") {
+	   		sermonFrm.action = "/sermon/Julgi/JulgiSermonUpdate.sermon";
 		}
 		sermonFrm.method = "post";
 	    sermonFrm.submit();
@@ -448,6 +443,9 @@ function sermonBtnEffect() {
 			else if (SermonKind == "jujebyol") {
 	   			sermonFrm.action = "/sermon/Dawn/Jujebyol/JujebyolSermonDelete.sermon";
 			}
+			else if (SermonKind == "julgi") {
+	   			sermonFrm.action = "/sermon/Julgi/JulgiSermonDelete.sermon";
+			}
 
 		    sermonFrm.method = "post";
 		    sermonFrm.submit();
@@ -461,11 +459,11 @@ function sermonBtnEffect() {
 	$("#sermonsearchBtn").click(function(){
 		var sermonSearchFrm = document.sermonSearchFrm;
 		var sermonData = $("#sermonSearchParam").val();
-	    if(sermonData.length <= 0){
+	    /*if(sermonData.length <= 0){
 	    	alert("검색어를 입력해주세요.");
 	    	$("#sermonSearchParam").focus();
 	    	return false;
-	    }
+	    }*/
 		
 		if(SermonKind == "sunday"){	
 	    	sermonSearchFrm.action = "/sermon/Sunday/SundaySermon.sermon";
@@ -499,6 +497,9 @@ function sermonBtnEffect() {
 		}
 		else if(SermonKind == "jujebyol"){
 			sermonSearchFrm.action = "/sermon/Dawn/Jujebyol/JujebyolSermon.sermon";					
+		}
+		else if(SermonKind == "julgi"){
+			sermonSearchFrm.action = "/sermon/Julgi/JulgiSermon.sermon";					
 		}
  		sermonSearchFrm.method = "post";
 	    sermonSearchFrm.submit();
@@ -672,7 +673,20 @@ function Sermon_read(
 		+"&sermonPoint="+encodeURI(sermonPoint)
 		+"&sermonFileDown="+encodeURI(downloadData)
 		+"&sermonCnt="+encodeURI(dataCnt);
-		break;	
+		break;
+	case "julgi":
+		sermonType = "절기설교";
+		window.location.href="/Layout/Sermon/Julgi/ReadJulgiSermon.jsp?"+
+		"sermonType="+encodeURI(sermonType)
+		+"&sermonSubject="+encodeURI(sermonSubject)
+		+"&sermonMain="+encodeURI(sermonMain)
+		+"&sermonTitle="+encodeURI(sermonTitle)
+		+"&sermonPage="+encodeURI(sermonPage)
+		+"&sermonDate="+encodeURI(sermonDate)
+		+"&sermonPoint="+encodeURI(sermonPoint)
+		+"&sermonFileDown="+encodeURI(downloadData)
+		+"&sermonCnt="+encodeURI(dataCnt);
+		break;		
 	}//end of switch
 	
 };

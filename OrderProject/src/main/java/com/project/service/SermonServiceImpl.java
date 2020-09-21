@@ -426,4 +426,40 @@ public class SermonServiceImpl implements SermonService {
 		return sermondao.jujebyolSermonDelete(svo);
 	}
 
+	/**
+	 * 절기 설교 리스트
+	 */
+	@Override
+	public List<SermonVO> julgiSermonList(SearchVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.julgiSermonList(svo);
+	}
+
+	/**
+	 * 절기 설교 데이터 저장
+	 */
+	@Override
+	public int julgiSermonInsert(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.julgiSermonInsert(svo);
+	}
+
+	/**
+	 * 절기 설교 데이터 수정
+	 */
+	@Override
+	public int julgiSermonUpdate(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.julgiSermonUpdate(svo);
+	}
+
+	/**
+	 * 절기 설교 데이터 삭제
+	 */
+	@Override
+	public int julgiSermonDelete(SermonVO svo) {
+		// TODO Auto-generated method stub
+		return sermondao.julgiSermonDelete(svo);
+	}
+
 }

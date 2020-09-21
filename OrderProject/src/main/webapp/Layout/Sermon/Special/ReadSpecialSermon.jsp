@@ -32,22 +32,7 @@
 				</ul>
 			</li>
 
-			<li><a class="thick">절기 설교</a></li>
-			<li>
-				<ul class="option_ul">
-					<li><a href="#" id="file12">성탄절</a></li>
-					<li><a href="#" id="file13">사순절</a></li>
-					<li><a href="#" id="file14">부활절</a></li>
-					<li><a href="#" id="file15">성림강림절</a></li>
-					<li><a href="#" id="file16">추석추수맥추절</a></li>
-					<li><a href="#" id="file17">종교개혁주일</a></li>
-					<li><a href="#" id="file18">송구영신예배</a></li>
-					<li><a href="#" id="file19">국가기념일</a></li>
-					<li><a href="#" id="file20">가정의달</a></li>
-					<li><a href="#" id="file21">수련회 설교</a></li>
-					<li><a href="#" id="file22">창립및 전도</a></li>
-				</ul>
-			</li>
+			<li><a class="thick" href="#" id="file12">절기 설교</a></li>
 		</ul>
 	</div>
 	<div class="main_col col-md-9 col-xs-9">

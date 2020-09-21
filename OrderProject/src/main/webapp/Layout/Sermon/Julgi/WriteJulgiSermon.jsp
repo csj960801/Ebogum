@@ -8,8 +8,8 @@
 <jsp:include page="/Layout/LoginNeed/AdminLogin.jsp" />
 <%
 	SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-	Date date = new Date();
-	String getToday = dateformat.format(date);
+Date date = new Date();
+String getToday = dateformat.format(date);
 %>
 
 <!-- Top -->
@@ -48,40 +48,39 @@
 	<div class="main_col col-md-9 col-xs-9">
 		<div class="table_wrapper table-responsive">
 
-			<input type="hidden" id="SermonKind" value="person" />
+			<input type="hidden" id="SermonKind" value="julgi" />
 
 			<form name="sermonFrm" id="sermonFrm" enctype="multipart/form-data">
 				<table class="sermontbl table">
 					<tbody class="tbody">
 						<tr>
+							<th>분류</th>
+							<td>${param.sermonkind}</td>
+						</tr>
+						<tr>
 							<th>주제</th>
 							<td><input type="text" name="sermonSubject"
-								value="${param.revSubject}" id="sermonSubject"
-								class="sermonform"></td>
+								id="sermonSubject" class="sermonform"></td>
 						</tr>
 						<tr>
 							<th>제목</th>
 							<td><input type="text" name="sermonTitle" id="sermonTitle"
-								value="${param.revTitle}" class="sermonform"></td>
+								class="sermonform"></td>
 						</tr>
 						<tr>
 							<th>본문</th>
 							<td><input type="text" name="sermonMain" id="sermonMain"
-								value="${param.revMain}" class="sermonform"></td>
+								class="sermonform"></td>
 						</tr>
 						<tr>
 							<th>편수</th>
 							<td><input type="text" name="sermonPage" id="sermonPage"
-								value="${param.revPage}" class="sermonform"></td>
+								class="sermonform"></td>
 						</tr>
 						<tr>
 							<th>포인트</th>
 							<td><input type="text" name="sermonPoint" id="sermonPoint"
-								value="${param.revPoint}" class="sermonform"></td>
-						</tr>
-						<tr>
-							<th>기존파일</th>
-							<td>${param.revFileDown}</td>
+								class="sermonform"></td>
 						</tr>
 						<tr>
 							<th>파일</th>
@@ -89,22 +88,36 @@
 						</tr>
 						<tr>
 							<th>신약/구약</th>
-							<td>
-							  <select name="sermonBibleType" id="sermonBibleType">
-							     <option value="구약">구약</option>
-							     <option value="신약">신약</option>							 
-							  </select>
+							<td><select name="sermonBibleType" id="sermonBibleType">
+									<option value="구약">구약</option>
+									<option value="신약">신약</option>
+							</select></td>
+						</tr>
+						<tr>
+							<th>절기 설교 종류</th>
+							<td><select name="sermonBoardType" id="sermonBoardType">
+									<option value="성탄절">성탄절</option>
+									<option value="사순절">사순절</option>
+									<option value="부활절">부활절</option>
+									<option value="부활절">부활절</option>
+									<option value="추석추수맥추절">추석추수맥추절</option>
+									<option value="종교개혁주일">종교개혁주일</option>
+									<option value="송구영신예배">송구영신예배</option>
+									<option value="국가기념일">국가기념일</option>
+									<option value="가정의달">가정의달</option>
+									<option value="수련회 설교">수련회 설교</option>
+									<option value="국가기념일">국가기념일</option>
+									<option value="창립 및 전도">창립 및 전도</option>
+							</select>
 							</td>
 						</tr>
 						<tr>
-							<td><input type="hidden" name="sermonDate"
-								value="<%=getToday%>" class="sermonform"></td>
+						 	<th>절기 설교 구별 번호</th>
+							<td><input type="text" placeholder="작성하신 설교데이터의 번호" name="sermonCnt" id="sermonCnt" class="sermonform"></td>
 						</tr>
 						<tr>
-							<td><input type="hidden" name="sermonCnt"
-								value="${param.revCnt}" class="sermonform"></td>
+							<td><input type="hidden" name="sermonDate" value="<%=getToday%>" class="sermonform"></td>
 						</tr>
-
 					</tbody>
 				</table>
 
@@ -113,9 +126,8 @@
 				<div class="bottom_wrapper">
 					<div class="board_number_wrapper">
 						<span class="btn_span">
-							<button id="ReviseSermonBtn" class="btn btn-sm">등록</button>
-						</span>
-						<span class="btn_span">
+							<button id="WriteSermonBtn" class="btn btn-sm">등록</button>
+						</span> <span class="btn_span">
 							<button id="sermonListBtn" class="btn btn-sm">목록</button>
 						</span>
 					</div>

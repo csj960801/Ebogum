@@ -45,7 +45,7 @@
 			<div class="table_wrapper table-responsive">
 				<form id="sermonFrm" name="sermonFrm">
 				
-				<input type="hidden" id="SermonKind" value="chulya">
+				<input type="hidden" id="SermonKind" value="julgi">
 				
 					<table class="table freeboard_tbl sermon_tbl">
 						<tbody class="tbody">

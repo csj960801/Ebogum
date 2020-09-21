@@ -109,4 +109,13 @@ interface SermonService {
 	int jujebyolSermonUpdate(SermonVO svo);
 
 	int jujebyolSermonDelete(SermonVO svo);
+	
+	// 절기 성탄절 설교
+	List<SermonVO> julgiSermonList(SearchVO svo);
+
+	int julgiSermonInsert(SermonVO svo);
+
+	int julgiSermonUpdate(SermonVO svo);
+
+	int julgiSermonDelete(SermonVO svo);
 }// end of interface

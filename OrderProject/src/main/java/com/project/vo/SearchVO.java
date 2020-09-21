@@ -10,6 +10,7 @@ public class SearchVO {
 
 	private String board_title_kind;
 	private String boardSearchParam;
+	private String sermonBoardType;	
 	
 	//관리자
 	private String adminSearchId;
@@ -95,6 +96,14 @@ public class SearchVO {
 
 	public void setSearch_bible_kind(String search_bible_kind) {
 		this.search_bible_kind = search_bible_kind;
+	}
+
+	public String getSermonBoardType() {
+		return sermonBoardType;
+	}
+
+	public void setSermonBoardType(String sermonBoardType) {
+		this.sermonBoardType = sermonBoardType;
 	}
 
 }

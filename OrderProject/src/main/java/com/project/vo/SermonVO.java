@@ -16,6 +16,9 @@ public class SermonVO {
 	// 신약/구약
 	private String sermonBibleType;
 
+	// 절기설교 타입
+	private String sermonBoardType;
+	
 	public SermonVO() {
 
 	}
@@ -69,6 +72,33 @@ public class SermonVO {
 		this.sermonBibleType = sermonBibleType;
 	}
 
+	/**
+	 * 절기 설교 전용 생성자
+	 * @param sermonSubject
+	 * @param sermonTitle
+	 * @param sermonMain
+	 * @param sermonPage
+	 * @param sermonPoint
+	 * @param sermonFile
+	 * @param sermonDate
+	 * @param sermonCnt
+	 * @param sermonBibleType
+	 * @param sermonBoardType
+	 */
+	public SermonVO(String sermonSubject, String sermonTitle, String sermonMain, String sermonPage, String sermonPoint,
+			String sermonFile, String sermonDate, String sermonCnt, String sermonBibleType, String sermonBoardType) {
+		this.sermonSubject = sermonSubject;
+		this.sermonTitle = sermonTitle;
+		this.sermonMain = sermonMain;
+		this.sermonPage = sermonPage;
+		this.sermonPoint = sermonPoint;
+		this.sermonFile = sermonFile;
+		this.sermonDate = sermonDate;
+		this.sermonCnt = sermonCnt;
+		this.sermonBibleType = sermonBibleType;
+		this.sermonBoardType = sermonBoardType;
+	}
+	
 	public String getSermonSubject() {
 		return sermonSubject;
 	}
@@ -139,6 +169,14 @@ public class SermonVO {
 
 	public void setSermonBibleType(String sermonBibleType) {
 		this.sermonBibleType = sermonBibleType;
+	}
+
+	public String getSermonBoardType() {
+		return sermonBoardType;
+	}
+
+	public void setSermonBoardType(String sermonBoardType) {
+		this.sermonBoardType = sermonBoardType;
 	}
 
 }

@@ -39,13 +39,14 @@
 		<div class="main_board_wrapper">
 
 			<div class="sermonTitle_wrapper">
-				<h3 class="sermonTitle">강해별 설교</h3>
+				<h3 class="sermonTitle">절기 설교</h3>
 			</div>
 
 			<div class="table_wrapper table-responsive">
 			
 			 <form id="sermonFrm" name="sermonFrm">
-				<input type="hidden" id="SermonKind" value="ganghaebyol" />
+			 
+				<input type="hidden" id="SermonKind" value="julgi" />
 
 				<table class="table freeboard_tbl">
 					<thead class="thead">
@@ -57,11 +58,12 @@
 							<th>편수</th>
 							<th>제공일자</th>
 							<th>포인트</th>
+							<th>설교구분</th>
 						</tr>
 					</thead>
 					<tbody class="tbody">
-						<c:if test="${!empty GanghaebyolSermonlist}">
-							<c:forEach varStatus="status" items="${GanghaebyolSermonlist}" var="sermonlist">
+						<c:if test="${!empty JulgiSermonlist}">
+							<c:forEach varStatus="status" items="${JulgiSermonlist}" var="sermonlist">
 								<tr>
 									<c:if test="${sessionScope.login != null && sessionScope.point > 0}">
 									   <td><a href="javascript:Filedownload('${sermonlist.sermonFile}','${sermonlist.sermonPoint}','${sessionScope.login}');">다운로드</a></td>
@@ -78,19 +80,20 @@
 									                                 '${sermonlist.sermonDate}',
 									                                 '${sermonlist.sermonPoint}',
 									                                 '${sermonlist.sermonFile}',
-									                                 '${status.count}')"
+									                                 '${sermonlist.sermonCnt}')"
 									 class="boardlist_title">${sermonlist.sermonTitle}</a>
 									<td>${sermonlist.sermonMain}</td>
 									<td>${sermonlist.sermonPage}</td>
 									<td>${sermonlist.sermonDate}</td>
 									<td>${sermonlist.sermonPoint}</td>
+									<td>${sermonlist.sermonBoardType}</td>
 								</tr>
 							</c:forEach>
 						</c:if>
 						<c:choose>
-							<c:when test="${empty GanghaebyolSermonlist}">
+							<c:when test="${empty JulgiSermonlist}">
 								<tr>
-									<td colspan="7">업로드된 자료가 없습니다.</td>
+									<td colspan="8">업로드된 자료가 없습니다.</td>
 								</tr>
 							</c:when>
 						</c:choose>
@@ -114,16 +117,27 @@
 
 				<div class="board_search_wrapper">
 					<form id="sermonSearchFrm" name="sermonSearchFrm">
-						<select name="search_bible_kind" id="search_bible_kind">
-							<option value="all">해당없음</option>
-							<option value="past">구약</option>
-							<option value="new">신약</option>
-						</select>
 						
 						<select name="search_title_kind" id="search_title_kind">
 							<option value="subject">주제</option>
 							<option value="title">제목</option>
 							<option value="main">본문</option>				
+						</select>
+					
+					    <select name="sermonBoardType" id="sermonBoardType">
+							<option value="all">해당없음</option>
+							<option value="성탄절">성탄절</option>
+							<option value="사순절">사순절</option>
+							<option value="부활절">부활절</option>				
+							<option value="성림강림절">성림강림절</option>
+							<option value="추석추수맥추절">추석추수맥추절</option>
+							<option value="종교개혁주일">종교개혁주일</option>				
+							<option value="송구영신예배">송구영신예배</option>
+							<option value="국가기념일">국가기념일</option>
+							<option value="가정의달">가정의달</option>				
+							<option value="수련회 설교">수련회 설교</option>
+							<option value="국가기념일">국가기념일</option>
+							<option value="창립 및 전도">창립 및 전도</option>				
 						</select>
 					
 						<input type="text" name="sermonSearchParam" id="sermonSearchParam" />

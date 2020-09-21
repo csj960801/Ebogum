@@ -16,6 +16,7 @@
 		<result property="search_title_kind" column="sermonTitle" />
 		<result property="search_title_kind" column="sermonMain" />
 		<result property="search_bible_kind" column="sermonBibleType" />
+		<result property="sermonBoardType" column="sermonBoardType" />
 	</resultMap>
 
 	<!-- 주일설교 리스트 출력 및 검색기능 -->
@@ -529,4 +530,57 @@
 	<delete id="jujebyolsermondelete" parameterType="com.project.vo.SermonVO">
 		DELETE FROM jujebyolsermonboard WHERE sermonboardCnt = #{sermonCnt}
 	</delete>
+	
+	<!-- 절기 설교 리스트 출력 및 검색기능 -->
+	<select id="julgisermonlist" resultType="com.project.vo.SermonVO" parameterType="com.project.vo.SearchVO">
+		SELECT * FROM julgisermonboard
+		WHERE sermonboardCnt IS NOT NULL
+		<if test="sermonBoardType == 'all'">
+			AND sermonBoardType IS NOT NULL
+		</if>
+		<if test="search_title_kind == 'subject'">
+			AND sermonSubject like CONCAT('%',
+			#{sermonSearchParam},'%')
+		</if>
+		<if test="search_title_kind == 'title'">
+			AND sermonTitle like CONCAT('%', #{sermonSearchParam} ,
+			'%')
+		</if>
+		<if test="search_title_kind == 'main'">
+			AND sermonMain like CONCAT('%', #{sermonSearchParam} ,'%')
+		</if>
+		<if test="sermonBoardType != null">
+			AND sermonBoardType = #{sermonBoardType}
+		</if>		
+	</select>
+
+	<!-- 절기 설교 데이터 저장 -->
+	<insert id="julgisermoninsert" parameterType="com.project.vo.SermonVO">
+		INSERT INTO
+		julgisermonboard(sermonSubject,sermonTitle,sermonMain,sermonPage,sermonPoint,sermonFile,sermonDate, sermonCnt ,sermonBibleType,sermonBoardType)
+		VALUES(#{sermonSubject},#{sermonTitle},#{sermonMain},#{sermonPage},#{sermonPoint},#{sermonFile},#{sermonDate}, #{sermonCnt} ,#{sermonBibleType},#{sermonBoardType})
+	</insert>
+
+	<!-- 절기 설교 데이터 수정 -->
+	<update id="julgisermonupdate" parameterType="com.project.vo.SermonVO">
+		UPDATE julgisermonboard SET
+		sermonSubject = #{sermonSubject},
+		sermonTitle = #{sermonTitle},
+		sermonMain = #{sermonMain},
+		sermonPage=#{sermonPage},
+		sermonPoint=#{sermonPoint},
+		sermonFile=#{sermonFile},
+		sermonDate=#{sermonDate},
+		sermonCnt = #{sermonCnt},
+		sermonBibleType=#{sermonBibleType},
+		sermonBoardType=#{sermonBoardType}
+		WHERE
+		sermonCnt = #{sermonCnt}
+	</update>
+
+	<!-- 절기 설교 데이터 삭제 -->
+	<delete id="julgisermondelete" parameterType="com.project.vo.SermonVO">
+		DELETE FROM julgisermonboard WHERE sermonCnt = #{sermonCnt}
+	</delete>
+	
 </mapper>

@@ -42,8 +42,10 @@ public class SermonController {
 	 * @return
 	 */
 	@RequestMapping("/SermonFiledownload.sermon")
-	public ModelAndView download(@RequestParam HashMap<Object, Object> params, @RequestParam("userPoint") String point,
-			@RequestParam("duplicateid") String id, @RequestParam("sermonType") String sermonType,
+	public ModelAndView download(@RequestParam HashMap<Object, Object> params, 
+			@RequestParam("userPoint") String point,
+			@RequestParam("duplicateid") String id,
+			@RequestParam("sermonType") String sermonType,
 			Map<String, Object> paramMap, ModelAndView mv) {
 
 		// sermonType변수로 받은 설교 타입에 해당하는 파일 경로 생성
@@ -81,6 +83,9 @@ public class SermonController {
 			break;
 		case "jujebyol":
 			FILE_SERVER_PATH.append("/Dawn/jujebyol");
+			break;	
+		case "christmas":
+			FILE_SERVER_PATH.append("/Julgi/christmas");
 			break;
 		}
 
@@ -1302,6 +1307,118 @@ public class SermonController {
 		Map<String, Object> delMap = new HashMap<String, Object>();
 		int jujebyoldel = sermonservice.jujebyolSermonDelete(svo);
 		delMap.put("jujebyoldel", jujebyoldel);
+		return delMap;
+	}
+	
+	/**
+	 * 절기설교 리스트
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("Julgi/JulgiSermon.sermon")
+	public List<SermonVO> JulgiSermonList(Model model, @ModelAttribute("svo") SearchVO svo,
+			HttpServletRequest request) {
+		List<SermonVO> fileboardList = sermonservice.julgiSermonList(svo);
+		model.addAttribute("JulgiSermonlist", fileboardList);
+		if (fileboardList.size() > 0) {
+			sermonLog.info("==========================");
+			sermonLog.info("절기설교 " + fileboardList.size() + "데이터 존재합니다");
+			sermonLog.info("==========================");
+		}
+
+		return fileboardList;
+	}
+
+	/**
+	 * 절기설교 데이터 저장
+	 * 
+	 * @param svo
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("Julgi/JulgiSermonInsert.sermon")
+	public Map<String, Object> JulgiSermonInsert(@RequestParam("sermonFile") MultipartFile multi,
+			HttpServletRequest request) throws Exception {
+		Map<String, Object> fileMap = new HashMap<String, Object>();
+
+		// 파일이 저장되어있는 곳 경로 입력
+		String filePath = "";
+
+		String subject = request.getParameter("sermonSubject");
+		String title = request.getParameter("sermonTitle");
+		String main = request.getParameter("sermonMain");
+		String page = request.getParameter("sermonPage");
+		String point = request.getParameter("sermonPoint");
+		String date = request.getParameter("sermonDate");
+		String sermonCnt = request.getParameter("sermonCnt");
+		String bibleType = request.getParameter("sermonBibleType");
+		String sermonType = request.getParameter("sermonBoardType");
+		
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, sermonCnt ,bibleType, sermonType);
+
+		int julgiinsert = sermonservice.julgiSermonInsert(svo);
+		fileMap.put("julgiinsert", julgiinsert);
+
+		if (julgiinsert > 0) {
+			sermonLog.info("==========================");
+			sermonLog.info("절기 설교 데이터 저장 되었습니다.");
+			sermonLog.info("==========================");
+		}
+
+		return fileMap;
+	}
+
+	/**
+	 * 절기 데이터 수정
+	 * 
+	 * @param svo
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("Julgi/JulgiSermonUpdate.sermon")
+	public Map<String, Object> JulgiSermonUpdate(@RequestParam("sermonFile") MultipartFile multi,
+			HttpServletRequest request) throws Exception {
+
+		Map<String, Object> fileMap = new HashMap<String, Object>();
+
+		String subject = request.getParameter("sermonSubject");
+		String title = request.getParameter("sermonTitle");
+		String main = request.getParameter("sermonMain");
+		String page = request.getParameter("sermonPage");
+		String point = request.getParameter("sermonPoint");
+		String date = request.getParameter("sermonDate");
+		String cnt = request.getParameter("sermonCnt");
+		String bibleType = request.getParameter("sermonBibleType");
+        String sermonType = request.getParameter("sermonBoardType");
+		
+		SermonVO svo = new SermonVO(subject, title, main, page, point, multi.getOriginalFilename(), date, cnt,
+				bibleType, sermonType);
+
+		int julgiupdate = sermonservice.julgiSermonUpdate(svo);
+		fileMap.put("julgiupdate", julgiupdate);
+		if (julgiupdate > 0) {
+			sermonLog.info("==========================");
+			sermonLog.info("절기 설교 데이터 수정 되었습니다.");
+			sermonLog.info("==========================");
+		}
+
+		return fileMap;
+	}
+
+	/**
+	 * 절기 설교 데이터 삭제
+	 * 
+	 * @param svo
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("Julgi/JulgiSermonDelete.sermon")
+	public Map<String, Object> JulgiSermonDelete(SermonVO svo) {
+		Map<String, Object> delMap = new HashMap<String, Object>();
+		int julgidel = sermonservice.julgiSermonDelete(svo);
+		delMap.put("julgidel", julgidel);
 		return delMap;
 	}
 }
