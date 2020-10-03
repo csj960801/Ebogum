@@ -13,10 +13,14 @@ body.body {
 }
 
 /*mobile*/
-@media all and( max-width :767px) {
+@media ( max-width :767px) {
 	.login_warpper .login_md_10 {
 		padding: 0;
 		width: 48%;
+	}
+	.login_wrapper .login_md_2 {
+		width: 185px;
+		padding: 0 5px;
 	}
 	.login_md_10 .carousel_img_wrapper {
 		width: 500px;
@@ -28,7 +32,7 @@ body.body {
 		
 	}
 	.main_board_wrapper {
-		width: 500px;
+		width: 530px;
 	}
 	.index_wrapper {
 		margin: 15px 0;
@@ -42,10 +46,6 @@ body.body {
 	}
 	.login_tbl .login_id, .login_tbl .login_pw {
 		width: 80%;
-	}
-	.login_warpper .login_md_2 {
-		width: 175px;
-		padding: 0 15px;
 	}
 	.main_board_wrapper .main_board_span {
 		display: inline-block;
@@ -198,7 +198,7 @@ body.body {
 
 .main_board_1 .board3 {
 	height: 170px;
-	width: 14%;
+	width: 20%;
 	float: left;
 }
 

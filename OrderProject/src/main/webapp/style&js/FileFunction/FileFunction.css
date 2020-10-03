@@ -2,7 +2,7 @@
 
 @media ( min-width :768px) {
 	.table_wrapper .sermontbl {
-		width: 43%;
+		width: 60%;
 	}
 	.table_wrapper .sermontbl.tbody tr td {
 		text-align: center;
@@ -37,4 +37,41 @@
 }
 
 @media ( max-width :767px) {
+	.table_wrapper .sermontbl {
+		width: 43%;
+	}
+	.table_wrapper .sermontbl.tbody tr td {
+		text-align: center;
+	}
+	.table_wrapper .sermontbl .tbody tr th {
+		background: #eee;
+		padding: 10px 0;
+	}
+	.sermon_tbl .tfoot tr .tfoot_btn_td .sermon_btn_ul li {
+		float: right;
+		padding: 0 5px;
+	}
+	.sermon_tbl .tbody tr th {
+		width: 20%;
+	}
+	.sermon_tbl .tbody tr td p.download_warn {
+		margin: 0;
+		color: #ddd;
+		font-weight: 700;
+	}
+	.sermonTitle_wrapper {
+		position: relative;
+	}
+	.sermonTitle_wrapper h3.sermonTitle::before {
+		content: "";
+		padding: 1px 20px;
+		background: #333;
+		position: absolute;
+		top: -10px;
+		left: 42%;
+	}
+	.sermonTitle_wrapper h3.sermonTitle {
+		margin: 30px 0;
+		text-align: center;
+	}
 }

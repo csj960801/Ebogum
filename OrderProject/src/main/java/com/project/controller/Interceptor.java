@@ -30,7 +30,7 @@ public class Interceptor extends HandlerInterceptorAdapter {
 		interceptorLog.info("=======================");
 		interceptorLog.info("인터셉터 탔음.");
 		interceptorLog.info("=======================");
-		if ((uvo.getDuplicateid().equals("logos")) && (uvo.getPass1().equals("popos"))) {
+		if ((uvo.getDuplicateid().equals("logos")) && (uvo.getPass1().equals("popo998"))) {
 			interceptorLog.info("=======================");
 			interceptorLog.info("관리자확인: " + uvo.getDuplicateid() + " , " + uvo.getPass1());
 			interceptorLog.info("=======================");
@@ -49,12 +49,10 @@ public class Interceptor extends HandlerInterceptorAdapter {
 	 * 컨트롤러 접근 후
 	 */
 	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
-		HttpSession session = request.getSession();
 		if (preHandle(request, response, handler)) {
-			session.setAttribute("admin", "운영자");
+            
 		}
 	}
 

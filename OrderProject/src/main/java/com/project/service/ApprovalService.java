@@ -2,6 +2,7 @@ package com.project.service;
 
 import java.util.List;
 
+import com.project.vo.PayVO;
 import com.project.vo.SearchVO;
 import com.project.vo.UserVO;
 
@@ -60,4 +61,12 @@ public interface ApprovalService {
 	 * @return
 	 */
 	boolean DelMember(UserVO uservo);
+
+	/**
+	 * 결제 데이터 저장
+	 * 
+	 * @param pvo
+	 * @return
+	 */
+	boolean PayInsert(PayVO pvo);
 }

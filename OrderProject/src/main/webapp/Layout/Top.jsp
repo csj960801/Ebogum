@@ -19,7 +19,7 @@
 			<ul class="menu_tbl_ul">
 				<li><img src="/pictures/logo.gif" class="menu_logo" /></li>
 				<li><a class="home_a" href="/">홈으로</a></li>
-				<li><a class="AddPay_a" href="/">추가결제</a></li>
+				<li><a class="AddPay_a" href="/Layout/PayFunction/PayFunction.jsp">추가결제</a></li>
 				<li><a href="/board/FreeBoard.board" class="board_a">게시판</a></li>
 				<li><a href="/" class="point_a">포인트/다운리스트</a></li>
 				<li><a href="/Layout/Introduce/Introduce.jsp" class="intro_a">사이트소개</a></li>

@@ -18,7 +18,15 @@
 		<result column="churchTel" property="churchTel" />
 		<result column="phoneTel" property="phoneTel" />
 		<result column="faxNumber" property="faxNumber" />
-	    <result column="Date" property="date"/>
+		<result column="Date" property="date" />
+	</resultMap>
+
+	<resultMap id="pvo" type="com.project.vo.PayVO">
+		<result column="RegularUser" property="RegularUser" />
+		<result column="unRegularUser" property="unRegularUser" />
+		<result column="paySelector" property="paySelector" />
+		<result column="saveUnpay" property="saveUnpay" />
+		<result column="member" property="member" />
 	</resultMap>
 
 	<!-- 관리자 검색 전용 resultMap -->
@@ -114,10 +122,10 @@
 		</if>
 	</select>
 
-    <!-- 회원별 포인트를 가져오도록 -->
-    <select id="pointValue" resultMap="user" parameterType="user">
-      SELECT point FROM member WHERE duplicateid = #{duplicateid}
-    </select>
+	<!-- 회원별 포인트를 가져오도록 -->
+	<select id="pointValue" resultMap="user" parameterType="user">
+		SELECT point FROM member WHERE duplicateid = #{duplicateid}
+	</select>
 
 	<!-- (관리자)회원 삭제 -->
 	<delete id="adminDel" parameterType="user">
@@ -128,4 +136,10 @@
 		AND
 		name = #{name}
 	</delete>
+	
+	<!-- 결제 데이터 저장  -->
+	<insert id="payinsert" parameterType="com.project.vo.PayVO">
+	   INSERT INTO payboard(RegularUser, unRegularUser, paySelector, saveUnpay, member)
+	   VALUES(#{RegularUser}, #{unRegularUser}, #{paySelector}, #{saveUnpay}, #{member})   
+	</insert>
 </mapper>

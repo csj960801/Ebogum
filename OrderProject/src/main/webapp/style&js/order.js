@@ -11,6 +11,9 @@ $(function() {
 
 	// 아이디 비번 참기 함수
 	FindInfo();
+
+	// 결제 기능
+	PayFunction();
 });
 
 function chk() {
@@ -225,5 +228,69 @@ function FindInfo() {
 		$("#findinfoFrm").prop("action", "/findInfo/findInfo.app");
 		$("#findinfoFrm").prop("method", "post");
 		document.findinfoFrm.submit();
+	});
+};
+
+/**
+ * 결제기능 담당함수
+ * 
+ * @returns
+ */
+function PayFunction() {
+
+	/*
+	 * $("#RegularUserbox").click(function(){
+	 * $("#unRegularUserbox").prop("checked",false); });
+	 * $("#unRegularUserbox").click(function(){
+	 * $("#RegularUserbox").prop("checked",false); });
+	 */
+	
+	// Select 신용카드 option 결제 선택시
+	$("#paySelector").change(function(){
+		var selectOption = $("#paySelector option:selected").val();
+		if(selectOption == "카드결제"){    		
+			$.ajax({
+				url:"/Layout/PayFunction/PayFunction.jsp",
+				type:"post",
+				dataType:"html",
+				success:function(position_change){
+					var CardPayButton = "<div class='payBtn_wrapper' style='float: right;'>";
+					CardPayButton += "<button id='paySubmit' class='btn btn-sm' style='margin: 0 10px 0 0;'>결제</button>";
+				    CardPayButton += "<button id='payCancel' class='btn btn-sm'>취소</button>"
+				    CardPayButton += "</div>";
+				    $(".position_change_wrapper").html(CardPayButton);
+				},
+				error : function(){
+	               alert("결제연동 실패");				
+				}
+		});
+		}else{
+			return false;
+		}
+			
+	});
+	
+	var payFrm = document.sermonFrm;
+	$("#paySubmit").on("click", function() {
+		var regularCheckbox = document.getElementById("RegularUserbox").checked;
+		var unregularCheckbox = document.getElementById("unRegularUserbox").checked;
+
+			if (unregularCheckbox && regularCheckbox) {
+				payFrm.action = "/PayFunction.app";
+				payFrm.method = "post";
+				payFrm.submit();
+			}else if(unregularCheckbox || regularCheckbox){
+				payFrm.action = "/PayFunction.app";
+				payFrm.method = "post";
+				payFrm.submit();		
+			} 
+			else {
+				alert("정회원 혹은 부회원 둘 중 하나는 선택하셔야합니다.");
+				return false;
+			}
+	});
+	
+	$("#payCancel").on("click", function() {
+		payFrm.reset();
 	});
 };

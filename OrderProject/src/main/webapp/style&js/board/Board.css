@@ -2,6 +2,9 @@
 
 /* PC  */
 @media ( min-width :768px) {
+	.custom_container .noticeboard_wrapper {
+		padding: 10px 0;
+	}
 	.table_wrapper .freeboard_tbl .thead {
 		background: #ddd;
 		border-top: 5px solid #333;
@@ -18,14 +21,15 @@
 	}
 	.table_wrapper .Writefreeboard_tbl, .bottom_wrapper {
 		margin-top: 20px;
-		width: 44%;
+		width: 62%;
 	}
-	.table_wrapper .WriteNoticeboard_tbl, .Noticeboard_wrapper .bottom_wrapper{
+	.table_wrapper .WriteNoticeboard_tbl, .Noticeboard_wrapper .bottom_wrapper
+		{
 		margin-top: 20px;
 		width: auto;
 	}
 	.table_wrapper .freeboard_tbl {
-		width: 44%;
+		width: 62%;
 	}
 	.freeboard_tbl .tbody tr td a.boardlist_title:hover {
 		border-bottom: 1px solid #ddd;
@@ -46,14 +50,13 @@
 		float: right;
 		padding: 0 5px;
 	}
-
-	.table_wrapper .Writefreeboard_tbl .tbody tr th,
-	.table_wrapper .WriteNoticeboard_tbl .tbody tr th {
+	.table_wrapper .Writefreeboard_tbl .tbody tr th, .table_wrapper .WriteNoticeboard_tbl .tbody tr th
+		{
 		width: 15%;
 		background: #eee;
 	}
-	.table_wrapper .Writefreeboard_tbl .tbody tr td,
-	.table_wrapper .WriteNoticeboard_tbl .tbody tr td {
+	.table_wrapper .Writefreeboard_tbl .tbody tr td, .table_wrapper .WriteNoticeboard_tbl .tbody tr td
+		{
 		text-align: left;
 	}
 	.table_wrapper .freeboard_tbl .tbody tr th {
@@ -120,10 +123,10 @@
 		height: 125px;
 		margin: 5px 0;
 	}
-	.tfoot tr td.tfoot_btn_td {
+	/* .tfoot tr td.tfoot_btn_td {
 		width: 150px;
 		padding: 10px 0 0 15px;
-	}
+	} */
 	.tfoot tr td .btn_ul li {
 		float: left;
 		padding: 0 5px;
@@ -134,7 +137,7 @@
 	}
 	.board_search_wrapper {
 		text-align: center;
-		width: 44%;
+		width: 62%;
 		margin: 15px 0;
 		border: 1px solid #ddd;
 		padding: 10px 0;
@@ -160,22 +163,26 @@
 		vertical-align: middle;
 	}
 	.table_wrapper {
-		width: 515px;
+		width: 530px;
 	}
 	.table_wrapper .freeboard_tbl, .bottom_wrapper {
-		margin-top: 20px;
+		margin-top: 5px;
 	}
 	.table_wrapper h5.freeboard_title {
 		margin: 15px 0 0;
 		border-bottom: 3px solid #092b79;
 		width: 565px;
 	}
-	.bottom_wrapper .board_number_wrapper {
+	/* .bottom_wrapper .board_number_wrapper {
 		margin: 15px 0;
-	}
+	} */
 	.bottom_wrapper .btn_span {
 		float: right;
 		padding: 0 5px;
+	}
+	.board_search_wrapper {
+		text-align: center;
+		padding: 15px 0;
 	}
 	.main_board_wrapper img.freeBoard {
 		padding: 15px 0;
@@ -256,6 +263,6 @@
 	}
 	.tfoot tr td .btn_ul li {
 		float: left;
-		padding: 0 5px;
+		padding: 0;
 	}
 }

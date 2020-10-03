@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* 대형PC전용 */
-@media all and ( min-width :1025px) and (max-width: 1500px) {
+@media ( min-width :1025px) {
 	.login_warpper .login_md_10 {
 		padding: 0;
 		width: 34%;
@@ -10,6 +10,56 @@
 
 /* 중형디바이스(태블릿, 랩탑) */
 @media ( min-width :768px) {
+	.pay_board_wrapper {
+		width: 60%;
+	}
+	.pay_title_wrapper h3.pay_title {
+		margin: 0;
+		font-size: 17px;
+		padding: 0 10px;
+		position: relative;
+	}
+	.pay_title_wrapper h3.pay_title::before {
+		position: absolute;
+		content: "";
+		background: #333;
+		padding: 1px 48px;
+		top: 18px;
+	}
+	.pay_board_wrapper .pay_word {
+		margin: 15px 10px;
+		font-size: 12px;
+	}
+	.pay_board_wrapper .pay_word:nth-child(3) {
+		border-bottom: 1px solid #333;
+		margin: 5px 10px;
+		width: 91%;
+		font-weight: 750;
+	}
+	.pay_table .thead {
+		background: #eee;
+	}
+	.pay_table .tbody {
+		border-bottom: 1px solid #eee;
+	}
+	.pay_table .tbody tr td:nth-child(1) {
+		border-right: 1px solid #eee;
+		width: 50%;
+	}
+	.pay_table .thead tr th, .pay_table .tbody tr td {
+		text-align: center;
+	}
+	.pay_table .tbody tr td {
+		vertical-align: middle;
+	}
+	.tbody tr td .payform {
+		width: 90%;
+		float: right;
+	}
+	.tbody tr td input[type='checkbox']#unRegularUser, .tbody tr td input[type='checkbox']#RegularUser
+		{
+		margin: 10px 5px;
+	}
 	.Findinfo_wrapper {
 		width: 62%;
 	}

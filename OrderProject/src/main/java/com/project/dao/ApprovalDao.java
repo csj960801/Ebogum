@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.project.Session.SqlSessionInstance;
+import com.project.vo.PayVO;
 import com.project.vo.SearchVO;
 import com.project.vo.UserVO;
 
@@ -148,4 +149,22 @@ public class ApprovalDao {
 		}
 		return delFlag;
 	}
+
+	/**
+	 * 결제 기능
+	 * 
+	 * @param pvo
+	 * @return
+	 */
+	public boolean PayFunction(PayVO pvo) {
+		boolean payFlag = false;
+		int payCnt = session.insert("payinsert", pvo);
+		if (payCnt > 0) {
+			payFlag = true;
+			session.commit();
+		}
+
+		return payFlag;
+	}
+
 }// end of class

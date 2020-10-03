@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.service.ApprovalServiceImpl;
+import com.project.vo.PayVO;
 import com.project.vo.SearchVO;
 import com.project.vo.UserVO;
 
@@ -81,14 +82,13 @@ public class ApprovalController {
 
 		boolean lvo = aServiceApprovalServiceImpl.MemberLogin(loginvo);
 		UserVO getPoint = aServiceApprovalServiceImpl.getPoint(loginvo);
-		
+
 		if (lvo) {
 			controllerLog.info("========================");
 			controllerLog.info(loginvo.getDuplicateid());
 			controllerLog.info(loginvo.getPass1());
 			controllerLog.info(getPoint.getDate());
 			controllerLog.info("========================");
-
 
 			// 만약 포인트가 null이거나 입력되어 있지않을 경우 0으로 초기화
 			if (getPoint.getPoint() == null || getPoint.getPoint().equals("")) {
@@ -97,7 +97,7 @@ public class ApprovalController {
 
 			session.setAttribute("login", loginvo.getDuplicateid());
 			session.setAttribute("point", Integer.parseInt(getPoint.getPoint()));
-	
+
 			model.addObject("loginFlag", lvo); // 로그인 성공 여부
 			model.setViewName("/login/login");
 			controllerLog.info("========================");
@@ -184,6 +184,30 @@ public class ApprovalController {
 		boolean delFlag = aServiceApprovalServiceImpl.DelMember(uservo);
 		adminDelMap.put("memberDel", delFlag);
 		return adminDelMap;
+	}
+
+	/**
+	 * 결제 기능
+	 * 
+	 * @param model
+	 * @param pvo
+	 * @return
+	 */
+	@RequestMapping(value = "/PayFunction.app", method = RequestMethod.POST)
+	public ModelAndView payFunction(@ModelAttribute("pvo") PayVO pvo) {
+
+		ModelAndView payview = new ModelAndView();
+		boolean payinsertFlag = aServiceApprovalServiceImpl.PayInsert(pvo);
+		
+		payview.addObject("payinsert", payinsertFlag);
+	
+		payview.addObject("payRegularUser", pvo.getRegularUser());
+		payview.addObject("payunRegularUser", pvo.getUnRegularUser());
+		payview.addObject("paySelector", pvo.getPaySelector());
+		payview.addObject("saveUnpay", pvo.getSaveUnpay());
+			
+		payview.setViewName("/PayFunction/PayFunction");
+		return payview;
 	}
 
 }

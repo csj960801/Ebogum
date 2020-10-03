@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.dao.ApprovalDao;
+import com.project.vo.PayVO;
 import com.project.vo.SearchVO;
 import com.project.vo.UserVO;
 
@@ -35,28 +36,34 @@ public class ApprovalServiceImpl implements ApprovalService {
 		// TODO Auto-generated method stub
 		return approvalDao.findInfo(uservo);
 	}
-	
+
 	@Override
 	public boolean DuplicateCheck(String id) {
 		// TODO Auto-generated method stub
 		return approvalDao.duplicateCheck(id);
 	}
-	
+
 	@Override
 	public UserVO getPoint(UserVO uvo) {
 		// TODO Auto-generated method stub
 		return approvalDao.getPoint(uvo);
 	}
-	
+
 	@Override
 	public List<UserVO> memberList(SearchVO svo) {
 		// TODO Auto-generated method stub
 		return approvalDao.memberList(svo);
 	}
-	
+
 	@Override
 	public boolean DelMember(UserVO uservo) {
 		// TODO Auto-generated method stub
 		return approvalDao.DelMember(uservo);
+	}
+
+	@Override
+	public boolean PayInsert(PayVO pvo) {
+		// TODO Auto-generated method stub
+		return approvalDao.PayFunction(pvo);
 	}
 }

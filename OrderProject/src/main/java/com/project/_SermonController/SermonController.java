@@ -84,8 +84,8 @@ public class SermonController {
 		case "jujebyol":
 			FILE_SERVER_PATH.append("/Dawn/jujebyol");
 			break;	
-		case "christmas":
-			FILE_SERVER_PATH.append("/Julgi/christmas");
+		case "julgi":
+			FILE_SERVER_PATH.append("/julgi");
 			break;
 		}
 
