@@ -1,6 +1,7 @@
 package com.project.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.project.vo.BoardVO;
 import com.project.vo.SearchVO;
@@ -19,7 +20,9 @@ public interface BoardService {
 	List<BoardVO> Questionboardlist(int idx, SearchVO svo);	
 	List<BoardVO> noticeboardList();
 	
-	//int boardHit(int boardHit);
+	int boardHit(Map<String,Object> boardHit);
+	int noticeboardHit(Map<String,Object> boardHit);
+
 	int boardUpdate(BoardVO bvo);
 	int QboardUpdate(BoardVO bvo);
 	int AnswerboardUpdate(BoardVO bvo);

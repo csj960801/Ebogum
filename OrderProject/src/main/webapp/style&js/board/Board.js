@@ -209,7 +209,7 @@ function freeboard_Read(boardCnt,
 						boardHit,
 						boardParam, 
 						boardDate) {
-	window.location.href = "/Layout/Board/ReadFreeBoard.jsp?" 
+	window.location.href = "/board/Readboard/ReadFreeBoard.board?" 
 		    +"boardCnt=" + encodeURI(boardCnt)
 			+ "&boardWriter=" + encodeURI(boardWriter)
 			+ "&boardlistTitle=" + encodeURI(boardlistTitle) 
@@ -230,14 +230,16 @@ function freeboard_Read(boardCnt,
  * @param boarddate
  * @returns
  */
-function Questionboard_Read(boardCnt, boardWriter, boardlistTitle,
-		boardContent, boardHit, boardParam, boardDate) {
+function Questionboard_Read(boardCnt, 
+		                    boardWriter, boardlistTitle,
+		                    boardContent, boardHit,
+		                    boardParam, boardDate) {
 	
 	if(boardContent.length <= 10){
 		boardContent.trim();
 	}
 	
-	window.location.href = "/Layout/Board/QBoard/ReadQuestionBoard.jsp?" 
+	window.location.href = "/board/Readboard/ReadQuestionBoard.board?" 
 		    +"boardCnt=" + encodeURI(boardCnt)
 			+ "&boardWriter=" + encodeURI(boardWriter)
 			+ "&boardlistTitle=" + encodeURI(boardlistTitle) 
@@ -248,14 +250,21 @@ function Questionboard_Read(boardCnt, boardWriter, boardlistTitle,
 };
 
 /**
-*/
-function Noticeboard_Read(boardCnt, boardlistTitle,
+ * 공지게시판 
+ * @param boardCnt
+ * @param boardlistTitle
+ * @param boardContent
+ * @param boardHit
+ * @param boardParam
+ * @param boardDate
+ * @returns
+ */function Noticeboard_Read(boardCnt, boardlistTitle,
 		boardContent, boardHit, boardParam, boardDate) {
 	
 	if(boardContent.length <= 10){
 		boardContent.trim();
 	}
-	var url="/Layout/Board/Notice/ReadNoticeBoard.jsp?" 
+	var url="/board/Readboard/ReadNoticeBoard.board?" 
 		    +"boardCnt=" + encodeURI(boardCnt)
 			+ "&boardlistTitle=" + encodeURI(boardlistTitle) 
 			+ "&boardContent=" + encodeURI(boardContent)

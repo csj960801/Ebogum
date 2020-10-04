@@ -1,6 +1,7 @@
 package com.project.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -92,12 +93,25 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	/**
-	 * 게시글 조회수
-	 * 
-	 * @Override public int boardHit(int boardHit) { // TODO Auto-generated method
-	 *           stub int idx = boarddao.boardHit(boardHit); return idx; }
+	 * 자유게시판 게시글 조회수
 	 */
 
+	@Override
+	public int boardHit(Map<String, Object> boardHit) { 
+		// TODO Auto-generated method stub
+		int idx = boarddao.boardHit(boardHit);
+		return idx;
+	}
+
+	/**
+	 * 공지게시글 조회수
+	 */
+	@Override
+	public int noticeboardHit(Map<String, Object> boardHit) {
+		// TODO Auto-generated method stub
+		return boarddao.noticeboardHit(boardHit);
+	}
+	
 	/**
 	 * 자유게시판 데이터 수정
 	 */

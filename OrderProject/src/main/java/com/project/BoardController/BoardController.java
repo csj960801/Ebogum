@@ -386,16 +386,110 @@ public class BoardController {
 	}
 
 	/**
-	 * 게시판 검색 결과
+	 * 자유게시판 조회 수 증가 및 게시글 데이터 읽기
 	 * 
-	 * @param svo
 	 * @return
-	 * 
-	 * @RequestMapping(value = "/boardSearch.board", method = RequestMethod.POST)
-	 *                       public List<BoardVO>
-	 *                       boardSearchList(@ModelAttribute("svo") SearchVO svo) {
-	 *                       List<BoardVO> searchlist = new ArrayList<BoardVO>();
-	 * 
-	 *                       return searchlist; }
 	 */
+	@RequestMapping("/Readboard/ReadFreeBoard.board")
+	public Map<String, Object> ReadFreeBoard(@ModelAttribute("bvo") BoardVO bvo, HttpServletRequest request) {
+
+		Map<String, Object> readMap = new HashMap<String, Object>();
+
+		String bno = request.getParameter("boardCnt");
+		String boardWriter = request.getParameter("boardWriter");
+		String boardlistTitle = request.getParameter("boardlistTitle");
+		String boardContent = request.getParameter("boardContent");
+		String boardHit = request.getParameter("boardHit");
+		String boardParam = request.getParameter("boardParam");
+		String boarddate = request.getParameter("boarddate");
+
+		readMap.put("bno", bno);
+		readMap.put("boardWriter", boardWriter);
+		readMap.put("boardlistTitle", boardlistTitle);
+		readMap.put("boardContent", boardContent);
+		readMap.put("boardHit", boardHit);
+		readMap.put("boardParam", boardParam);
+		readMap.put("boarddate", boarddate);
+
+		int boardHitCnt = boardservice.boardHit(readMap);
+		if (boardHitCnt > 0) {
+			boardlog.info("------------------------");
+			boardlog.info("조회수 증가 되었습니다.");
+			boardlog.info("------------------------");
+		}
+
+		return readMap;
+	}
+
+	/**
+	 * 문의게시판 조회 수 증가 및 게시글 데이터 읽기
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/Readboard/ReadQuestionBoard.board")
+	public Map<String, Object> ReadQuestionBoard(@ModelAttribute("bvo") BoardVO bvo, HttpServletRequest request) {
+
+		Map<String, Object> readMap = new HashMap<String, Object>();
+
+		String bno = request.getParameter("boardCnt");
+		String boardWriter = request.getParameter("boardWriter");
+		String boardlistTitle = request.getParameter("boardlistTitle");
+		String boardContent = request.getParameter("boardContent");
+		String boardHit = request.getParameter("boardHit");
+		String boardParam = request.getParameter("boardParam");
+		String boarddate = request.getParameter("boarddate");
+
+		readMap.put("bno", bno);
+		readMap.put("boardWriter", boardWriter);
+		readMap.put("boardlistTitle", boardlistTitle);
+		readMap.put("boardContent", boardContent);
+		readMap.put("boardHit", boardHit);
+		readMap.put("boardParam", boardParam);
+		readMap.put("boarddate", boarddate);
+
+		int boardHitCnt = boardservice.boardHit(readMap);
+		if (boardHitCnt > 0) {
+			boardlog.info("------------------------");
+			boardlog.info("조회수 증가 되었습니다.");
+			boardlog.info("------------------------");
+		}
+
+		return readMap;
+	}
+
+	/**
+	 * 공지게시판 조회 수 증가 및 게시글 데이터 읽기
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/Readboard/ReadNoticeBoard.board")
+	public Map<String, Object> ReadNoticeBoard(@ModelAttribute("bvo") BoardVO bvo, HttpServletRequest request) {
+
+		Map<String, Object> readMap = new HashMap<String, Object>();
+
+		String bno = request.getParameter("boardCnt");
+		// String boardWriter = request.getParameter("boardWriter");
+		String boardlistTitle = request.getParameter("boardlistTitle");
+		String boardContent = request.getParameter("boardContent");
+		String boardHit = request.getParameter("boardHit");
+		String boardParam = request.getParameter("boardParam");
+		String boarddate = request.getParameter("boarddate");
+
+		readMap.put("bno", bno);
+		// readMap.put("boardWriter", boardWriter);
+		readMap.put("boardlistTitle", boardlistTitle);
+		readMap.put("boardContent", boardContent);
+		readMap.put("boardHit", boardHit);
+		readMap.put("boardParam", boardParam);
+		readMap.put("boarddate", boarddate);
+
+		int boardHitCnt = boardservice.noticeboardHit(readMap);
+		if (boardHitCnt > 0) {
+			boardlog.info("------------------------");
+			boardlog.info("조회수 증가 되었습니다.");
+			boardlog.info("------------------------");
+		}
+
+		return readMap;
+	}
 }

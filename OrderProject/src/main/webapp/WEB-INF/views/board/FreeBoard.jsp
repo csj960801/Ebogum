@@ -56,12 +56,13 @@
 								<tr>
 									<td>${status.count}</td>
 									<td><a href="#" class="boardlist_title"
-										onclick="javascript:freeboard_Read('${status.count}',
+										onclick="javascript:freeboard_Read(
+										'${status.count}',
 										'${freeboardlist.boardWriter}', 
 										'${freeboardlist.boardTitle}',
 										'${freeboardlist.boardContent}',
-										${freeboardlist.boardParam},
-										'${status.count}',
+										'1',
+										'${freeboardlist.boardParam}',
 										'${freeboardlist.boarddate}')">
 										
 										${freeboardlist.boardTitle}

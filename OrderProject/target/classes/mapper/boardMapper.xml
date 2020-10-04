@@ -9,6 +9,7 @@
 		<result column="email" property="boardEmail" />
 		<result column="title" property="boardTitle" />
 		<result column="content" property="boardContent" />
+		<result column="hit" property="boardHit" />
 		<result column="password" property="boardPassword" />
 		<result column="boardParam" property="boardParam" />
 		<result column="boarddate" property="boarddate" />
@@ -118,8 +119,13 @@
        ]]>
 	</select>
 
-	<!-- 게시글을 조회할때마다 조회수 증가 <update id="boardHit" parameterType="int"> <![CDATA[ 
-		UPDATE freeboard SET hit = hit + 1 WHERE FreeboardCnt=1 ]]> </update> -->
+	<!-- 자유게시판 게시글을 조회할때마다 조회수 증가 --> 
+	<update id="boardHit" parameterType="HashMap">
+	   <![CDATA[ 
+		UPDATE freeboard SET hit = hit + 1
+		WHERE FreeboardCnt=#{bno}
+	    ]]>
+	</update>
 
 	<!-- 자유 게시판 게시글 수정 -->
 	<update id="boardUpdate" parameterType="com.project.vo.BoardVO">
@@ -217,6 +223,14 @@
 	    ]]>
 	</delete>
 
+	<!-- 공지게시판 게시글 조회할때마다 조회수 증가 --> 
+	<update id="noticeboardHit" parameterType="HashMap">
+	   <![CDATA[ 
+		UPDATE noticeboard SET hit = hit + 1
+		WHERE boardCnt=#{bno}
+	    ]]>
+	</update>
+
 	<!-- 공지게시글 삭제 -->
 	<delete id="noticeboardDel" parameterType="String">
 		<![CDATA[
@@ -225,7 +239,7 @@
 	    ]]>
 	</delete>
 
-	<!-- 자유게시판 게시글 답변 데이터 저장 -->
+	<!-- 답변게시판 게시글 답변 데이터 저장 -->
 	<insert id="boardanswerInsert"
 		parameterType="com.project.vo.BoardVO">
 		<![CDATA[

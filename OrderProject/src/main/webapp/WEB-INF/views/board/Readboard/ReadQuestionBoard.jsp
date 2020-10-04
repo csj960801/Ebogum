@@ -17,13 +17,13 @@
 			<li class="emphasize"></li>
 			<li><span class="arrow_span"></span><a
 				href="/board/FreeBoard.board">자유게시판</a></li>
-			<!-- 	<li><span class="arrow_span"></span><a href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li>-->
+			<!-- 		<li><span class="arrow_span"></span><a href="/board/Qboard/QuestionBoard.board">Q&amp;A게시판</a></li> -->
 		</ul>
 	</div>
 	<div class="main_col col-md-9 col-xs-9">
 		<div class="main_board_wrapper">
-			<img src="/pictures/board/freeBoard_sub_title.gif"
-				class="img-responsive freeBoard" />
+			<img src="/pictures/board/qna_sub_title.gif"
+				class="img-responsive QuestionBoard" />
 
 			<div class="clearfix"></div>
 
@@ -53,21 +53,20 @@
 								</td>
 							</tr>
 							<tr>
-								<td>
-									<!-- 답변 게시글에 적용시킬 값  -->
-									<input type="hidden" name="boardParam" id="boardAnswerParam" value="${param.boardParam}">
-								</td>
+								<!-- QnA게시글에 대한 답변 파라미터 -->
+								<td><input type="hidden" id="boardAnswerParam"
+									name="boardParam" value="${param.boardParam}"></td>
 							</tr>
 						</tbody>
 						<tfoot class="tfoot">
 							<tr>
-								<td align="left"><button id="FreeBoardListBtn">목록</button></td>
+								<td align="left"><button id="QuestionBoardListBtn">목록</button></td>
 								<td colspan="3">&nbsp;</td>
 								<td colspan="3" class="tfoot_btn_td">
 									<ul class="btn_ul">
-										<li><button id="FreeboardReviseBtn">수정</button></li>
-										<li><button id="FreeboardDelBtn">삭제</button></li>
-										<li><button id="FreeboardAnswerBtn">답변</button></li>
+										<li><button id="QuestionboardReviseBtn">수정</button></li>
+										<li><button id="QuestionboardDelBtn">삭제</button></li>
+										<li><button id="QuestionboardAnswerBtn">답변</button></li>
 									</ul>
 								</td>
 							</tr>
@@ -79,7 +78,6 @@
 				<input type="hidden" id="boardTitle" value="${param.boardlistTitle}">
 				<input type="hidden" id="boardContent" value="${param.boardContent}">
 				<input type="hidden" id="boardHit" value="${param.boardHit}">
-				<input type="hidden" id="boarddate" value="${param.boarddate}">
 
 			</div>
 

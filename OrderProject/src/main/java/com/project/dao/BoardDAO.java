@@ -1,6 +1,7 @@
 package com.project.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -97,16 +98,33 @@ public class BoardDAO {
 	}
 
 	/**
-	 * 게시글 조회수 출력
+	 * 자유게시판 게시글 조회수 출력
 	 * 
 	 * @param boardHit
 	 * @return
 	 */
-	public int boardHit(int boardHit) {
+	public int boardHit(Map<String, Object> boardHit) {
 		int idx = session.update("boardHit", boardHit);
+		if (idx > 0) {
+			session.commit();
+		}
 		return idx;
 	}
 
+	/**
+	 * 공지게시판 게시글 조회수 출력
+	 * 
+	 * @param boardHit
+	 * @return
+	 */
+	public int noticeboardHit(Map<String, Object> boardHit) {
+		int idx = session.update("noticeboardHit", boardHit);
+		if (idx > 0) {
+			session.commit();
+		}
+		return idx;
+	}
+	
 	/**
 	 * 자유게시판 게시글 수정
 	 * 

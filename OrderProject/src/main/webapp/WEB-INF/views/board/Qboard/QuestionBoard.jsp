@@ -56,7 +56,13 @@
 							<c:forEach varStatus="status" items="${qboardlist}" var="Questionboardlist">
 								<tr>
 									<td>${status.count}</td>
-									<td><a href="javascript:Questionboard_Read('${status.count}','${Questionboardlist.boardWriter}','${Questionboardlist.boardTitle}','7-26','${Questionboardlist.boardContent}', '1' ,'${status.count}','${Questionboardlist.boarddate}')" class="boardlist_title"> ${Questionboardlist.boardTitle} </a>
+									<td><a href="javascript:Questionboard_Read('${status.count}',
+																			   '${Questionboardlist.boardWriter}',
+																			   '${Questionboardlist.boardTitle}',
+																			   '${Questionboardlist.boardContent}',
+																			    '1' ,
+																			    '${status.count}',
+																			    '${Questionboardlist.boarddate}')" class="boardlist_title"> ${Questionboardlist.boardTitle} </a>
 									</td>
 
 									<td>${Questionboardlist.boardWriter}</td>
